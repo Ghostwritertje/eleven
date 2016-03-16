@@ -112,11 +112,16 @@
                         </configuration>
                     </plugin>
                 </plugins>
+
             </build>
         </profile>
     </profiles>
     <build>
         <resources>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
             <resource>
                 <filtering>false</filtering>
                 <directory>src/main/java</directory>
