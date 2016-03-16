@@ -18,11 +18,21 @@ public class Rekening {
     private User user;
 
     @Column
+    private String naam;
+
+    @Column
     private String nummer;
 
 
     public Rekening() {
     }
+
+    public Rekening(String naam, String nummer, User user) {
+        this.naam = naam;
+        this.nummer = nummer;
+        this.user = user;
+    }
+
     public Integer getId() {
         return Id;
     }
@@ -46,4 +56,15 @@ public class Rekening {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+
+
 }

@@ -1,4 +1,4 @@
-package be.ghostwritertje.budgetting.dao;
+package be.ghostwritertje.budgetting.dao.api;
 
 import be.ghostwritertje.budgetting.domain.Rekening;
 
@@ -10,4 +10,8 @@ import java.util.List;
  */
 public interface RekeningDao {
     List<Rekening> getRekeningen(String username);
+
+    void create(final Rekening rekening);
+
+    double getBalans(final Rekening rekening);
 }

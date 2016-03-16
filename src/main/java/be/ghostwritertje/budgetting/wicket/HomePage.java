@@ -1,6 +1,7 @@
 package be.ghostwritertje.budgetting.wicket;
 
-import be.ghostwritertje.budgetting.dao.RekeningDao;
+import be.ghostwritertje.budgetting.dao.api.RekeningDao;
+import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.services.UserService;
 import org.apache.wicket.markup.html.WebPage;
@@ -19,6 +20,8 @@ public class HomePage extends WebPage {
 
     @SpringBean
     private RekeningDao rekeningDao;
+    @SpringBean
+    private StatementDao statementDao;
 
     public HomePage() {
         add(new Label("userName", userServiceImpl.getUsername()));
@@ -29,10 +32,15 @@ public class HomePage extends WebPage {
                 System.out.println("Rekening: ");
                 Rekening rekening = (Rekening) item.getModelObject();
                 System.out.println("Rekening: " + rekening.getNummer());
-
+                item.add(new Label("naam", rekening.getNaam()));
                 item.add(new Label("nummer", rekening.getNummer()));
-
-
+                item.add(new Label("balans", rekeningDao.getBalans(rekening)));
+               /* item.add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {
+                    @Override
+                    protected void populateItem(ListItem<Statement> statementListItem) {
+                        statementListItem.add(new Label("bedrag", statementListItem.getModelObject().getBedrag()));
+                    }
+                });*/
             }
         });
     }

@@ -1,4 +1,4 @@
-package be.ghostwritertje.budgetting.dao;
+package be.ghostwritertje.budgetting.dao.api;
 
 import be.ghostwritertje.budgetting.domain.User;
 

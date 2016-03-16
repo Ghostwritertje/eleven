@@ -13,11 +13,11 @@ public class Statement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vertrekRekeningId")
     private Rekening vertrekRekening;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "aankomstRekeningId")
     private Rekening aankomstRekening;
 
@@ -25,6 +25,12 @@ public class Statement {
     private double bedrag;
 
     public Statement() {
+    }
+
+    public Statement(Rekening vertrekRekening, Rekening aankomstRekening, double bedrag) {
+        this.vertrekRekening = vertrekRekening;
+        this.aankomstRekening = aankomstRekening;
+        this.bedrag = bedrag;
     }
 
     public Integer getId() {

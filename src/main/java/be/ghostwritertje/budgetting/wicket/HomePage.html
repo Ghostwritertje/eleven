@@ -17,18 +17,22 @@
         </ul>
     </div>
 </nav>
-<h1>This is the start</h1>
-<p>Hello, <span wicket:id="userName"></span></p>
 
-<div wicket:id="rekeningen" class="cheese">
 
-    <h3 wicket:id="nummer">Nummer</h3>
-</div>
-<wicket:remove>
-    <div>
-        <h3>Nummer</h3>
+<div class="container">
+    <h1>Overzicht rekeningen</h1>
+    <p>Hello, <span wicket:id="userName"></span></p>
 
+    <div wicket:id="rekeningen" class="panel panel-default">
+        <div wicket:id="naam" class="panel-heading">Panel Heading</div>
+        <div wicket:id="nummer" class="panel-body">Panel Content</div>
+        <div wicket:id="balans" class="panel-body">bedrag</div>
+        <!-- <div wicket:id="statements" class="panel-body">
+             <div wicket:id="bedrag">
+             </div>
+         </div>-->
     </div>
-</wicket:remove>
+</div>
+
 </body>
 </html>
