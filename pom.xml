@@ -8,10 +8,7 @@
     <name>budgetting</name>
     <url>http://maven.apache.org</url>
     <repositories>
-      <!--  <repository>
-            <id>apache.org</id>
-            <url>https://repository.apache.org/content/groups/public/</url>
-        </repository>-->
+
         <repository>
             <id>eap</id>
             <url>http://maven.repository.redhat.com/techpreview/all</url>
@@ -41,6 +38,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
+        <spring.version>4.2.4.RELEASE</spring.version>
+        <wicket.version>7.2.0</wicket.version>
     </properties>
     <dependencies>
         <dependency>
@@ -62,9 +61,34 @@
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-core</artifactId>
-            <version>7.2.0</version>
+            <version>${wicket.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-core</artifactId>
+            <version>0.10.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-spring</artifactId>
+            <version>${wicket.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
     </dependencies>
     <profiles>
       <profile>
