@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  * on 16/03/16.
  */
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDaoImpl;
 
