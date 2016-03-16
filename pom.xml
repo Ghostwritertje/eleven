@@ -7,7 +7,7 @@
 	<version>1.0</version>
 	<name>budgetting</name>
 	<repositories>
-		<repository>
+		<!--<repository>
 			<id>eap</id>
 			<url>http://maven.repository.redhat.com/techpreview/all</url>
 			<releases>
@@ -21,7 +21,7 @@
 		<repository>
 			<id>my-internal-site</id>
 			<url>http://mvrepository.com/</url>
-		</repository>
+		</repository>-->
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
