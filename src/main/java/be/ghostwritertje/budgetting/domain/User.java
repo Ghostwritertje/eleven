@@ -1,19 +1,16 @@
 package be.ghostwritertje.budgetting.domain;
 
-import javax.persistence.*;
 
 /**
  * Created by jorandeboever
  * on 16/03/16.
  */
-@Entity
-@Table(name = "t_user")
+
 public class User {
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer Id;
 
-    @Column(name = "username")
+
     private String username;
 
     public User() {
