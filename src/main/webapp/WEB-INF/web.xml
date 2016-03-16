@@ -5,7 +5,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false">
-
+    <display-name>BudgettingApp</display-name>
+    <context-param>
+        <param-name>configuration</param-name>
+        <param-value>development</param-value>
+    </context-param>
+    <filter>
+        <filter-name>wicket.budgetting</filter-name>
+        <filter-class>
+            org.apache.wicket.protocol.http.WicketFilter
+        </filter-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>
+                WicketApplication
+            </param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>wicket.budgetting</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
          
 </web-app>
 
