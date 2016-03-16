@@ -1,4 +1,3 @@
-import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.WebPage;
 
 /**
