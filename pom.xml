@@ -16,6 +16,11 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
+
+		</repository>
+		<repository>
+			<id>my-internal-site</id>
+			<url>http://mvrepository.com/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
