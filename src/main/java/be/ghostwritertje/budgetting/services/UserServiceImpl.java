@@ -14,7 +14,6 @@ public class UserServiceImpl implements UserService {
     private UserDao userDaoImpl;
 
     public String getUsername() {
-        return null;
-//        return userDaoImpl.findUser("Joran").getUsername();
+        return userDaoImpl.findUser("Joran").getUsername();
     }
 }

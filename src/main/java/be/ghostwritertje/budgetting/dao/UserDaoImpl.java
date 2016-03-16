@@ -1,6 +1,16 @@
 package be.ghostwritertje.budgetting.dao;
 
+import be.ghostwritertje.budgetting.domain.Rekening;
+import be.ghostwritertje.budgetting.domain.User;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import javax.annotation.PostConstruct;
+import java.util.List;
 
 /**
  * Created by jorandeboever
@@ -8,13 +18,19 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("userDaoImpl")
 public class UserDaoImpl implements UserDao {
-/*
+
     @Autowired
     private SessionFactory sessionFactory;
 
     @PostConstruct
     public void init() {
-        this.create(new User("Joran"));
+        User joran = new User("Joran");
+        List<Rekening> rekeningen = joran.getRekeningen();
+        Rekening rekening = new Rekening();
+        rekening.setNummer("4058486845");
+        rekeningen.add(rekening);
+
+        this.create(joran);
     }
 
     @Override
@@ -32,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findUser(String username) {
-
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
         Query query = sessionFactory.getCurrentSession().createQuery("from User u where u.username = :name");
         query.setParameter("name", username);
         try {
@@ -41,7 +57,6 @@ public class UserDaoImpl implements UserDao {
             return null;
         }
     }
-*/
 
 
 }

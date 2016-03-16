@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://www.w3.org/1999/xhtml">
 <head>
     <title>Wicket Budget Start</title>
 </head>
@@ -18,7 +18,17 @@
     </div>
 </nav>
 <h1>This is the start</h1>
-<p>Hello, <!--<span wicket:id="userName"></span>--></p>
-<h3>Let's do some hibernate</h3>
+<p>Hello, <span wicket:id="userName"></span></p>
+
+<div wicket:id="rekeningen" class="cheese">
+
+    <h3 wicket:id="nummer">Nummer</h3>
+</div>
+<wicket:remove>
+    <div>
+        <h3>Nummer</h3>
+
+    </div>
+</wicket:remove>
 </body>
 </html>
