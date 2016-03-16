@@ -1,14 +1,6 @@
 package be.ghostwritertje.budgetting.dao;
 
-import be.ghostwritertje.budgetting.domain.User;
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.exception.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.PostConstruct;
 
 /**
  * Created by jorandeboever
@@ -16,6 +8,7 @@ import javax.annotation.PostConstruct;
  */
 @Repository("userDaoImpl")
 public class UserDaoImpl implements UserDao {
+/*
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -48,6 +41,7 @@ public class UserDaoImpl implements UserDao {
             return null;
         }
     }
+*/
 
 
 }
