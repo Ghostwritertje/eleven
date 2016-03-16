@@ -10,7 +10,7 @@ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.spri
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
             <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-           <property name="url" value="jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/budgetting"/>
+        <property name="url" value="jdbc:mysql://127.9.85.2:24634/budgetting"/>
            <property name="username" value="adminKApJgFa"/>
            <property name="password" value="UDy_IYQvcd1d"/>
     </bean>
