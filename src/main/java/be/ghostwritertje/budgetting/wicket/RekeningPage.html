@@ -2,13 +2,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    <div wicket:id="rekening">
+    <h3 wicket:id="rekeningNaam">Rekening</h3>
 
-        <div wicket:id="statements" class="panel-body">
-            <div wicket:id="bedrag">
-            </div>
-        </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Van rekening</th>
+                <th>Naar rekening</th>
+                <th>Bedrag</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr wicket:id="statements">
+                <td wicket:id="nummer"></td>
+                <td wicket:id="vertrekRekening">Anna</td>
+                <td wicket:id="aankomstRekening">Pitt</td>
+                <td wicket:id="bedrag">1</td>
+            </tr>
+            <thead>
+            <tr>
+                <th>Totaal</th>
+                <th></th>
+                <th></th>
+                <th wicket:id="totaal">5000</th>
+            </tr>
+            </thead>
+            </tbody>
+        </table>
     </div>
+
 </wicket:extend>
 </body>
 </html>
