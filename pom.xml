@@ -38,7 +38,9 @@
         <maven.compiler.target>1.7</maven.compiler.target>
         <spring.version>4.2.4.RELEASE</spring.version>
         <wicket.version>7.2.0</wicket.version>
-        <hibernate.version>5.1.0.Final</hibernate.version>
+        <!--<hibernate.version>5.1.0.Final</hibernate.version>-->
+        <hibernate.version>4.2.1.Final</hibernate.version>
+
     </properties>
     <dependencies>
         <dependency>
@@ -98,11 +100,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
+        <!--   <dependency>
+               <groupId>org.hibernate</groupId>
+               <artifactId>hibernate-validator</artifactId>
+               <version>${hibernate.version}</version>
+           </dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
