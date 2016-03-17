@@ -20,5 +20,6 @@ public class WicketBudgettingPage extends WebPage {
         });
 
         add(new Label("host", System.getenv("OPENSHIFT_MYSQL_DB_HOST")));
+        add(new Label("port", System.getenv("OPENSHIFT_MYSQL_DB_PORT")));
     }
 }
