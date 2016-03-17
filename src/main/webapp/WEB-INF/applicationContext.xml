@@ -16,9 +16,10 @@ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.spri
       </bean>-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/budgetting"/>
-        <property name="username" value="budgetting"/>
-        <property name="password" value="budgetting"/>
+
+        <property name="url" value="jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7111072"/>
+        <property name="username" value="sql7111072"/>
+        <property name="password" value="9P3NqJ3B5l"/>
     </bean>
 
 

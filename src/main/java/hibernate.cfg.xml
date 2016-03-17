@@ -9,9 +9,9 @@
             <property name="connection.username">adminKApJgFa</property>
             <property name="connection.password">UDy_IYQvcd1d</property>-->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-             <property name="connection.url">jdbc:mysql://localhost:3306/budgetting</property>
-             <property name="connection.username">budgetting</property>
-             <property name="connection.password">budgetting</property>
+        <property name="connection.url">jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7111072</property>
+        <property name="connection.username">sql7111072</property>
+        <property name="connection.password">9P3NqJ3B5l</property>
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
 
