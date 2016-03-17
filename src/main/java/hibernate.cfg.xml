@@ -12,10 +12,10 @@
         <property name="connection.username">${OPENSHIFT_MYSQL_DB_USERNAME}</property>
         <property name="connection.password">${OPENSHIFT_MYSQL_DB_PASSWORD}</property>-->
 
-        <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
          <property name="connection.url">jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7111072</property>
          <property name="connection.username">sql7111072</property>
-         <property name="connection.password">9P3NqJ3B5l</property>-->
+        <property name="connection.password">9P3NqJ3B5l</property>
 
 
         <!-- JDBC connection pool (use the built-in) -->
