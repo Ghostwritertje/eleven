@@ -1,12 +1,12 @@
 package be.ghostwritertje.budgetting.dao.impl;
 
+import be.ghostwritertje.budgetting.dao.HibernateUtil;
 import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,8 +17,8 @@ import java.util.List;
  */
 @Repository(value = "rekeningDaoImpl")
 public class RekeningDaoImpl implements RekeningDao {
-    @Autowired
-    private SessionFactory sessionFactory;
+
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
 
     @Override
@@ -27,9 +27,9 @@ public class RekeningDaoImpl implements RekeningDao {
 
         Query query = sessionFactory.getCurrentSession().createQuery("from Rekening r where r.user.username = :username");
         query.setParameter("username", username);
-
-
-        return query.list();
+        List<Rekening> rekeningen = query.list();
+        transaction.commit();
+        return rekeningen;
 
     }
 
@@ -57,6 +57,7 @@ public class RekeningDaoImpl implements RekeningDao {
 
         balans -= (double) query.uniqueResult();
 
+        transaction.commit();
         return balans;
     }
 }

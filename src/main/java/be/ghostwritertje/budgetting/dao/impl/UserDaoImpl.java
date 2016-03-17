@@ -1,12 +1,12 @@
 package be.ghostwritertje.budgetting.dao.impl;
 
+import be.ghostwritertje.budgetting.dao.HibernateUtil;
 import be.ghostwritertje.budgetting.dao.api.UserDao;
 import be.ghostwritertje.budgetting.domain.User;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,8 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository("userDaoImpl")
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
 
     @Override
@@ -42,7 +41,10 @@ public class UserDaoImpl implements UserDao {
             return (User) query.list().get(0);
         } catch (Exception e) {
             return null;
+        } finally {
+            transaction.commit();
         }
+
     }
 
 

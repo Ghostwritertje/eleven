@@ -1,5 +1,6 @@
 package be.ghostwritertje.budgetting.dao.impl;
 
+import be.ghostwritertje.budgetting.dao.HibernateUtil;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
@@ -7,7 +8,6 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,8 +18,8 @@ import java.util.List;
  */
 @Repository
 public class StatementDaoImpl implements StatementDao {
-    @Autowired
-    private SessionFactory sessionFactory;
+
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     @Override
     public List<Statement> getStatements(Rekening rekening) {
@@ -38,7 +38,7 @@ public class StatementDaoImpl implements StatementDao {
             statement.setBedrag(-Math.abs(statement.getBedrag()));
             statements.add(statement);
         }
-
+        transaction.commit();
         return statements;
     }
 
