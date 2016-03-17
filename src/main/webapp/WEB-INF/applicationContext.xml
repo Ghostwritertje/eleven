@@ -32,7 +32,7 @@ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.spri
         </property>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
