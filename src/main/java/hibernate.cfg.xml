@@ -7,7 +7,7 @@
 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
            <property name="connection.url">
-               jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:3306/budgetting
+               jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/budgetting
           </property>
         <property name="connection.username">${OPENSHIFT_MYSQL_DB_USERNAME}</property>
         <property name="connection.password">${OPENSHIFT_MYSQL_DB_PASSWORD}</property>
