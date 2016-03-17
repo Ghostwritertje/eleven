@@ -34,8 +34,10 @@ public class StatementDaoImpl implements StatementDao {
         query.setParameter("aankomstRekeningNummer", rekening.getNummer());
         List<Statement> otherStatements = query.list();
 
-        otherStatements.stream().forEach(e -> e.setBedrag(-Math.abs(e.getBedrag())));
-        otherStatements.stream().forEach(e -> statements.add(e));
+        for (Statement statement : otherStatements) {
+            statement.setBedrag(-Math.abs(statement.getBedrag()));
+            statements.add(statement);
+        }
 
         return statements;
     }
