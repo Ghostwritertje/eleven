@@ -15,7 +15,7 @@ import java.util.List;
  * Created by jorandeboever
  * on 16/03/16.
  */
-@Repository
+@Repository(value = "rekeningDaoImpl")
 public class RekeningDaoImpl implements RekeningDao {
     @Autowired
     private SessionFactory sessionFactory;
