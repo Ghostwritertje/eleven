@@ -1,6 +1,7 @@
 package be.ghostwritertje.budgetting.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by jorandeboever
@@ -8,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "t_statement")
-public class Statement {
+public class Statement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;

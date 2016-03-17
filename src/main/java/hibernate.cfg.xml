@@ -4,14 +4,15 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Database connection settings -->
-        <!--  <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-          <property name="connection.url">mysql://127.9.85.2:24634/budgetting</property>
-            <property name="connection.username">adminKApJgFa</property>
-            <property name="connection.password">UDy_IYQvcd1d</property>-->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7111072</property>
-        <property name="connection.username">sql7111072</property>
-        <property name="connection.password">9P3NqJ3B5l</property>
+        <property name="connection.url">jdbc:mysql://{OPENSHIFT_MYSQL_DB_HOST}:{OPENSHIFT_MYSQL_DB_PORT}/sql7111072
+        </property>
+        <property name="connection.username">{OPENSHIFT_MYSQL_DB_USERNAME}</property>
+        <property name="connection.password">{OPENSHIFT_MYSQL_DB_PASSWORD}</property>
+        <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+         <property name="connection.url">jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7111072</property>
+         <property name="connection.username">sql7111072</property>
+         <property name="connection.password">9P3NqJ3B5l</property>-->
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
 
@@ -25,7 +26,7 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">false</property>
 
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <mapping class="be.ghostwritertje.budgetting.domain.Rekening"/>
         <mapping class="be.ghostwritertje.budgetting.domain.User"/>
