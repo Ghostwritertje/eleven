@@ -20,7 +20,7 @@
         </repository>
     </repositories>
 
-   <pluginRepositories>
+    <pluginRepositories>
         <pluginRepository>
             <id>eap</id>
             <url>http://maven.repository.redhat.com/techpreview/all</url>
@@ -88,20 +88,20 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
-               <groupId>org.hibernate</groupId>
-               <artifactId>hibernate-entitymanager</artifactId>
-               <version>5.1.0.Final</version>
-           </dependency>
-           <dependency>
-               <groupId>org.hibernate</groupId>
-               <artifactId>hibernate-core</artifactId>
-               <version>5.1.0.Final</version>
-           </dependency>
-           <dependency>
-               <groupId>org.hibernate</groupId>
-               <artifactId>hibernate-validator</artifactId>
-               <version>5.1.0.Final</version>
-           </dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -109,21 +109,27 @@
         </dependency>
 
         <dependency>
-             <groupId>commons-dbcp</groupId>
-             <artifactId>commons-dbcp</artifactId>
-             <version>1.2.2</version>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.2.2</version>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
     </dependencies>
     <profiles>
-      <profile>
-          <!-- When built in OpenShift the 'openshift' profile will be used when
-               invoking mvn. -->
-          <!-- Use this profile for any OpenShift specific customization your app
-              will need. -->
-          <!-- By default that is to put the resulting archive into the 'webapps'
-              folder. -->
-          <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
-          <id>openshift</id>
+        <profile>
+            <!-- When built in OpenShift the 'openshift' profile will be used when
+                 invoking mvn. -->
+            <!-- Use this profile for any OpenShift specific customization your app
+                will need. -->
+            <!-- By default that is to put the resulting archive into the 'webapps'
+                folder. -->
+            <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+            <id>openshift</id>
             <build>
                 <finalName>budgetting</finalName>
                 <plugins>

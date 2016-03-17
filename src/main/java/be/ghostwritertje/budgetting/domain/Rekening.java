@@ -23,6 +23,8 @@ public class Rekening {
     @Column
     private String nummer;
 
+    @Transient
+    private String nietBelangrijk;
 
     public Rekening() {
     }
@@ -66,5 +68,11 @@ public class Rekening {
     }
 
 
+    public String getNietBelangrijk() {
+        return nietBelangrijk;
+    }
 
+    public void setNietBelangrijk(String nietBelangrijk) {
+        this.nietBelangrijk = nietBelangrijk;
+    }
 }
