@@ -46,11 +46,29 @@ public class StatementDaoImpl implements StatementDao {
     public void createStatement(Statement statement) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
         try {
+            if(statement.getAankomstRekening() != null && statement.getAankomstRekening().getUser() != null ) {
+                sessionFactory.getCurrentSession().saveOrUpdate(statement.getAankomstRekening().getUser());
+                sessionFactory.getCurrentSession().saveOrUpdate(statement.getAankomstRekening());
+            }
+            if(statement.getVertrekRekening() != null && statement.getVertrekRekening().getUser() != null ) {
+                sessionFactory.getCurrentSession().saveOrUpdate(statement.getVertrekRekening().getUser());
+                sessionFactory.getCurrentSession().saveOrUpdate(statement.getVertrekRekening());
+            }
             sessionFactory.getCurrentSession().saveOrUpdate(statement);
             transaction.commit();
         } catch (ConstraintViolationException e) {
             transaction.rollback();
         }
+    }
+
+    @Override
+    public void deleteAllStatements() {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        Query query = sessionFactory.getCurrentSession().createQuery("delete from Statement r");
+        query.executeUpdate();
+
+        transaction.commit();
     }
 
 

@@ -7,14 +7,7 @@
 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://127.3.167.130:3306/wicket</property>
-        <!-- <property name="connection.username">adminKApJgFA</property>
-         <property name="connection.password">UDy_IYQvcd1d</property>-->
-
-        <!--  <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-           <property name="connection.url">jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7111072</property>-->
-
-     <!--ROOT:   <property name="connection.username">adminilUqjz3</property>
-        <property name="connection.password">SCM7IvNL6us6</property>-->
+        <!--<property name="connection.url">jdbc:mysql://127.0.0.1:3306/wicket</property>-->
 
         <property name="connection.username">wicket</property>
         <property name="connection.password">wicket</property>
@@ -34,7 +27,7 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">false</property>
 
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
 
         <mapping class="be.ghostwritertje.budgetting.domain.Rekening"/>
         <mapping class="be.ghostwritertje.budgetting.domain.User"/>

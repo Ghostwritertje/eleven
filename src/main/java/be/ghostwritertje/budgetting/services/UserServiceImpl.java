@@ -28,10 +28,15 @@ public class UserServiceImpl implements UserService {
 
     @PostConstruct
     public void init() {
+        statementDao.deleteAllStatements();
+        rekeningDao.deleteAllRekeningen();
+        userDaoImpl.deleteAllUsers();
+
+
         User joran = new User("Joran");
         userDaoImpl.create(joran);
 
-        Rekening rekening = new Rekening("spaarrekening", "4058486845", joran);
+        Rekening rekening = new Rekening("Zichtrekening", "BE57 0634 1777 9035", joran);
         rekeningDao.create(rekening);
         statementDao.createStatement(new Statement(new Rekening(), rekening, 200));
         statementDao.createStatement(new Statement(new Rekening(), rekening, 450));
@@ -44,7 +49,7 @@ public class UserServiceImpl implements UserService {
         statementDao.createStatement(new Statement(new Rekening(), langeTermijnRekening, 1000));
         statementDao.createStatement(new Statement(langeTermijnRekening, new Rekening(), 250));
 
-        Rekening zichtRekening = new Rekening("Zichtrekening", "6084576", joran);
+        Rekening zichtRekening = new Rekening("Spaarrekening", "6084576", joran);
         rekeningDao.create(zichtRekening);
         statementDao.createStatement(new Statement(new Rekening(), zichtRekening, 25));
         statementDao.createStatement(new Statement(new Rekening(), zichtRekening, 50));

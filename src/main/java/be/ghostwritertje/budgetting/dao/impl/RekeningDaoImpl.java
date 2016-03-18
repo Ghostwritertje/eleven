@@ -60,4 +60,15 @@ public class RekeningDaoImpl implements RekeningDao {
         transaction.commit();
         return balans;
     }
+
+    @Override
+    public void deleteAllRekeningen() {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        Query query = sessionFactory.getCurrentSession().createQuery("delete from Rekening r");
+        query.executeUpdate();
+
+        transaction.commit();
+
+    }
 }

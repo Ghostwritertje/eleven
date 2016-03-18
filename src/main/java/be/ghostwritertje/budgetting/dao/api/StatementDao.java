@@ -13,4 +13,6 @@ public interface StatementDao {
     List<Statement> getStatements(Rekening rekening);
 
     void createStatement(Statement statement);
+
+    void deleteAllStatements();
 }

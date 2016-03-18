@@ -47,5 +47,15 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    @Override
+    public void deleteAllUsers() {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        Query query = sessionFactory.getCurrentSession().createQuery("delete from User r");
+        query.executeUpdate();
+
+        transaction.commit();
+    }
+
 
 }

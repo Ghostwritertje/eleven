@@ -1,14 +1,21 @@
 package be.ghostwritertje.budgetting.wicket;
 
+import be.ghostwritertje.budgetting.services.CsvService;
 import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
 import be.ghostwritertje.budgetting.services.UserService;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.upload.FileUpload;
+import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.util.file.File;
+import org.apache.wicket.util.lang.Bytes;
 
 /**
  * Created by jorandeboever
@@ -20,12 +27,19 @@ public class RekeningPage extends WicketBudgettingPage {
 
     @SpringBean
     private RekeningDao rekeningDao;
+
     @SpringBean
     private StatementDao statementDao;
 
+    @SpringBean
+    private CsvService csvService;
+
+    private FileUploadField fileUpload;
+    private String UPLOAD_FOLDER = "csvFiles";
+
     public RekeningPage() {
         //TODO_JORAN:  Rekening rekening =
-        Rekening rekening = rekeningDao.getRekeningen("Joran").get(0);
+        final Rekening rekening = rekeningDao.getRekeningen("Joran").get(0);
 
         add(new Label("rekeningNaam", rekening.getNaam()));
         add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {
@@ -42,5 +56,47 @@ public class RekeningPage extends WicketBudgettingPage {
         add(new Label("totaal", rekeningDao.getBalans(rekening)));
 
 
+
+        add(new FeedbackPanel("feedback"));
+
+        Form<?> form = new Form<Void>("form") {
+            @Override
+            protected void onSubmit() {
+
+                final FileUpload uploadedFile = fileUpload.getFileUpload();
+                if (uploadedFile != null) {
+
+                    // write to a new file
+                    File newFile = new File(UPLOAD_FOLDER
+                            + uploadedFile.getClientFileName());
+
+                    if (newFile.exists()) {
+                        newFile.delete();
+                    }
+
+                    try {
+                        newFile.createNewFile();
+                        uploadedFile.writeTo(newFile);
+
+                        info("saved file: " + uploadedFile.getClientFileName());
+                        csvService.uploadCSVFile(newFile.getAbsolutePath(), rekening);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+        };
+
+        // Enable multipart mode (need for uploads file)
+        form.setMultiPart(true);
+
+        // max upload size, 10k
+        form.setMaxSize(Bytes.megabytes(10));
+
+        form.add(fileUpload = new FileUploadField("fileUpload"));
+
+        add(form);
     }
 }

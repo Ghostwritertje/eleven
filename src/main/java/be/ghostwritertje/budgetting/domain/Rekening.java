@@ -76,4 +76,9 @@ public class Rekening implements Serializable {
     public void setNietBelangrijk(String nietBelangrijk) {
         this.nietBelangrijk = nietBelangrijk;
     }
+
+    @Override
+    public String toString() {
+        return nummer;
+    }
 }

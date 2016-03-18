@@ -65,4 +65,9 @@ public class Statement implements Serializable {
     public void setAankomstRekening(Rekening aankomstRekening) {
         this.aankomstRekening = aankomstRekening;
     }
+
+    @Override
+    public String toString() {
+        return "Statement: Vertrekrekening = " + vertrekRekening + ", aankomstrekening = " + aankomstRekening + ", bedrag = " + bedrag;
+    }
 }
