@@ -3,6 +3,7 @@ package be.ghostwritertje.budgetting.services;
 import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.dao.api.UserDao;
+import be.ghostwritertje.budgetting.domain.Categorie;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
 import be.ghostwritertje.budgetting.domain.User;
@@ -44,13 +45,15 @@ public class UserServiceImpl implements UserService {
         statementDao.createStatement(new Statement(rekening, new Rekening(), 150, new Date()));
 
 
-        Rekening langeTermijnRekening = new Rekening("Lange Termijn", "804575", joran);
+        Rekening langeTermijnRekening = new Rekening("Lange Termijn", "BE32 0836 9311 3402", joran);
+        langeTermijnRekening.setCategorie(Categorie.SPAREN);
         rekeningDao.create(langeTermijnRekening);
         statementDao.createStatement(new Statement(new Rekening(), langeTermijnRekening, 1000, new Date()));
-        statementDao.createStatement(new Statement(new Rekening(), langeTermijnRekening, 1000, new Date()));
+        statementDao.createStatement(new Statement(rekening, langeTermijnRekening, 1000, new Date()));
         statementDao.createStatement(new Statement(langeTermijnRekening, new Rekening(), 250, new Date()));
 
-        Rekening zichtRekening = new Rekening("Spaarrekening", "6084576", joran);
+        Rekening zichtRekening = new Rekening("Spaarrekening", "BE08 0834 0249 2813", joran);
+        zichtRekening.setCategorie(Categorie.SPAREN);
         rekeningDao.create(zichtRekening);
         statementDao.createStatement(new Statement(new Rekening(), zichtRekening, 25, new Date()));
         statementDao.createStatement(new Statement(new Rekening(), zichtRekening, 50, new Date()));

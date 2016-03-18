@@ -1,6 +1,7 @@
 package be.ghostwritertje.budgetting.dao.impl;
 
 import be.ghostwritertje.budgetting.dao.HibernateUtil;
+import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
@@ -8,8 +9,10 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +23,9 @@ import java.util.List;
 public class StatementDaoImpl implements StatementDao {
 
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
+    @Autowired
+    private RekeningDao rekeningDao;
 
     @Override
     public List<Statement> getStatements(Rekening rekening) {
@@ -42,18 +48,11 @@ public class StatementDaoImpl implements StatementDao {
         return statements;
     }
 
+
     @Override
     public void createStatement(Statement statement) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
         try {
-            if(statement.getAankomstRekening() != null && statement.getAankomstRekening().getUser() != null ) {
-                sessionFactory.getCurrentSession().saveOrUpdate(statement.getAankomstRekening().getUser());
-                sessionFactory.getCurrentSession().saveOrUpdate(statement.getAankomstRekening());
-            }
-            if(statement.getVertrekRekening() != null && statement.getVertrekRekening().getUser() != null ) {
-                sessionFactory.getCurrentSession().saveOrUpdate(statement.getVertrekRekening().getUser());
-                sessionFactory.getCurrentSession().saveOrUpdate(statement.getVertrekRekening());
-            }
             sessionFactory.getCurrentSession().saveOrUpdate(statement);
             transaction.commit();
         } catch (ConstraintViolationException e) {
@@ -69,6 +68,21 @@ public class StatementDaoImpl implements StatementDao {
         query.executeUpdate();
 
         transaction.commit();
+    }
+
+    @Override
+    public void createStatement(String vertrekRekeningNummer, String aankomstRekeningNummer, double bedrag, Date datum) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+        try {
+            Rekening aankomstRekening = rekeningDao.getRekening(aankomstRekeningNummer);
+            Rekening vertrekRekening = rekeningDao.getRekening(vertrekRekeningNummer);
+
+            Statement statement = new Statement(vertrekRekening, aankomstRekening, bedrag, datum);
+            sessionFactory.getCurrentSession().saveOrUpdate(statement);
+            transaction.commit();
+        } catch (ConstraintViolationException e) {
+            transaction.rollback();
+        }
     }
 
 

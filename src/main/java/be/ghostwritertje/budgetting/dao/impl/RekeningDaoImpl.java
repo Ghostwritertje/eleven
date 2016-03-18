@@ -3,6 +3,7 @@ package be.ghostwritertje.budgetting.dao.impl;
 import be.ghostwritertje.budgetting.dao.HibernateUtil;
 import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
+import be.ghostwritertje.budgetting.domain.User;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -70,5 +71,19 @@ public class RekeningDaoImpl implements RekeningDao {
 
         transaction.commit();
 
+    }
+
+    @Override
+    public Rekening getRekening(String nummer) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+        Query query = sessionFactory.getCurrentSession().createQuery("from Rekening r where r.nummer = :nummer");
+        query.setParameter("nummer", nummer);
+        try {
+            return (Rekening) query.list().get(0);
+        } catch (Exception e) {
+            return null;
+        } finally {
+            transaction.commit();
+        }
     }
 }

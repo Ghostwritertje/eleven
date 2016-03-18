@@ -2,6 +2,7 @@ package be.ghostwritertje.budgetting.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -29,12 +30,22 @@ public class Statement implements Serializable {
     @Column
     private double bedrag;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Categorie categorie;
+
     public Statement() {
     }
 
     public Statement(Rekening vertrekRekening, Rekening aankomstRekening, double bedrag, Date datum) {
         this.vertrekRekening = vertrekRekening;
         this.aankomstRekening = aankomstRekening;
+        this.bedrag = bedrag;
+        this.datum = datum;
+        if (aankomstRekening != null && aankomstRekening.getCategorie() != null) this.categorie = aankomstRekening.getCategorie();
+    }
+
+    public Statement(double bedrag, Date datum) {
         this.bedrag = bedrag;
         this.datum = datum;
     }
@@ -73,6 +84,19 @@ public class Statement implements Serializable {
 
     public Date getDatum() {
         return datum;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public String getDatumString() {
+        final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(datum);
     }
 
     public void setDatum(Date date) {

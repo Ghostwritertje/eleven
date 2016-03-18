@@ -1,5 +1,6 @@
 package be.ghostwritertje.budgetting.services;
 
+import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
@@ -22,18 +23,20 @@ import java.util.Date;
 public class CsvService {
 
     @Autowired
-    private StatementDao statementDaoImpl;
+    private StatementService statementService;
+
+    @Autowired
+    private RekeningDao rekeningDao;
 
     public void uploadCSVFile(String fileUrl, Rekening rekening) {
 
-        String csvFile = fileUrl;
         BufferedReader br = null;
-        String line = "";
+        String line;
         String cvsSplitBy = ";";
 
         try {
 
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new FileReader(fileUrl));
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
@@ -48,9 +51,7 @@ public class CsvService {
                     try {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                         date = formatter.parse(country[1]);
-                        System.out.println("utilDate:" + date);
                     } catch (ParseException e) {
-                        System.out.println(e.toString());
                         e.printStackTrace();
                     }
 
@@ -63,8 +64,7 @@ public class CsvService {
                         statement.setVertrekRekening(new Rekening("",  country[4], new User()));
                         statement.setAankomstRekening(rekening);
                     }
-                    System.out.println(statement);
-                    statementDaoImpl.createStatement(statement);
+                    statementService.createStatement(statement.getVertrekRekening().getNummer(), statement.getAankomstRekening().getNummer(), statement.getBedrag(), statement.getDatum());
                 }
             }
 
@@ -80,6 +80,5 @@ public class CsvService {
             }
         }
 
-        System.out.println("Done");
     }
 }

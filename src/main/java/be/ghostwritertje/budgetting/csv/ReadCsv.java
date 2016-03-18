@@ -47,7 +47,6 @@ public class ReadCsv {
                         statement.setVertrekRekening(new Rekening("",  country[4], new User()));
                         statement.setAankomstRekening(new Rekening("", country[0], new User()));
                     }
-                    System.out.println(statement);
                 }
             }
 
@@ -63,6 +62,5 @@ public class ReadCsv {
             }
         }
 
-        System.out.println("Done");
     }
 }

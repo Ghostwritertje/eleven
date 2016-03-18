@@ -28,9 +28,7 @@ public class OverzichtPage extends WicketBudgettingPage {
         add(new ListView<Rekening>("rekeningen", rekeningDao.getRekeningen("Joran")) {
             @Override
             protected void populateItem(ListItem<Rekening> item) {
-                System.out.println("Rekening: ");
                 Rekening rekening = (Rekening) item.getModelObject();
-                System.out.println("Rekening: " + rekening.getNummer());
                 item.add(new Label("naam", rekening.getNaam()));
                 item.add(new Label("nummer", rekening.getNummer()));
                 item.add(new Label("balans", rekeningDao.getBalans(rekening)));

@@ -16,4 +16,6 @@ public interface RekeningDao {
     double getBalans(final Rekening rekening);
 
     void deleteAllRekeningen();
+
+    Rekening getRekening(String nummer);
 }

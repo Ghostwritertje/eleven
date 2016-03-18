@@ -16,6 +16,10 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.lang.Bytes;
+import org.joda.time.format.DateTimeFormat;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by jorandeboever
@@ -41,20 +45,32 @@ public class RekeningPage extends WicketBudgettingPage {
         //TODO_JORAN:  Rekening rekening =
         final Rekening rekening = rekeningDao.getRekeningen("Joran").get(0);
 
+
         add(new Label("rekeningNaam", rekening.getNaam()));
         add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {
             @Override
             protected void populateItem(ListItem<Statement> statementListItem) {
                 statementListItem.add(new Label("nummer", statementListItem.getModelObject().getId()));
-                statementListItem.add(new Label("vertrekRekening", statementListItem.getModelObject().getVertrekRekening().getNummer()));
+                statementListItem.add(new Label("datum", statementListItem.getModelObject().getDatumString()));
+                statementListItem.add(new Label("categorie", statementListItem.getModelObject().getCategorie()));
+                if (statementListItem.getModelObject().getVertrekRekening() != null) {
+                    statementListItem.add(new Label("vertrekRekening", statementListItem.getModelObject().getVertrekRekening().getNummer()));
+                } else {
+                    statementListItem.add(new Label("vertrekRekening", ""));
 
-                statementListItem.add(new Label("aankomstRekening", statementListItem.getModelObject().getAankomstRekening().getNummer()));
+                }
+                if (statementListItem.getModelObject().getAankomstRekening() != null) {
+                    statementListItem.add(new Label("aankomstRekening", statementListItem.getModelObject().getAankomstRekening().getNummer()));
+                } else {
+                    statementListItem.add(new Label("aankomstRekening", ""));
+
+                }
+
                 statementListItem.add(new Label("bedrag", statementListItem.getModelObject().getBedrag()));
             }
         });
 
         add(new Label("totaal", rekeningDao.getBalans(rekening)));
-
 
 
         add(new FeedbackPanel("feedback"));

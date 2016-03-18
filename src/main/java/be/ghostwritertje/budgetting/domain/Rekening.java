@@ -21,11 +21,13 @@ public class Rekening implements Serializable {
     @Column
     private String naam;
 
-    @Column
+
+    @Column(unique = true, updatable = false)
     private String nummer;
 
-    @Transient
-    private String nietBelangrijk;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Categorie categorie;
 
     public Rekening() {
     }
@@ -68,13 +70,12 @@ public class Rekening implements Serializable {
         this.naam = naam;
     }
 
-
-    public String getNietBelangrijk() {
-        return nietBelangrijk;
+    public Categorie getCategorie() {
+        return categorie;
     }
 
-    public void setNietBelangrijk(String nietBelangrijk) {
-        this.nietBelangrijk = nietBelangrijk;
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
     @Override
