@@ -2,6 +2,7 @@ package be.ghostwritertje.budgetting.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by jorandeboever
@@ -22,16 +23,20 @@ public class Statement implements Serializable {
     @JoinColumn(name = "aankomstRekeningId")
     private Rekening aankomstRekening;
 
+    @Column(nullable = false)
+    private Date datum;
+
     @Column
     private double bedrag;
 
     public Statement() {
     }
 
-    public Statement(Rekening vertrekRekening, Rekening aankomstRekening, double bedrag) {
+    public Statement(Rekening vertrekRekening, Rekening aankomstRekening, double bedrag, Date datum) {
         this.vertrekRekening = vertrekRekening;
         this.aankomstRekening = aankomstRekening;
         this.bedrag = bedrag;
+        this.datum = datum;
     }
 
     public Integer getId() {
@@ -64,6 +69,14 @@ public class Statement implements Serializable {
 
     public void setAankomstRekening(Rekening aankomstRekening) {
         this.aankomstRekening = aankomstRekening;
+    }
+
+    public Date getDatum() {
+        return datum;
+    }
+
+    public void setDatum(Date date) {
+        this.datum = date;
     }
 
     @Override

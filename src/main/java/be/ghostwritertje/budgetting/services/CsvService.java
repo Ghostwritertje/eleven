@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by jorandeboever
@@ -41,6 +44,18 @@ public class CsvService {
                 if (country.length > 0 && country[0].startsWith("BE")) {
                     Statement statement = new Statement();
                     statement.setBedrag(Double.parseDouble(country[10].replace(",", ".")));
+                    Date date = new Date();
+                    try {
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                        date = formatter.parse(country[1]);
+                        System.out.println("utilDate:" + date);
+                    } catch (ParseException e) {
+                        System.out.println(e.toString());
+                        e.printStackTrace();
+                    }
+
+                    statement.setDatum(date);
+
                     if(statement.getBedrag() < 0){
                         statement.setVertrekRekening(rekening);
                         statement.setAankomstRekening(new Rekening("", country[4], new User()));
