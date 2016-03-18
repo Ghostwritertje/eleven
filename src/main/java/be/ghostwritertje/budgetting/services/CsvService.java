@@ -5,7 +5,6 @@ import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
 import be.ghostwritertje.budgetting.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -24,7 +23,7 @@ public class CsvService {
 
     public void uploadCSVFile(String fileUrl, Rekening rekening) {
 
-        String csvFile = "/home/jorandeboever/Downloads/BE57 0634 1777 9035 2016-03-18 20-23-30 1.csv";
+        String csvFile = fileUrl;
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";
