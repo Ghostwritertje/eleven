@@ -120,5 +120,7 @@ public class RekeningPage extends WicketPage {
         form.add(fileUpload = new FileUploadField("fileUpload"));
 
         add(form);
+
+        add(new GoalsPanel("goalsPanel", rekening));
     }
 }
