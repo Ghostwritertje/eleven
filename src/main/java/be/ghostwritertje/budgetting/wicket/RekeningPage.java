@@ -16,16 +16,12 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.lang.Bytes;
-import org.joda.time.format.DateTimeFormat;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by jorandeboever
  * on 16/03/16.
  */
-public class RekeningPage extends WicketBudgettingPage {
+public class RekeningPage extends WicketPage {
     @SpringBean
     private UserService userServiceImpl;
 

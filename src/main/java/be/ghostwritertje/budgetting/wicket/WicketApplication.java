@@ -3,7 +3,10 @@ package be.ghostwritertje.budgetting.wicket;
 import de.agilecoders.wicket.core.Bootstrap;
 import org.apache.log4j.Logger;
 import org.apache.wicket.Page;
+import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 /**
@@ -25,5 +28,9 @@ public class WicketApplication extends WebApplication {
         super.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
 
         Bootstrap.install(this);
+    }
+       @Override
+    public Session newSession(Request request, Response response) {
+        return new WicketSession(request);
     }
 }

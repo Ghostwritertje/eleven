@@ -21,6 +21,7 @@ public class Rekening implements Serializable {
     @Column
     private String naam;
 
+    //TODO_JORAN: uitgaande statements + inkomende statements
 
     @Column(unique = true, updatable = false)
     private String nummer;

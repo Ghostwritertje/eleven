@@ -3,6 +3,7 @@ package be.ghostwritertje.budgetting.wicket;
 import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
+import be.ghostwritertje.budgetting.domain.User;
 import be.ghostwritertje.budgetting.services.UserService;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -13,7 +14,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Created by jorandeboever
  * on 16/03/16.
  */
-public class OverzichtPage extends WicketBudgettingPage {
+public class OverzichtPage extends WicketPage {
     @SpringBean
     private UserService userServiceImpl;
 
@@ -23,12 +24,13 @@ public class OverzichtPage extends WicketBudgettingPage {
     private StatementDao statementDao;
 
     public OverzichtPage() {
-        add(new Label("userName", userServiceImpl.getUsername()));
+        User user = userServiceImpl.getUser("Joran");
+        add(new Label("userName", user.getUsername()));
 
         add(new ListView<Rekening>("rekeningen", rekeningDao.getRekeningen("Joran")) {
             @Override
             protected void populateItem(ListItem<Rekening> item) {
-                Rekening rekening = (Rekening) item.getModelObject();
+                Rekening rekening =  item.getModelObject();
                 item.add(new Label("naam", rekening.getNaam()));
                 item.add(new Label("nummer", rekening.getNummer()));
                 item.add(new Label("balans", rekeningDao.getBalans(rekening)));
