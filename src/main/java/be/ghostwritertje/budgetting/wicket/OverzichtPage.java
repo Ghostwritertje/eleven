@@ -49,6 +49,7 @@ public class OverzichtPage extends WicketPage {
                         statementListItem.add(new Label("bedrag", statementListItem.getModelObject().getBedrag()));
                     }
                 });*/
+
             }
         });
     }
