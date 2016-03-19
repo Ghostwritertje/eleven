@@ -12,12 +12,7 @@ public class WicketPage extends WebPage {
 
 
     public WicketPage() {
-        add(new Link("rekening") {
-            @Override
-            public void onClick() {
-                getRequestCycle().setResponsePage(RekeningPage.class);
-            }
-        });
+
 
         add(new Label("username", "Joran"));
 

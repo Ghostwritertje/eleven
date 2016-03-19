@@ -13,6 +13,7 @@ import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.lang.Bytes;
@@ -37,10 +38,19 @@ public class RekeningPage extends WicketPage {
     private FileUploadField fileUpload;
     private String UPLOAD_FOLDER = "csvFiles";
 
-    public RekeningPage() {
-        //TODO_JORAN:  Rekening rekening =
-        final Rekening rekening = rekeningDao.getRekeningen("Joran").get(0);
+    public RekeningPage(final PageParameters parameters)
+    {
+        super();
 
+        Rekening rekening = rekeningDao.getRekening(parameters.get("rekeningNummer").toString());
+
+        init(rekening);
+
+    }
+
+
+    public void init(final Rekening rekening) {
+        //TODO_JORAN:  Rekening rekening
 
         add(new Label("rekeningNaam", rekening.getNaam()));
         add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {

@@ -28,7 +28,7 @@ public class CsvService {
     @Autowired
     private RekeningDao rekeningDao;
 
-    public void uploadCSVFile(String fileUrl, Rekening rekening) {
+    public void uploadCSVFile(String fileUrl,final Rekening rekening) {
 
         BufferedReader br = null;
         String line;

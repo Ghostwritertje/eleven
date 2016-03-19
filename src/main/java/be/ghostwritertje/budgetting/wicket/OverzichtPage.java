@@ -6,8 +6,10 @@ import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.User;
 import be.ghostwritertje.budgetting.services.UserService;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
@@ -31,10 +33,17 @@ public class OverzichtPage extends WicketPage {
             @Override
             protected void populateItem(ListItem<Rekening> item) {
                 Rekening rekening =  item.getModelObject();
-                item.add(new Label("naam", rekening.getNaam()));
+
+                PageParameters parameters = new PageParameters();
+                parameters.add("rekeningNummer", rekening.getNummer());
+                BookmarkablePageLink pageLink = new BookmarkablePageLink<>("link", RekeningPage.class , parameters);
+                pageLink.add(new Label("naam", rekening.getNaam()));
+                item.add(pageLink);
+
                 item.add(new Label("nummer", rekening.getNummer()));
                 item.add(new Label("balans", rekeningDao.getBalans(rekening)));
-               /* item.add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {
+
+                /* item.add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {
                     @Override
                     protected void populateItem(ListItem<Statement> statementListItem) {
                         statementListItem.add(new Label("bedrag", statementListItem.getModelObject().getBedrag()));
