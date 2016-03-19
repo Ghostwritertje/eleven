@@ -41,7 +41,7 @@ public class StatementDaoImpl implements StatementDao {
         List<Statement> otherStatements = query.list();
 
         for (Statement statement : otherStatements) {
-            statement.setBedrag(-Math.abs(statement.getBedrag()));
+            statement.setBedrag(statement.getBedrag());
             statements.add(statement);
         }
         transaction.commit();

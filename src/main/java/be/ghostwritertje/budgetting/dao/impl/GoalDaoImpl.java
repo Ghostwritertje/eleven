@@ -42,4 +42,14 @@ public class GoalDaoImpl implements GoalDao {
             transaction.rollback();
         }
     }
+
+    @Override
+    public void deleteAllGoals() {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        Query query = sessionFactory.getCurrentSession().createQuery("delete from Goal g");
+        query.executeUpdate();
+
+        transaction.commit();
+    }
 }

@@ -38,8 +38,7 @@ public class RekeningPage extends WicketPage {
     private FileUploadField fileUpload;
     private String UPLOAD_FOLDER = "csvFiles";
 
-    public RekeningPage(final PageParameters parameters)
-    {
+    public RekeningPage(final PageParameters parameters) {
         super();
 
         Rekening rekening = rekeningDao.getRekening(parameters.get("rekeningNummer").toString());
@@ -56,23 +55,30 @@ public class RekeningPage extends WicketPage {
         add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {
             @Override
             protected void populateItem(ListItem<Statement> statementListItem) {
-                statementListItem.add(new Label("nummer", statementListItem.getModelObject().getId()));
-                statementListItem.add(new Label("datum", statementListItem.getModelObject().getDatumString()));
-                statementListItem.add(new Label("categorie", statementListItem.getModelObject().getCategorie()));
-                if (statementListItem.getModelObject().getVertrekRekening() != null) {
-                    statementListItem.add(new Label("vertrekRekening", statementListItem.getModelObject().getVertrekRekening().getNummer()));
-                } else {
-                    statementListItem.add(new Label("vertrekRekening", ""));
+                Statement statement = statementListItem.getModelObject();
+                statementListItem.add(new Label("datum", statement.getDatumString()));
+                statementListItem.add(new Label("categorie", statement.getCategorie()));
+                statementListItem.add(new Label("rekening", rekening.getNummer()));
+                statementListItem.add(new Label("andereRekening", ""));
+                statementListItem.addOrReplace(new Label("bedrag", ""));
+
+               if(statement.getAankomstRekening() != null ){
+                   if(statement.getAankomstRekening().getNummer().equals(rekening.getNummer())){
+                       statementListItem.addOrReplace(new Label("bedrag", statement.getBedrag()));
+                   }else {
+                       statementListItem.addOrReplace(new Label("andereRekening", statement.getAankomstRekening().getNummer()));
+                   }
 
                 }
-                if (statementListItem.getModelObject().getAankomstRekening() != null) {
-                    statementListItem.add(new Label("aankomstRekening", statementListItem.getModelObject().getAankomstRekening().getNummer()));
-                } else {
-                    statementListItem.add(new Label("aankomstRekening", ""));
+                if(statement.getVertrekRekening() != null ){
+                   if(statement.getVertrekRekening().getNummer().equals(rekening.getNummer())){
+                       statementListItem.addOrReplace(new Label("bedrag", -statement.getBedrag()));
+                   }else {
+                       statementListItem.addOrReplace(new Label("andereRekening", statement.getVertrekRekening().getNummer()));
+                   }
 
-                }
 
-                statementListItem.add(new Label("bedrag", statementListItem.getModelObject().getBedrag()));
+               }
             }
         });
 

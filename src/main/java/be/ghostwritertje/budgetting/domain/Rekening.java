@@ -23,14 +23,14 @@ public class Rekening implements Serializable {
 
     //TODO_JORAN: inverse relatie:  uitgaande statements + inkomende statements
 
-    @Column(unique = true, updatable = false)
+    @Column(unique = true, updatable = false, nullable = false)
     private String nummer;
 
     @Column
     @Enumerated(EnumType.STRING)
     private Categorie categorie;
 
-    public Rekening() {
+    protected Rekening() {
     }
 
     public Rekening(String naam, String nummer, User user) {

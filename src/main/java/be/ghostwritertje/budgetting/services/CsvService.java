@@ -45,7 +45,7 @@ public class CsvService {
 
                 if (country.length > 0 && country[0].startsWith("BE")) {
                     Statement statement = new Statement();
-                    statement.setBedrag(Double.parseDouble(country[10].replace(",", ".")));
+                    statement.setBedrag(Math.abs(Double.parseDouble(country[10].replace(",", "."))));
                     Date date = new Date();
                     try {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
