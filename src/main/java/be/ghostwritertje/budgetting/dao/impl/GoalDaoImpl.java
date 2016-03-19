@@ -7,6 +7,7 @@ import be.ghostwritertje.budgetting.domain.Rekening;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,5 +30,16 @@ public class GoalDaoImpl implements GoalDao {
 
         transaction.commit();
         return goals;
+    }
+
+    @Override
+    public void create(final Goal goal) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+        try {
+            sessionFactory.getCurrentSession().saveOrUpdate(goal);
+            transaction.commit();
+        } catch (ConstraintViolationException e) {
+            transaction.rollback();
+        }
     }
 }

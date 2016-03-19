@@ -2,7 +2,6 @@ package be.ghostwritertje.budgetting.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -84,4 +83,6 @@ public class Goal {
     public void setRekening(Rekening rekening) {
         this.rekening = rekening;
     }
+
+
 }

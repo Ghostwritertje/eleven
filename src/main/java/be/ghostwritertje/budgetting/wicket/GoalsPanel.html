@@ -6,9 +6,10 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>Datum</th>
-            <th>Categorie</th>
-            <th>Van rekening</th>
+            <th>nummer</th>
+            <th>naam</th>
+            <th>bedrag</th>
+            <th></th>
 
         </tr>
         </thead>
@@ -20,13 +21,15 @@
             <td wicket:id="bedrag"></td>
         </tr>
         <thead>
-        <tr>
-            <th>Totaal</th>
-            <th></th>
-            <th></th>
-            <th></th>
-
-        </tr>
+        <form wicket:id="goalForm">
+            <tr>
+                <td>New</td>
+                <td></td>
+                <td><input id="name" wicket:id="naam" type="text"/></td>
+                <td><input id="bedrag" wicket:id="bedrag" type="text"/></td>
+                <td><input type="submit" value="Add"/></td>
+            </tr>
+        </form>
         </thead>
         </tbody>
     </table>

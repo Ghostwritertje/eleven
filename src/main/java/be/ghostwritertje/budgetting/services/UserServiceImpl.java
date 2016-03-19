@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
         Rekening langeTermijnRekening = new Rekening("Lange Termijn", "BE32 0836 9311 3402", joran);
         langeTermijnRekening.setCategorie(Categorie.SPAREN);
         rekeningDao.create(langeTermijnRekening);
+
         statementDao.createStatement(new Statement(new Rekening(), langeTermijnRekening, 1000, new Date()));
         statementDao.createStatement(new Statement(rekening, langeTermijnRekening, 1000, new Date()));
         statementDao.createStatement(new Statement(langeTermijnRekening, new Rekening(), 250, new Date()));

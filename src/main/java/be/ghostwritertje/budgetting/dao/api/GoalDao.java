@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface GoalDao {
     List<Goal> getGoals(Rekening rekening);
+    void create(final Goal goal);
 }
