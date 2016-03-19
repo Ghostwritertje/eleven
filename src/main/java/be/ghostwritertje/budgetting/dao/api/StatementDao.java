@@ -18,4 +18,5 @@ public interface StatementDao {
     void deleteAllStatements();
 
     void createStatement(String vertrekRekening, String aankomstRekening, double bedrag, Date datum);
+
 }

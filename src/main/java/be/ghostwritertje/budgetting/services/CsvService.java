@@ -1,7 +1,6 @@
 package be.ghostwritertje.budgetting.services;
 
 import be.ghostwritertje.budgetting.dao.api.RekeningDao;
-import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
 import be.ghostwritertje.budgetting.domain.User;
@@ -23,7 +22,7 @@ import java.util.Date;
 public class CsvService {
 
     @Autowired
-    private StatementService statementService;
+    private RekeningService rekeningService;
 
     @Autowired
     private RekeningDao rekeningDao;
@@ -64,7 +63,7 @@ public class CsvService {
                         statement.setVertrekRekening(new Rekening("",  country[4], new User()));
                         statement.setAankomstRekening(rekening);
                     }
-                    statementService.createStatement(statement.getVertrekRekening().getNummer(), statement.getAankomstRekening().getNummer(), statement.getBedrag(), statement.getDatum());
+                    rekeningService.createStatement(statement.getVertrekRekening().getNummer(), statement.getAankomstRekening().getNummer(), statement.getBedrag(), statement.getDatum());
                 }
             }
 

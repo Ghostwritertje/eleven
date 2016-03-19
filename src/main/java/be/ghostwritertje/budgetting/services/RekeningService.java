@@ -16,7 +16,7 @@ import java.util.List;
  * on 18/03/16.
  */
 @Service
-public class StatementService {
+public class RekeningService {
     @Autowired
     private StatementDao statementDaoImpl;
 
@@ -30,6 +30,7 @@ public class StatementService {
         return statementDaoImpl.getStatements(rekening);
     }
 
+    @Deprecated
     public void createStatement(Statement statement) {
         if (statement.getVertrekRekening() != null) {
             Rekening rekening = rekeningDao.getRekening(statement.getVertrekRekening().getNummer());
@@ -56,4 +57,7 @@ public class StatementService {
     }
 
 
+    public double getTotaal(Rekening rekening) {
+        return rekeningDao.getBalans(rekening);
+    }
 }

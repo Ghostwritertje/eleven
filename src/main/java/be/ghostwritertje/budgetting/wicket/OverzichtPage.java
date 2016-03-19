@@ -5,7 +5,7 @@ import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.User;
 import be.ghostwritertje.budgetting.services.UserService;
-import be.ghostwritertje.budgetting.wicket.charts.TimeChartOptions;
+import be.ghostwritertje.budgetting.wicket.charts.ChartService;
 import com.googlecode.wickedcharts.wicket7.highcharts.Chart;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -26,6 +26,9 @@ public class OverzichtPage extends WicketPage {
     private RekeningDao rekeningDao;
     @SpringBean
     private StatementDao statementDao;
+
+    @SpringBean
+    private ChartService chartService;
 
     public OverzichtPage() {
         User user = userServiceImpl.getUser("Joran");
@@ -56,6 +59,6 @@ public class OverzichtPage extends WicketPage {
 
 
         // add any chart configuration you like, see above
-        add(new Chart("chart", new TimeChartOptions()));
+        add(new Chart("chart", chartService.buildOverviewChartOptions(user.getRekeningen())));
     }
 }

@@ -51,7 +51,12 @@ public class RekeningDaoImpl implements RekeningDao {
         Query query = sessionFactory.getCurrentSession().createQuery("select sum(s.bedrag) from Statement s where s.aankomstRekening.nummer = :rekeningNummer");
         query.setParameter("rekeningNummer", rekening.getNummer());
 
-        double balans = (double) query.uniqueResult();
+        double balans;
+                try {
+                    balans =(double) query.uniqueResult();
+                } catch (NullPointerException e){
+                    balans = 0;
+                }
 
         query = sessionFactory.getCurrentSession().createQuery("select sum(s.bedrag) from Statement s where s.vertrekRekening.nummer = :rekeningNummer");
         query.setParameter("rekeningNummer", rekening.getNummer());
