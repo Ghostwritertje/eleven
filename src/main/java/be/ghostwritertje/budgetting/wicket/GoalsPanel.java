@@ -46,7 +46,7 @@ public class GoalsPanel extends Panel {
 
         public GoalForm(String id) {
             super(id);
-            goal.setRekening(rekening);
+                goal.setRekening(rekening);
             setModel(new CompoundPropertyModel<Goal>(goal));
             add(new TextField("naam"));
             add(new TextField("bedrag"));

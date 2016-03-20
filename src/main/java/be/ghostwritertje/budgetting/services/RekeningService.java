@@ -47,11 +47,20 @@ public class RekeningService {
         return rekeningDao.getBalans(rekening);
     }
 
+    public double getBalans(User user) {
+        double totaal = 0;
+        for(Rekening rekening: rekeningDao.getRekeningen(user.getUsername())){
+            totaal += getBalans(rekening);
+        }
+
+        return totaal;
+    }
+
     public List<Rekening> getRekeningen(String userNaam) {
         return rekeningDao.getRekeningen(userNaam);
     }
 
-    public void createRekening(String rekeningNummer, String rekeningNaam, User user){
+    public void createRekening(String rekeningNaam,String rekeningNummer, User user){
         Rekening rekening = new Rekening(rekeningNaam, rekeningNummer, user);
         rekeningDao.create(rekening);
     }

@@ -12,23 +12,26 @@
     <div class="row">
 
         <div class="col-sm-4">
-            <ul class="list-group">
-                <!-- <div class="panel-heading">-->
-                <!-- <a wicket:id="link" href="#"><span wicket:id="naam">Heading</span></a></div>-->
-                <li wicket:id="rekeningen" class="list-group-item">
+            <div class="panel panel-default">
+                <div class="panel-heading">Rekeningen <button wicket:id="addRekening" type="button" style="float: right;"  class="btn btn-primary btn-xs">Voeg rekening toe</button></div>
+                <div wicket:id="rekeningen" class="panel-body">
                     <a wicket:id="link" href="#">
                         <span wicket:id="nummer">Nummer</span>
-
-
                     </a>
-                    <span wicket:id="balans" class="badge">0</span>
+                    <span wicket:id="balans" style="float: right;" class="badge">$ 500,00</span>
 
-                </li>
-                <!-- <div wicket:id="statements" class="panel-body">
-                     <div wicket:id="bedrag">
-                     </div>
-                 </div>-->
-            </ul>
+                </div>
+                <form wicket:id="rekeningForm" class="panel-body">
+                    <input wicket:id="nummer">
+                    <button wicket:id="add" type="submit" style="float: right;"  class="btn btn-primary btn-xs">Add</button>
+
+                </form>
+                <div class="panel-footer">
+                    Totaal:
+                    <span wicket:id="totaal" style="float: right;" class="badge">$ 500,00</span>
+                </div>
+
+            </div>
         </div>
         <div class="col-sm-4" wicket:id="chart"></div>
     </div>

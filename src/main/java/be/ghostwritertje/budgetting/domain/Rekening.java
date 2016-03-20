@@ -30,7 +30,7 @@ public class Rekening implements Serializable {
     @Enumerated(EnumType.STRING)
     private Categorie categorie;
 
-    protected Rekening() {
+    public Rekening() {
     }
 
     public Rekening(String naam, String nummer, User user) {
