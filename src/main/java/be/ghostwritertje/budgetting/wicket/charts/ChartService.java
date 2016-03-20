@@ -29,14 +29,6 @@ public class ChartService {
         options
                 .setTitle(new Title("Overview"));
         options.setxAxis(new Axis().setCategories(""));
-   /*     options
-                .setxAxis(new Axis()
-                        .setCategories(Arrays
-                                .asList(new String[] { "Jan" })));
-*/
-       /* options
-                .setyAxis(new Axis()
-                        .setTitle(new Title("Temperature (C)")));*/
 
         options
                 .setLegend(new Legend()
