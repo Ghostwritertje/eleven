@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+
 <body>
 <wicket:extend>
     <h3 wicket:id="rekeningNaam">Rekening</h3>
 
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Van rekening</th>
-                <th>Datum</th>
-                <th>Categorie</th>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Van rekening</th>
+                        <th>Datum</th>
+                        <th>Categorie</th>
 
-                <th>Naar rekening</th>
-                <th>Bedrag</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr wicket:id="statements">
-                <td wicket:id="rekening">Anna</td>
-                <td wicket:id="datum"></td>
-                <td wicket:id="categorie"></td>
-                <td wicket:id="andereRekening">Pitt</td>
-                <td wicket:id="bedrag">1</td>
-            </tr>
-            <thead>
-            <tr>
-                <th>Totaal</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th wicket:id="totaal">5000</th>
-            </tr>
-            </thead>
-            </tbody>
-        </table>
+                        <th>Naar rekening</th>
+                        <th>Bedrag</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr wicket:id="statements">
+                        <td wicket:id="rekening">Anna</td>
+                        <td wicket:id="datum"></td>
+                        <td wicket:id="categorie"></td>
+                        <td wicket:id="andereRekening">Pitt</td>
+                        <td wicket:id="bedrag">1</td>
+                    </tr>
+                    <thead>
+                    <tr>
+                        <th>Totaal</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th wicket:id="totaal">5000</th>
+                    </tr>
+                    </thead>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div wicket:id="goalsPanel"></div>
 

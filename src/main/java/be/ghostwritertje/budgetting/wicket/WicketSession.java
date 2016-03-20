@@ -7,6 +7,7 @@ import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by jorandeboever
@@ -14,10 +15,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  */
 public class WicketSession extends WebSession {
 
-    @SpringBean
-    private UserService userServiceImpl;
 
-    private User user;
+    private String loggedInUser;
     /**
      * Constructor. Note that {@link RequestCycle} is not available until this constructor returns.
      *
@@ -28,10 +27,6 @@ public class WicketSession extends WebSession {
         super(request);
     }
 
-    public User getLoggedInUser() {
-        user = userServiceImpl.getUser("Joran");
-        return user;
-    }
 
     public static WicketSession get(){
         return (WicketSession) Session.get();

@@ -1,9 +1,9 @@
 package be.ghostwritertje.budgetting.wicket;
 
-import be.ghostwritertje.budgetting.dao.api.RekeningDao;
-import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.User;
+import be.ghostwritertje.budgetting.services.RekeningService;
+import be.ghostwritertje.budgetting.services.SignInService;
 import be.ghostwritertje.budgetting.services.UserService;
 import be.ghostwritertje.budgetting.wicket.charts.ChartService;
 import com.googlecode.wickedcharts.wicket7.highcharts.Chart;
@@ -20,33 +20,32 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  */
 public class OverzichtPage extends WicketPage {
     @SpringBean
-    private UserService userServiceImpl;
-
-    @SpringBean
-    private RekeningDao rekeningDao;
-    @SpringBean
-    private StatementDao statementDao;
+    private UserService userService;
 
     @SpringBean
     private ChartService chartService;
 
+    @SpringBean
+    private RekeningService rekeningService;
+
     public OverzichtPage() {
-        User user = userServiceImpl.getUser("Joran");
+        User user = userService.getUser("Joran");
         add(new Label("userName", user.getUsername()));
 
-        add(new ListView<Rekening>("rekeningen", rekeningDao.getRekeningen("Joran")) {
+        add(new ListView<Rekening>("rekeningen", rekeningService.getRekeningen("Joran")) {
             @Override
             protected void populateItem(ListItem<Rekening> item) {
-                Rekening rekening =  item.getModelObject();
+                Rekening rekening = item.getModelObject();
 
                 PageParameters parameters = new PageParameters();
                 parameters.add("rekeningNummer", rekening.getNummer());
-                BookmarkablePageLink pageLink = new BookmarkablePageLink<>("link", RekeningPage.class , parameters);
-                pageLink.add(new Label("naam", rekening.getNaam()));
+                BookmarkablePageLink pageLink = new BookmarkablePageLink<>("link", RekeningPage.class, parameters);
+
+//                pageLink.add(new Label("naam", rekening.getNaam()));
                 item.add(pageLink);
 
-                item.add(new Label("nummer", rekening.getNummer()));
-                item.add(new Label("balans", rekeningDao.getBalans(rekening)));
+                pageLink.add(new Label("nummer", rekening.getNummer()));
+                item.add(new Label("balans", rekeningService.getBalans(rekening)));
 
                 /* item.add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {
                     @Override

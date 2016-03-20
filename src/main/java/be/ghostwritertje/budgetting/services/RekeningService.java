@@ -5,6 +5,7 @@ import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.dao.api.UserDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
+import be.ghostwritertje.budgetting.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,24 +31,6 @@ public class RekeningService {
         return statementDaoImpl.getStatements(rekening);
     }
 
-    @Deprecated
-    public void createStatement(Statement statement) {
-        if (statement.getVertrekRekening() != null) {
-            Rekening rekening = rekeningDao.getRekening(statement.getVertrekRekening().getNummer());
-            if (rekening != null) {
-                statement.setVertrekRekening(rekening);
-            }
-        }
-        if (statement.getAankomstRekening() != null){
-            Rekening rekening = rekeningDao.getRekening(statement.getAankomstRekening().getNummer());
-            if (rekening != null) {
-                statement.setAankomstRekening(rekening);
-            }
-        }
-
-        statementDaoImpl.createStatement(statement);
-    }
-
     public void createStatement(String vertrekRekeningNummer, String aankomstRekeningNummer, double bedrag, Date datum) {
         Rekening aankomstRekening = rekeningDao.getRekening(aankomstRekeningNummer);
         Rekening vertrekRekening = rekeningDao.getRekening(vertrekRekeningNummer);
@@ -56,8 +39,20 @@ public class RekeningService {
         statementDaoImpl.createStatement(statement);
     }
 
-
     public double getTotaal(Rekening rekening) {
         return rekeningDao.getBalans(rekening);
+    }
+
+    public double getBalans(final Rekening rekening) {
+        return rekeningDao.getBalans(rekening);
+    }
+
+    public List<Rekening> getRekeningen(String userNaam) {
+        return rekeningDao.getRekeningen(userNaam);
+    }
+
+    public void createRekening(String rekeningNummer, String rekeningNaam, User user){
+        Rekening rekening = new Rekening(rekeningNaam, rekeningNummer, user);
+        rekeningDao.create(rekening);
     }
 }
