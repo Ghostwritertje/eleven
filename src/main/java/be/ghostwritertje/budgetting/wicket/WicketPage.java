@@ -13,7 +13,18 @@ public class WicketPage extends WebPage {
 
     public WicketPage() {
 
-
+        add(new Link("homepage") {
+            @Override
+            public void onClick() {
+                setResponsePage(OverzichtPage.class);
+            }
+        });
+        add(new Link("Home") {
+            @Override
+            public void onClick() {
+                setResponsePage(OverzichtPage.class);
+            }
+        });
         add(new Label("username", "Joran"));
 
    /*     add(new Label("host", System.getenv("OPENSHIFT_MYSQL_DB_HOST")));

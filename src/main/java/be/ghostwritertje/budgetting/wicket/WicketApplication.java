@@ -1,6 +1,12 @@
 package be.ghostwritertje.budgetting.wicket;
 
 import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.CookieThemeProvider;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.core.settings.ThemeProvider;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
 import org.apache.log4j.Logger;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
@@ -26,11 +32,21 @@ public class WicketApplication extends WebApplication {
     protected void init() {
         super.init();
         super.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
-
-        Bootstrap.install(this);
+        this.configureBootstrap();
     }
        @Override
     public Session newSession(Request request, Response response) {
         return new WicketSession(request);
+    }
+
+    private void configureBootstrap() {
+        final IBootstrapSettings settings = new BootstrapSettings();
+        final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Superhero);
+
+        settings.setJsResourceFilterName("footer-container")
+                .setThemeProvider(themeProvider);
+
+        Bootstrap.install(this, settings);
+
     }
 }

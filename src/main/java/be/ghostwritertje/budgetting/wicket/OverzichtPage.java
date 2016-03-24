@@ -57,7 +57,6 @@ public class OverzichtPage extends WicketPage {
         add(new Link("addRekening") {
             @Override
             public void onClick() {
-                System.out.println("make rekeningForm visible");
                 isAddRekeningVisible = true;
             }
         });
