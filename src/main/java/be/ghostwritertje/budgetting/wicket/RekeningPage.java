@@ -5,6 +5,7 @@ import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
+import be.ghostwritertje.budgetting.services.RekeningService;
 import be.ghostwritertje.budgetting.services.UserService;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -27,10 +28,7 @@ public class RekeningPage extends WicketPage {
     private UserService userServiceImpl;
 
     @SpringBean
-    private RekeningDao rekeningDao;
-
-    @SpringBean
-    private StatementDao statementDao;
+    private RekeningService rekeningService;
 
     @SpringBean
     private CsvService csvService;
@@ -41,7 +39,7 @@ public class RekeningPage extends WicketPage {
     public RekeningPage(final PageParameters parameters) {
         super();
 
-        Rekening rekening = rekeningDao.getRekening(parameters.get("rekeningNummer").toString());
+        Rekening rekening = rekeningService.getRekening(parameters.get("rekeningNummer").toString());
 
         init(rekening);
 
@@ -52,7 +50,7 @@ public class RekeningPage extends WicketPage {
         //TODO_JORAN:  Rekening rekening
 
         add(new Label("rekeningNaam", rekening.getNaam()));
-        add(new ListView<Statement>("statements", statementDao.getStatements(rekening)) {
+        add(new ListView<Statement>("statements", rekeningService.getStatements(rekening)) {
             @Override
             protected void populateItem(ListItem<Statement> statementListItem) {
                 Statement statement = statementListItem.getModelObject();
@@ -82,7 +80,7 @@ public class RekeningPage extends WicketPage {
             }
         });
 
-        add(new Label("totaal", rekeningDao.getBalans(rekening)));
+        add(new Label("totaal", rekeningService.getBalans(rekening)));
 
 
         add(new FeedbackPanel("feedback"));

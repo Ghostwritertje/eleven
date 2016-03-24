@@ -18,17 +18,15 @@ import java.util.List;
  */
 @Service
 public class RekeningService {
-    @Autowired
-    private StatementDao statementDaoImpl;
 
     @Autowired
     private RekeningDao rekeningDao;
 
     @Autowired
-    private UserDao userDaoImpl;
+    private StatementService statementService;
 
     public List<Statement> getStatements(Rekening rekening) {
-        return statementDaoImpl.getStatements(rekening);
+        return statementService.getStatements(rekening);
     }
 
     public void createStatement(String vertrekRekeningNummer, String aankomstRekeningNummer, double bedrag, Date datum) {
@@ -36,7 +34,7 @@ public class RekeningService {
         Rekening vertrekRekening = rekeningDao.getRekening(vertrekRekeningNummer);
 
         Statement statement = new Statement(vertrekRekening, aankomstRekening, bedrag, datum);
-        statementDaoImpl.createStatement(statement);
+        statementService.createStatement(statement);
     }
 
     public double getTotaal(Rekening rekening) {
@@ -62,6 +60,18 @@ public class RekeningService {
 
     public void createRekening(String rekeningNaam,String rekeningNummer, User user){
         Rekening rekening = new Rekening(rekeningNaam, rekeningNummer, user);
+        rekeningDao.create(rekening);
+    }
+
+    public Rekening getRekening(String rekeningNummer) {
+        return rekeningDao.getRekening(rekeningNummer);
+    }
+
+    protected void deleteAllRekeningen() {
+        rekeningDao.deleteAllRekeningen();
+    }
+
+    public void create(Rekening rekening) {
         rekeningDao.create(rekening);
     }
 }

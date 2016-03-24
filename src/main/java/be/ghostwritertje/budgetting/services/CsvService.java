@@ -24,8 +24,6 @@ public class CsvService {
     @Autowired
     private RekeningService rekeningService;
 
-    @Autowired
-    private RekeningDao rekeningDao;
 
     public void uploadCSVFile(String fileUrl,final Rekening rekening) {
 
