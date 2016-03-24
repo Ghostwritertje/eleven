@@ -3,7 +3,7 @@
 
 <body>
 <wicket:extend>
-    <h3 wicket:id="rekeningNaam">Rekening</h3>
+    <h3><span wicket:id="rekeningNaam">Rekening </span> <span wicket:id="balans">500</span> euro</h3>
 
     <div class="row">
         <div class="col-sm-8">
@@ -41,15 +41,15 @@
             </div>
         </div>
     </div>
-    <div wicket:id="goalsPanel"></div>
+    <div  class="col-sm-6" wicket:id="goalsPanel"></div>
 
-    <div>
+    <div class="col-sm-6" >
         <div wicket:id="feedback"></div>
         <form wicket:id="form">
             <p>
                 <label>Select file :</label>
-                <input wicket:id="fileUpload" size="40" type="file"/>
-                <input type="submit" value="Upload"/>
+                <input wicket:id="fileUpload" size="40" type="file" class="file"/>
+                <input type="submit" value="Upload" class="btn-primary"/>
             </p>
         </form>
     </div>

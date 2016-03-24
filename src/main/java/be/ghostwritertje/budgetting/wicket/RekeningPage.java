@@ -50,6 +50,7 @@ public class RekeningPage extends WicketPage {
         //TODO_JORAN:  Rekening rekening
 
         add(new Label("rekeningNaam", rekening.getNaam()));
+        add(new Label("balans", rekeningService.getBalans(rekening)));
         add(new ListView<Statement>("statements", rekeningService.getStatements(rekening)) {
             @Override
             protected void populateItem(ListItem<Statement> statementListItem) {

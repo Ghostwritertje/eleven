@@ -5,8 +5,6 @@
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
-            <th>nummer</th>
             <th>naam</th>
             <th>bedrag</th>
             <th></th>
@@ -15,17 +13,14 @@
         </thead>
         <tbody>
         <tr wicket:id="goals">
-            <td wicket:id="volgorde"></td>
-            <td wicket:id="nummer"></td>
             <td wicket:id="naam"></td>
             <td wicket:id="bedrag"></td>
+            <td></td>
         </tr>
         <thead>
         <form wicket:id="goalForm">
             <tr>
-                <td>New</td>
-                <td></td>
-                <td><input id="name" wicket:id="naam" type="text"/></td>
+                 <td><input id="name" wicket:id="naam" type="text"/></td>
                 <td><input id="bedrag" wicket:id="bedrag" type="text"/></td>
                 <td><input type="submit" value="Add"/></td>
             </tr>
@@ -33,6 +28,9 @@
         </thead>
         </tbody>
     </table>
+    <div wicket:id="progressBar" class="progress">
+
+    </div>
 </wicket:panel>
 </body>
 </html>

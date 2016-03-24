@@ -3,6 +3,8 @@ package be.ghostwritertje.budgetting.wicket;
 import be.ghostwritertje.budgetting.domain.Goal;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.services.GoalService;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Stack;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -10,6 +12,7 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
@@ -29,14 +32,16 @@ public class GoalsPanel extends Panel {
         add(new ListView<Goal>("goals", goalService.getGoals(rekening)) {
             @Override
             protected void populateItem(ListItem<Goal> goalItem) {
-                goalItem.add(new Label("nummer", goalItem.getModelObject().getId()));
                 goalItem.add(new Label("naam", goalItem.getModelObject().getNaam()));
                 goalItem.add(new Label("bedrag", goalItem.getModelObject().getBedrag()));
-                goalItem.add(new Label("volgorde", goalItem.getModelObject().getVolgorde()));
                             }
         });
 
         add(new GoalForm("goalForm"));
+
+        ProgressBar progressBar = new ProgressBar("progressBar", Model.of(60));
+
+        this.add(progressBar);
     }
 
     private class GoalForm extends Form {
