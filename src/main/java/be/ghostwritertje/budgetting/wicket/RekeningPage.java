@@ -1,19 +1,22 @@
 package be.ghostwritertje.budgetting.wicket;
 
 import be.ghostwritertje.budgetting.services.CsvService;
-import be.ghostwritertje.budgetting.dao.api.RekeningDao;
-import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
 import be.ghostwritertje.budgetting.services.RekeningService;
 import be.ghostwritertje.budgetting.services.UserService;
+import be.ghostwritertje.budgetting.wicket.panels.GoalsPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.file.File;
@@ -51,7 +54,8 @@ public class RekeningPage extends WicketPage {
 
         add(new Label("rekeningNaam", rekening.getNaam()));
         add(new Label("balans", rekeningService.getBalans(rekening)));
-        add(new ListView<Statement>("statements", rekeningService.getStatements(rekening)) {
+        PageableListView<Statement> listView = new PageableListView<Statement>("statements", rekeningService.getStatements(rekening), 20) {
+
             @Override
             protected void populateItem(ListItem<Statement> statementListItem) {
                 Statement statement = statementListItem.getModelObject();
@@ -61,32 +65,53 @@ public class RekeningPage extends WicketPage {
                 statementListItem.add(new Label("andereRekening", ""));
                 statementListItem.addOrReplace(new Label("bedrag", ""));
 
-               if(statement.getAankomstRekening() != null ){
-                   if(statement.getAankomstRekening().getNummer().equals(rekening.getNummer())){
-                       statementListItem.addOrReplace(new Label("bedrag", statement.getBedrag()));
-                   }else {
-                       statementListItem.addOrReplace(new Label("andereRekening", statement.getAankomstRekening().getNummer()));
-                   }
+                if (statement.getAankomstRekening() != null) {
+                    if (statement.getAankomstRekening().getNummer().equals(rekening.getNummer())) {
+                        statementListItem.addOrReplace(new Label("bedrag", statement.getBedrag()));
+                    } else {
+                        statementListItem.addOrReplace(new Label("andereRekening", statement.getAankomstRekening().getNummer()));
+                    }
 
                 }
-                if(statement.getVertrekRekening() != null ){
-                   if(statement.getVertrekRekening().getNummer().equals(rekening.getNummer())){
-                       statementListItem.addOrReplace(new Label("bedrag", -statement.getBedrag()));
-                   }else {
-                       statementListItem.addOrReplace(new Label("andereRekening", statement.getVertrekRekening().getNummer()));
-                   }
+                if (statement.getVertrekRekening() != null) {
+                    if (statement.getVertrekRekening().getNummer().equals(rekening.getNummer())) {
+                        statementListItem.addOrReplace(new Label("bedrag", -statement.getBedrag()));
+                    } else {
+                        statementListItem.addOrReplace(new Label("andereRekening", statement.getVertrekRekening().getNummer()));
+                    }
 
 
-               }
+                }
             }
-        });
+        };
+        this.add(listView);
+        add(new BootstrapPagingNavigator("navigator", listView));
 
         add(new Label("totaal", rekeningService.getBalans(rekening)));
 
 
         add(new FeedbackPanel("feedback"));
 
-        Form<?> form = new Form<Void>("form") {
+
+
+/*
+        // Enable multipart mode (need for uploads file)
+        form.setMultiPart(true);
+
+        // max upload size, 10k
+        form.setMaxSize(Bytes.megabytes(10));
+
+        form.add(fileUpload = new FileUploadField("fileUpload"));
+*/
+
+//      add(form);
+
+        addFileUpload(rekening);
+        add(new GoalsPanel("goalsPanel", rekening));
+    }
+
+    private void addFileUpload(final Rekening rekening) {
+        Form<Void> fileUploadForm = new Form<Void>("fileUploadForm"){
             @Override
             protected void onSubmit() {
 
@@ -113,19 +138,18 @@ public class RekeningPage extends WicketPage {
                 }
 
             }
-
         };
 
-        // Enable multipart mode (need for uploads file)
-        form.setMultiPart(true);
+        add(fileUploadForm);
+        fileUploadForm.setMultiPart(true);
+        fileUpload = new FileUploadField("fileUpload");
+        fileUploadForm.add(fileUpload);
+        fileUploadForm.setMaxSize(Bytes.megabytes(10));
+        ProgressBar progressBar = new ProgressBar("progressBar", Model.of(0));
 
-        // max upload size, 10k
-        form.setMaxSize(Bytes.megabytes(10));
-
-        form.add(fileUpload = new FileUploadField("fileUpload"));
-
-        add(form);
-
-        add(new GoalsPanel("goalsPanel", rekening));
+        progressBar.striped(true).active(true);
+        fileUploadForm.add(progressBar);
+        fileUploadForm.add(new AjaxButton("submit") {
+        });
     }
 }

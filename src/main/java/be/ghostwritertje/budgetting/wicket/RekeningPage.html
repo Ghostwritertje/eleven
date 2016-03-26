@@ -27,6 +27,7 @@
                         <td wicket:id="andereRekening">Pitt</td>
                         <td wicket:id="bedrag">1</td>
                     </tr>
+                    </tbody>
                     <thead>
                     <tr>
                         <th>Totaal</th>
@@ -36,21 +37,22 @@
                         <th wicket:id="totaal">5000</th>
                     </tr>
                     </thead>
-                    </tbody>
+
                 </table>
             </div>
+            <ul class="pagination" wicket:id="navigator"></ul>
+
         </div>
     </div>
-    <div  class="col-sm-6" wicket:id="goalsPanel"></div>
+    <div wicket:id="goalsPanel"></div>
 
     <div class="col-sm-6" >
         <div wicket:id="feedback"></div>
-        <form wicket:id="form">
-            <p>
-                <label>Select file :</label>
-                <input wicket:id="fileUpload" size="40" type="file" class="file"/>
-                <input type="submit" value="Upload" class="btn-primary"/>
-            </p>
+
+        <form wicket:id="fileUploadForm">
+            <input wicket:id="fileUpload" type="file"/>
+            <div wicket:id="progressBar"></div>
+            <button type="submit" wicket:id="submit" >Upload</button>
         </form>
     </div>
 </wicket:extend>
