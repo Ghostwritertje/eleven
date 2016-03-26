@@ -1,6 +1,7 @@
 package be.ghostwritertje.budgetting.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "t_goal")
-public class Goal {
+public class Goal implements Serializable{
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
@@ -24,12 +25,7 @@ public class Goal {
 
     private int volgorde;
 
-    @ManyToMany
-    @JoinTable(
-            name="t_goal_statement",
-            joinColumns={@JoinColumn(name="statementId")},
-            inverseJoinColumns={@JoinColumn(name="goalId")}
-    )
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "goal")
     private List<Statement> statements = new ArrayList<>();
 
     @ManyToOne

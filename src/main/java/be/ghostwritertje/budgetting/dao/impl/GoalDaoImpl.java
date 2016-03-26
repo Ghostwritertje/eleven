@@ -4,6 +4,7 @@ import be.ghostwritertje.budgetting.dao.HibernateUtil;
 import be.ghostwritertje.budgetting.dao.api.GoalDao;
 import be.ghostwritertje.budgetting.domain.Goal;
 import be.ghostwritertje.budgetting.domain.Rekening;
+import be.ghostwritertje.budgetting.domain.Statement;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -51,5 +52,19 @@ public class GoalDaoImpl implements GoalDao {
         query.executeUpdate();
 
         transaction.commit();
+    }
+
+    @Override
+    public void setGoal(Statement statement, Goal goal) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+        try {
+            statement.setGoal(goal);
+            sessionFactory.getCurrentSession().saveOrUpdate(goal);
+            transaction.commit();
+        } catch (ConstraintViolationException e) {
+            transaction.rollback();
+        }
+
+
     }
 }

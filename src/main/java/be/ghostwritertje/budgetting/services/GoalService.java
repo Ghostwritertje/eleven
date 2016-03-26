@@ -3,6 +3,7 @@ package be.ghostwritertje.budgetting.services;
 import be.ghostwritertje.budgetting.dao.api.GoalDao;
 import be.ghostwritertje.budgetting.domain.Goal;
 import be.ghostwritertje.budgetting.domain.Rekening;
+import be.ghostwritertje.budgetting.domain.Statement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,9 @@ public class GoalService {
 
     public void create(final Goal goal) {
         goalDaoImpl.create(goal);
+    }
+
+    public void setGoal(Statement statement, Goal goal) {
+        goalDaoImpl.setGoal(statement, goal);
     }
 }

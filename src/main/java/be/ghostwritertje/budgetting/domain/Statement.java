@@ -30,6 +30,10 @@ public class Statement implements Serializable {
     @Column
     private double bedrag;
 
+    @ManyToOne
+    @JoinColumn(name = "goalId")
+    private Goal goal;
+
     @Column
     @Enumerated(EnumType.STRING)
     private Categorie categorie;
@@ -106,5 +110,13 @@ public class Statement implements Serializable {
     @Override
     public String toString() {
         return "Statement: Vertrekrekening = " + vertrekRekening + ", aankomstrekening = " + aankomstRekening + ", bedrag = " + bedrag;
+    }
+
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
     }
 }

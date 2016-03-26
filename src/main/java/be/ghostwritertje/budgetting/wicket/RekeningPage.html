@@ -14,7 +14,7 @@
                         <th>Van rekening</th>
                         <th>Datum</th>
                         <th>Categorie</th>
-
+                        <th></th>
                         <th>Naar rekening</th>
                         <th>Bedrag</th>
                     </tr>
@@ -24,6 +24,14 @@
                         <td wicket:id="rekening">Anna</td>
                         <td wicket:id="datum"></td>
                         <td wicket:id="categorie"></td>
+                        <td>
+                            <form wicket:id="goalOptionForm">
+                                <select wicket:id="goal">
+                                    <option>Optie 1</option>
+
+                                </select>
+                            </form>
+                        </td>
                         <td wicket:id="andereRekening">Pitt</td>
                         <td wicket:id="bedrag">1</td>
                     </tr>
@@ -46,13 +54,13 @@
     </div>
     <div wicket:id="goalsPanel"></div>
 
-    <div class="col-sm-6" >
+    <div class="col-sm-6">
         <div wicket:id="feedback"></div>
 
         <form wicket:id="fileUploadForm">
             <input wicket:id="fileUpload" type="file"/>
             <div wicket:id="progressBar"></div>
-            <button type="submit" wicket:id="submit" >Upload</button>
+            <button type="submit" wicket:id="submit">Upload</button>
         </form>
     </div>
 </wicket:extend>
