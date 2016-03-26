@@ -32,18 +32,22 @@ public class StatementDaoImpl implements StatementDao {
 
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
 
-        Query query = sessionFactory.getCurrentSession().createQuery("from Statement s where s.aankomstRekening.nummer = :aankomstRekeningNummer");
+        Query query = sessionFactory.getCurrentSession().createQuery("" +
+                "from Statement s " +
+                "where s.aankomstRekening.nummer = :aankomstRekeningNummer " +
+                "or s.vertrekRekening.nummer = :aankomstRekeningNummer " +
+                "order by s.datum desc");
         query.setParameter("aankomstRekeningNummer", rekening.getNummer());
         List<Statement> statements = query.list();
 
-        query = sessionFactory.getCurrentSession().createQuery("from Statement s where s.vertrekRekening.nummer = :aankomstRekeningNummer");
-        query.setParameter("aankomstRekeningNummer", rekening.getNummer());
+/*        query = sessionFactory.getCurrentSession().createQuery("from Statement s where s.vertrekRekening.nummer = :vertrekRekeningNummer");
+        query.setParameter("vertrekRekeningNummer", rekening.getNummer());
         List<Statement> otherStatements = query.list();
 
         for (Statement statement : otherStatements) {
             statement.setBedrag(statement.getBedrag());
             statements.add(statement);
-        }
+        }*/
         transaction.commit();
         return statements;
     }

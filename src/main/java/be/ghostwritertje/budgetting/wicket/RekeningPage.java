@@ -15,6 +15,8 @@ import org.apache.wicket.extensions.markup.html.form.select.Select;
 import org.apache.wicket.extensions.markup.html.form.select.SelectOption;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
@@ -27,6 +29,9 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.lang.Bytes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jorandeboever
@@ -78,6 +83,8 @@ public class RekeningPage extends WicketPage {
                 if (statement.getAankomstRekening() != null) {
                     if (statement.getAankomstRekening().getNummer().equals(rekening.getNummer())) {
                         statementListItem.addOrReplace(new Label("bedrag", statement.getBedrag()));
+                        System.out.println("Bedrag " +  statement.getBedrag() + " zou positief moeten zijn");
+
                     } else {
                         statementListItem.addOrReplace(new Label("andereRekening", statement.getAankomstRekening().getNummer()));
                     }
@@ -85,6 +92,7 @@ public class RekeningPage extends WicketPage {
                 }
                 if (statement.getVertrekRekening() != null) {
                     if (statement.getVertrekRekening().getNummer().equals(rekening.getNummer())) {
+                        System.out.println("Bedrag " +  statement.getBedrag() + " zou negatief moeten zijn");
                         statementListItem.addOrReplace(new Label("bedrag", -statement.getBedrag()));
                     } else {
                         statementListItem.addOrReplace(new Label("andereRekening", statement.getVertrekRekening().getNummer()));
@@ -174,20 +182,34 @@ public class RekeningPage extends WicketPage {
             this.init(rekening);
         }
 
+        private class GoalChoiceRenderer<Goal> extends ChoiceRenderer<Goal> {
+
+            @Override
+            public Object getDisplayValue(Goal goal) {
+                return goal.toString();
+            }
+        }
+
         private void init(Rekening rekening) {
 
-            final Select<Goal> goalOptions = new Select<Goal>("goal", new Model<>(gekozenGoal));
+            List<Goal> goals = goalService.getGoals(rekening);
 
+            DropDownChoice<Goal> goalDropDownChoice = new DropDownChoice<Goal>("goal", goals){
+                @Override
+                protected void onSelectionChanged(Goal newSelection) {
+                    System.out.println("Selection has changed!");
+                    goalService.setGoal(statement, this.getModelObject());
+                    super.onSelectionChanged(newSelection);
+                }
 
-            this.add(goalOptions);
+            };
 
-            goalOptions.add(new SelectOption<>("goalOption", new Model<>(null)));
-
-
-            for (Goal goal : goalService.getGoals(rekening)) {
-                goalOptions.add(new SelectOption<>("goalOption", new Model<>(goal)));
+            if(statement.getGoal() != null){
+                goalDropDownChoice.setDefaultModelObject(statement.getGoal());
             }
+            goalDropDownChoice.setChoiceRenderer(new GoalChoiceRenderer<Goal>());
 
+            this.add(goalDropDownChoice);
 
         }
 

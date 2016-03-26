@@ -41,11 +41,11 @@ public class WicketApplication extends WebApplication {
 
     private void configureBootstrap() {
         final IBootstrapSettings settings = new BootstrapSettings();
-        final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Superhero);
+ /*       final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Superhero);
 
         settings.setJsResourceFilterName("footer-container")
                 .setThemeProvider(themeProvider);
-
+*/
         Bootstrap.install(this, settings);
 
     }

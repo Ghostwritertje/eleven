@@ -43,7 +43,7 @@ public class CsvService {
 
                 if (rij.length > 0 && rij[0].startsWith("BE")) {
                     Statement statement = new Statement();
-                    statement.setBedrag(Double.parseDouble(rij[10].replace(",", ".")));
+                    statement.setBedrag(Math.abs(Double.parseDouble(rij[10].replace(",", "."))));
                     Date date = new Date();
                     try {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -54,7 +54,7 @@ public class CsvService {
 
                     statement.setDatum(date);
 
-                    if(statement.getBedrag() < 0){
+                    if(Double.parseDouble(rij[10].replace(",", ".")) < 0){
                         statement.setVertrekRekening(rekening);
                         statement.setAankomstRekening(new Rekening("", rij[4], new User()));
                     }else {

@@ -34,7 +34,7 @@ public class UserService {
 
     @PostConstruct
     public void init() {
-        statementService.deleteAllStatements();
+      /*  statementService.deleteAllStatements();
         goalDaoImpl.deleteAllGoals();
 
         rekeningService.deleteAllRekeningen();
@@ -68,7 +68,7 @@ public class UserService {
         statementService.createStatement(new Statement(null, zichtRekening, 80, new Date()));
         statementService.createStatement(new Statement(null, zichtRekening, 10, new Date()));
         statementService.createStatement(new Statement(zichtRekening, null, 75, new Date()));
-
+*/
     }
 
     public User getUser(String username) {
