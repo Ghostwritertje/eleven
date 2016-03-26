@@ -48,6 +48,7 @@ public class StatementDaoImpl implements StatementDao {
             statement.setBedrag(statement.getBedrag());
             statements.add(statement);
         }*/
+        System.out.println("Aantal statements: " + statements.size());
         transaction.commit();
         return statements;
     }

@@ -68,7 +68,7 @@ public class RekeningPage extends WicketPage {
 
         add(new Label("rekeningNaam", rekening.getNaam()));
         add(new Label("balans", rekeningService.getBalans(rekening)));
-        PageableListView<Statement> listView = new PageableListView<Statement>("statements", rekeningService.getStatements(rekening), 20) {
+        PageableListView<Statement> listView = new PageableListView<Statement>("statements", rekeningService.getStatements(rekening), 10) {
 
             @Override
             protected void populateItem(ListItem<Statement> statementListItem) {
@@ -83,7 +83,6 @@ public class RekeningPage extends WicketPage {
                 if (statement.getAankomstRekening() != null) {
                     if (statement.getAankomstRekening().getNummer().equals(rekening.getNummer())) {
                         statementListItem.addOrReplace(new Label("bedrag", statement.getBedrag()));
-                        System.out.println("Bedrag " +  statement.getBedrag() + " zou positief moeten zijn");
 
                     } else {
                         statementListItem.addOrReplace(new Label("andereRekening", statement.getAankomstRekening().getNummer()));
@@ -92,7 +91,6 @@ public class RekeningPage extends WicketPage {
                 }
                 if (statement.getVertrekRekening() != null) {
                     if (statement.getVertrekRekening().getNummer().equals(rekening.getNummer())) {
-                        System.out.println("Bedrag " +  statement.getBedrag() + " zou negatief moeten zijn");
                         statementListItem.addOrReplace(new Label("bedrag", -statement.getBedrag()));
                     } else {
                         statementListItem.addOrReplace(new Label("andereRekening", statement.getVertrekRekening().getNummer()));
