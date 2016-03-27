@@ -59,7 +59,8 @@ public class GoalDaoImpl implements GoalDao {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
         try {
             statement.setGoal(goal);
-            sessionFactory.getCurrentSession().saveOrUpdate(goal);
+            System.out.println("Setting goal " + goal.getNaam() + " op statement met bedrag " + statement.getBedrag());
+            sessionFactory.getCurrentSession().saveOrUpdate(statement);
             transaction.commit();
         } catch (ConstraintViolationException e) {
             transaction.rollback();

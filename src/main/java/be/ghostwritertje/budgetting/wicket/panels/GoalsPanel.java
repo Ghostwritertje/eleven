@@ -49,18 +49,36 @@ public class GoalsPanel extends Panel {
                 goalItem.add(new Label("bedrag", goalItem.getModelObject().getBedrag()));
                 ProgressBar progressBar = new ProgressBar("progress");
                 goalItem.add(progressBar);
-                Stack labeledStack = new Stack(progressBar.getStackId(), Model.of(100)) {
-                    @Override
-                    protected IModel<String> createLabelModel() {
-                        return new AbstractReadOnlyModel<String>() {
-                            @Override
-                            public String getObject() {
-                                return String.format("%s%%", getModelObject());
-                            }
-                        };
-                    }
-                };
-                labeledStack.labeled(true).type(ProgressBar.Type.SUCCESS);
+                Stack labeledStack;
+                if(goalItem.getModelObject().getStatements().size() > 0){
+                     labeledStack = new Stack(progressBar.getStackId(), Model.of(100)) {
+                        @Override
+                        protected IModel<String> createLabelModel() {
+                            return new AbstractReadOnlyModel<String>() {
+                                @Override
+                                public String getObject() {
+                                    return String.format("%s%%", getModelObject());
+                                }
+                            };
+                        }
+                    };
+                    labeledStack.labeled(true).type(ProgressBar.Type.SUCCESS);
+                }else {
+                    labeledStack = new Stack(progressBar.getStackId(), Model.of(50)) {
+                        @Override
+                        protected IModel<String> createLabelModel() {
+                            return new AbstractReadOnlyModel<String>() {
+                                @Override
+                                public String getObject() {
+                                    return String.format("%s%%", getModelObject());
+                                }
+                            };
+                        }
+                    };
+                    labeledStack.labeled(true).type(ProgressBar.Type.DEFAULT);
+
+                }
+
                 progressBar.addStacks(labeledStack);
             }
         });

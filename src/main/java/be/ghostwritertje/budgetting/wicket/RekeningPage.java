@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -30,6 +31,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.lang.Bytes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -171,7 +173,7 @@ public class RekeningPage extends WicketPage {
 
     private class GoalOptionForm extends Form {
 
-        private Goal gekozenGoal;
+        private IModel<Goal> gekozenGoal;
         private Statement statement;
 
         public GoalOptionForm(String id, Statement statement, Rekening rekening) {
@@ -189,15 +191,19 @@ public class RekeningPage extends WicketPage {
         }
 
         private void init(Rekening rekening) {
-
             List<Goal> goals = goalService.getGoals(rekening);
+            //public DropDownChoice(final String id, IModel<T> model, final List<? extends T> choices,
+            gekozenGoal = new Model<>(null);
+            DropDownChoice<Goal> goalDropDownChoice = new DropDownChoice<Goal>("goal", gekozenGoal, goals){
+                @Override
+                protected boolean wantOnSelectionChangedNotifications() {
+                    return true;
+                }
 
-            DropDownChoice<Goal> goalDropDownChoice = new DropDownChoice<Goal>("goal", goals){
                 @Override
                 protected void onSelectionChanged(Goal newSelection) {
-                    System.out.println("Selection has changed!");
-                    goalService.setGoal(statement, this.getModelObject());
                     super.onSelectionChanged(newSelection);
+                    goalService.setGoal(statement, newSelection);
                 }
 
             };
@@ -205,7 +211,7 @@ public class RekeningPage extends WicketPage {
             if(statement.getGoal() != null){
                 goalDropDownChoice.setDefaultModelObject(statement.getGoal());
             }
-            goalDropDownChoice.setChoiceRenderer(new GoalChoiceRenderer<Goal>());
+           // goalDropDownChoice.setChoiceRenderer(new GoalChoiceRenderer<Goal>());
 
             this.add(goalDropDownChoice);
 
@@ -213,7 +219,8 @@ public class RekeningPage extends WicketPage {
 
         @Override
         protected void onSubmit() {
-            goalService.setGoal(statement, gekozenGoal);
+
+//            goalService.setGoal(statement, gekozenGoal);
         }
 
 

@@ -19,6 +19,9 @@ public class Rekening implements Serializable {
     private User user;
 
     @Column
+    private String bank;
+
+    @Column
     private String naam;
 
     //TODO_JORAN: inverse relatie:  uitgaande statements + inkomende statements
@@ -77,6 +80,14 @@ public class Rekening implements Serializable {
 
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
+    }
+
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
     }
 
     @Override
