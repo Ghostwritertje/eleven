@@ -83,6 +83,7 @@ public class OverzichtPage extends WicketPage {
             }
         };
 
+
         this.add(rekeningenLijst);
 
         add(new Label("totaal", rekeningService.getBalans(user)));
