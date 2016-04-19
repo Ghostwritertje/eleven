@@ -85,9 +85,7 @@ public class OverzichtPage extends WicketPage {
 
         this.add(rekeningenLijst);
 
-
         add(new Label("totaal", rekeningService.getBalans(user)));
-
 
         add(new Chart("chart", chartService.buildOverviewChartOptions(user.getRekeningen())));
     }
