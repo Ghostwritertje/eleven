@@ -94,7 +94,6 @@ public class OverzichtPage extends WicketPage {
 
         private Rekening rekening = new Rekening();
 
-
         public RekeningForm(String id) {
             super(id);
             rekening.setUser(user);
