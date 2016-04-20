@@ -27,6 +27,8 @@ public class Statement implements Serializable {
     @Column(nullable = false)
     private Date datum;
 
+    private String mededeling;
+
     @Column
     private double bedrag;
 
@@ -52,6 +54,14 @@ public class Statement implements Serializable {
     public Statement(double bedrag, Date datum) {
         this.bedrag = bedrag;
         this.datum = datum;
+    }
+
+    public String getMededeling() {
+        return mededeling;
+    }
+
+    public void setMededeling(String mededeling) {
+        this.mededeling = mededeling;
     }
 
     public Integer getId() {

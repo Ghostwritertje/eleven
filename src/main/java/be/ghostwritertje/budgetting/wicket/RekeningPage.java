@@ -77,7 +77,7 @@ public class RekeningPage extends WicketPage {
                 Statement statement = statementListItem.getModelObject();
                 statementListItem.add(new Label("datum", statement.getDatumString()));
                 statementListItem.add(new Label("categorie", statement.getCategorie()));
-                statementListItem.add(new Label("rekening", rekening.getNummer()));
+                statementListItem.add(new Label("mededeling", statement.getMededeling()));
                 statementListItem.add(new Label("andereRekening", ""));
                 statementListItem.add(new GoalOptionForm("goalOptionForm", statement, rekening));
                 statementListItem.addOrReplace(new Label("bedrag", ""));

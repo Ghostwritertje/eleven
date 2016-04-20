@@ -50,7 +50,6 @@ public class StatementDaoImpl implements StatementDao {
             statement.setBedrag(statement.getBedrag());
             statements.add(statement);
         }
-        System.out.println("Aantal statements: " + statements.size());
         Collections.sort(statements, new Comparator<Statement>() {
             @Override
             public int compare(Statement o1, Statement o2) {

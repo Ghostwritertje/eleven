@@ -25,7 +25,7 @@ public class CsvService {
     private RekeningService rekeningService;
 
 
-    public void uploadCSVFile(String fileUrl,final Rekening rekening) {
+    public void uploadCSVFile(String fileUrl, final Rekening rekening) {
 
         BufferedReader br = null;
         String line;
@@ -40,10 +40,12 @@ public class CsvService {
                 String[] rij = line.split(cvsSplitBy);
 
 
-
                 if (rij.length > 0 && rij[0].startsWith("BE")) {
                     Statement statement = new Statement();
                     statement.setBedrag(Math.abs(Double.parseDouble(rij[10].replace(",", "."))));
+
+                    statement.setMededeling(rij.length >= 15 ? rij[14] : "");
+
                     Date date = new Date();
                     try {
                         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -54,11 +56,11 @@ public class CsvService {
 
                     statement.setDatum(date);
 
-                    if(Double.parseDouble(rij[10].replace(",", ".")) < 0){
+                    if (Double.parseDouble(rij[10].replace(",", ".")) < 0) {
                         statement.setVertrekRekening(rekening);
                         statement.setAankomstRekening(new Rekening("", rij[4], new User()));
-                    }else {
-                        statement.setVertrekRekening(new Rekening("",  rij[4], new User()));
+                    } else {
+                        statement.setVertrekRekening(new Rekening("", rij[4], new User()));
                         statement.setAankomstRekening(rekening);
                     }
                     rekeningService.createStatement(statement.getVertrekRekening().getNummer(), statement.getAankomstRekening().getNummer(), statement.getBedrag(), statement.getDatum());
