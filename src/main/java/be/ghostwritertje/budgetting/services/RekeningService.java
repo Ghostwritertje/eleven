@@ -37,6 +37,13 @@ public class RekeningService {
         statementService.createStatement(statement);
     }
 
+    public void createStatement(Statement statement) {
+        statement.setVertrekRekening( rekeningDao.getRekening(statement.getVertrekRekening().getNummer()));
+        statement.setAankomstRekening( rekeningDao.getRekening(statement.getAankomstRekening().getNummer()));
+
+        statementService.createStatement(statement);
+    }
+
     public double getTotaal(Rekening rekening) {
         return rekeningDao.getBalans(rekening);
     }

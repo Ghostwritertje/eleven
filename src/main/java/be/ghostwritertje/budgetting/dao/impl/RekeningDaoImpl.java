@@ -21,7 +21,6 @@ public class RekeningDaoImpl implements RekeningDao {
 
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-
     @Override
     public List<Rekening> getRekeningen(String username) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
@@ -45,6 +44,11 @@ public class RekeningDaoImpl implements RekeningDao {
         }
     }
 
+    @Override
+    public void save(Rekening rekening) {
+        this.create(rekening);
+    }
+
     public double getBalans(final Rekening rekening) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
 
@@ -63,7 +67,7 @@ public class RekeningDaoImpl implements RekeningDao {
         double negatieveBalans;
         try {
             negatieveBalans = (double) query.uniqueResult();
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             negatieveBalans = 0;
         }
         balans -= negatieveBalans;
