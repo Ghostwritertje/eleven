@@ -38,8 +38,8 @@ public class RekeningService {
     }
 
     public void createStatement(Statement statement) {
-        statement.setVertrekRekening( rekeningDao.getRekening(statement.getVertrekRekening().getNummer()));
-        statement.setAankomstRekening( rekeningDao.getRekening(statement.getAankomstRekening().getNummer()));
+        statement.setVertrekRekening(rekeningDao.getRekening(statement.getVertrekRekening().getNummer()));
+        statement.setAankomstRekening(rekeningDao.getRekening(statement.getAankomstRekening().getNummer()));
 
         statementService.createStatement(statement);
     }
@@ -54,7 +54,7 @@ public class RekeningService {
 
     public double getBalans(User user) {
         double totaal = 0;
-        for(Rekening rekening: rekeningDao.getRekeningen(user.getUsername())){
+        for (Rekening rekening : rekeningDao.getRekeningen(user.getUsername())) {
             totaal += getBalans(rekening);
         }
 
@@ -65,7 +65,7 @@ public class RekeningService {
         return rekeningDao.getRekeningen(userNaam);
     }
 
-    public void createRekening(String rekeningNaam,String rekeningNummer, User user){
+    public void createRekening(String rekeningNaam, String rekeningNummer, User user) {
         Rekening rekening = new Rekening(rekeningNaam, rekeningNummer, user);
         rekeningDao.create(rekening);
     }

@@ -22,7 +22,9 @@ public class StatementService {
         statementDao.deleteAllStatements();
     }
 
-    public void createStatement(Statement statement) {
+    public void createStatement(Statement statement)
+    {
+
         statementDao.createStatement(statement);
     }
 

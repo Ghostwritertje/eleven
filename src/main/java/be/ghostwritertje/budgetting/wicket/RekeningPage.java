@@ -1,38 +1,37 @@
 package be.ghostwritertje.budgetting.wicket;
 
 import be.ghostwritertje.budgetting.domain.Goal;
-import be.ghostwritertje.budgetting.services.CsvService;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
+import be.ghostwritertje.budgetting.services.CsvService;
 import be.ghostwritertje.budgetting.services.GoalService;
 import be.ghostwritertje.budgetting.services.RekeningService;
+import be.ghostwritertje.budgetting.services.StatementService;
 import be.ghostwritertje.budgetting.services.UserService;
 import be.ghostwritertje.budgetting.wicket.panels.GoalsPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.ProgressBar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.extensions.markup.html.form.select.Select;
-import org.apache.wicket.extensions.markup.html.form.select.SelectOption;
-import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.NumberTextField;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.lang.Bytes;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,6 +44,9 @@ public class RekeningPage extends WicketPage {
 
     @SpringBean
     private RekeningService rekeningService;
+
+    @SpringBean
+    private StatementService statementService;
 
     @SpringBean
     private CsvService csvService;
@@ -110,6 +112,7 @@ public class RekeningPage extends WicketPage {
 
         add(new FeedbackPanel("feedback"));
 
+        this.add(new StatementForm("statementForm", rekening));
 
 
 /*
@@ -215,6 +218,7 @@ public class RekeningPage extends WicketPage {
 
             this.add(goalDropDownChoice);
 
+
         }
 
         @Override
@@ -226,5 +230,34 @@ public class RekeningPage extends WicketPage {
 
     }
 
+    private class StatementForm extends Form<Statement> {
+
+        private Statement statement = new Statement();
+
+        public StatementForm(String id, Rekening rekening) {
+            super(id);
+            this.statement.setVertrekRekening(rekening);
+            this.statement.setAankomstRekening(new Rekening());
+            this.setModel(new CompoundPropertyModel<>(statement));
+            this.add(new TextField("aankomstRekening.nummer"));
+            this.add(new TextField("mededeling"));
+            this.add(new DateTextField("datum"));
+            this.add(new NumberTextField("bedrag"));
+        }
+
+        @Override
+        protected void onSubmit() {
+            if(statement.getBedrag() < 0){
+                Rekening rekeningAankomstTemp = statement.getAankomstRekening();
+                Rekening rekeningVertrekTemp = statement.getVertrekRekening();
+
+                statement.setVertrekRekening(rekeningAankomstTemp);
+                statement.setAankomstRekening(rekeningVertrekTemp);
+                statement.setBedrag(Math.abs(statement.getBedrag()));
+            }
+            System.out.println("Creating a statement (bedrag = " + statement.getBedrag() + ")");
+            rekeningService.createStatement(statement);
+        }
+    }
 
 }
