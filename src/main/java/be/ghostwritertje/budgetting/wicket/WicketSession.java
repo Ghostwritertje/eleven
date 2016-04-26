@@ -17,6 +17,8 @@ public class WicketSession extends WebSession {
 
 
     private String loggedInUser = "Joran";
+    private boolean authenticated = false;
+
     /**
      * Constructor. Note that {@link RequestCycle} is not available until this constructor returns.
      *
@@ -37,5 +39,10 @@ public class WicketSession extends WebSession {
 
     public void setLoggedInUser(String loggedInUser) {
         this.loggedInUser = loggedInUser;
+        this.authenticated = true;
+    }
+
+    public boolean isAuthenticated() {
+        return authenticated;
     }
 }

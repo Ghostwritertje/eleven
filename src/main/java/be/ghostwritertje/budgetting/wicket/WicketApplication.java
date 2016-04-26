@@ -10,6 +10,7 @@ import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvid
 import org.apache.log4j.Logger;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
+import org.apache.wicket.authorization.IAuthorizationStrategy;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
@@ -33,13 +34,12 @@ public class WicketApplication extends WebApplication {
         super.init();
         super.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         this.configureBootstrap();
-        this. addComponentInstantiationListener(new SpringComponentInjector(this));
 
-        CheesrAuthorizationStrategy cheesrAuthorizationStrategy = new CheesrAuthorizationStrategy();
+        WicketAuthorizationStrategy wicketAuthorizationStrategy = new WicketAuthorizationStrategy();
 
         getSecuritySettings().
-                setAuthorizationStrategy(cheesrAuthorizationStrategy);
-        getSecuritySettings().setUnauthorizedComponentInstantiationListener(cheesrAuthorizationStrategy);
+                setAuthorizationStrategy(wicketAuthorizationStrategy);
+        getSecuritySettings().setUnauthorizedComponentInstantiationListener(wicketAuthorizationStrategy);
     }
        @Override
     public Session newSession(Request request, Response response) {
