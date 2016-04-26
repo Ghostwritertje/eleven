@@ -25,7 +25,7 @@ public class WicketPage extends WebPage {
                 setResponsePage(OverzichtPage.class);
             }
         });
-        add(new Label("username", "Joran"));
+        add(new Label("username", WicketSession.get().getLoggedInUser()));
 
    /*     add(new Label("host", System.getenv("OPENSHIFT_MYSQL_DB_HOST")));
         add(new Label("port", System.getenv("OPENSHIFT_MYSQL_DB_PORT")));*/

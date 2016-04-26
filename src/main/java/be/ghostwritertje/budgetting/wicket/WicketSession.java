@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class WicketSession extends WebSession {
 
 
-    private String loggedInUser;
+    private String loggedInUser = "Joran";
     /**
      * Constructor. Note that {@link RequestCycle} is not available until this constructor returns.
      *
@@ -27,8 +27,11 @@ public class WicketSession extends WebSession {
         super(request);
     }
 
-
     public static WicketSession get(){
         return (WicketSession) Session.get();
+    }
+
+    public String getLoggedInUser() {
+        return loggedInUser;
     }
 }

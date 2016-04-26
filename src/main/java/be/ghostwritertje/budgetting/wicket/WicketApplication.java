@@ -49,4 +49,5 @@ public class WicketApplication extends WebApplication {
         Bootstrap.install(this, settings);
 
     }
+
 }

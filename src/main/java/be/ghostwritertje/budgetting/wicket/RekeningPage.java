@@ -153,6 +153,7 @@ public class RekeningPage extends WicketPage {
 
                         info("saved file: " + uploadedFile.getClientFileName());
                         csvService.uploadCSVFile(newFile.getAbsolutePath(), rekening);
+                        setResponsePage(getPage());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

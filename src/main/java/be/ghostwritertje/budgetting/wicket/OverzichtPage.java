@@ -69,7 +69,7 @@ public class OverzichtPage extends WicketPage {
             }
         });
 
-        rekeningenLijst = new ListView<Rekening>("rekeningen", rekeningService.getRekeningen("Joran")) {
+        rekeningenLijst = new ListView<Rekening>("rekeningen", rekeningService.getRekeningen(WicketSession.get().getLoggedInUser())) {
             @Override
             protected void populateItem(ListItem<Rekening> item) {
                 Rekening rekening = item.getModelObject();
