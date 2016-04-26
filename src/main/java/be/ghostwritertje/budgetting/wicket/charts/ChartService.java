@@ -5,11 +5,8 @@ import be.ghostwritertje.budgetting.services.RekeningService;
 import be.ghostwritertje.budgetting.services.StatementService;
 import com.googlecode.wickedcharts.highcharts.options.Axis;
 import com.googlecode.wickedcharts.highcharts.options.ChartOptions;
-import com.googlecode.wickedcharts.highcharts.options.CssStyle;
 import com.googlecode.wickedcharts.highcharts.options.DataLabels;
-import com.googlecode.wickedcharts.highcharts.options.Function;
 import com.googlecode.wickedcharts.highcharts.options.HorizontalAlignment;
-import com.googlecode.wickedcharts.highcharts.options.Labels;
 import com.googlecode.wickedcharts.highcharts.options.Legend;
 import com.googlecode.wickedcharts.highcharts.options.LegendLayout;
 import com.googlecode.wickedcharts.highcharts.options.Options;
@@ -31,7 +28,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +37,7 @@ import java.util.Map;
  */
 @Service
 public class ChartService {
+
     @Autowired
     private RekeningService rekeningService;
 
@@ -81,10 +78,6 @@ public class ChartService {
 
 
     public Options buildHistoryChartOptions(List<Rekening> rekeningen) {
-        List<Map<String, Double>> lijst = new ArrayList<>();
-        for (Rekening rekening : rekeningen) {
-            lijst.add(statementService.getTotalenPerMaand(rekening));
-        }
 
         Options options = new Options();
         options.setChartOptions(new ChartOptions()
@@ -93,7 +86,7 @@ public class ChartService {
         options.setTitle(new Title("Historiek"));
 
 
-        LocalDate startDate = new LocalDate(2013, 10, 1);
+        LocalDate startDate = new LocalDate(2011, 10, 1);
         LocalDate now = new LocalDate();
         int aantalMaanden = Months.monthsBetween(startDate, now).getMonths();
         List<String> categories = new ArrayList<>();
@@ -112,16 +105,6 @@ public class ChartService {
                         .setEnabled(Boolean.FALSE)));
 
 
-        options.setLegend(new Legend()
-                .setAlign(HorizontalAlignment.RIGHT)
-                .setX(-100)
-                .setVerticalAlign(VerticalAlignment.TOP)
-                .setY(20)
-                .setFloating(Boolean.TRUE)
-                .setBackgroundColor(new HexColor("#FFFFFF"))
-                .setBorderColor(new HexColor("#CCCCCC"))
-                .setBorderWidth(1)
-                .setShadow(Boolean.FALSE));
 
 
         options.setTooltip(new Tooltip()
@@ -138,11 +121,10 @@ public class ChartService {
             Map<String, Double> doubles = statementService.getTotalenPerMaand(rekening);
             List<Number> waarden = new ArrayList<>();
             for (String categorie : categories) {
-                System.out.println(categorie);
-                waarden.add(doubles.get(categorie));
+                waarden.add(doubles.get(categorie)== null? 0 :Math.round(doubles.get(categorie)*100)/100);
             }
             options.addSeries(new SimpleSeries()
-                    .setName(rekening.getNummer())
+                    .setName(rekening.getNaam() != null ? rekening.getNaam(): rekening.getNummer())
                     .setData(waarden));
         }
 

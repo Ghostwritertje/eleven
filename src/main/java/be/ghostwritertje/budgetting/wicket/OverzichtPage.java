@@ -69,7 +69,7 @@ public class OverzichtPage extends WicketPage {
             }
         });
 
-         rekeningenLijst = new ListView<Rekening>("rekeningen", rekeningService.getRekeningen("Joran")) {
+        rekeningenLijst = new ListView<Rekening>("rekeningen", rekeningService.getRekeningen("Joran")) {
             @Override
             protected void populateItem(ListItem<Rekening> item) {
                 Rekening rekening = item.getModelObject();
@@ -79,7 +79,7 @@ public class OverzichtPage extends WicketPage {
                 BookmarkablePageLink pageLink = new BookmarkablePageLink<>("link", RekeningPage.class, parameters);
                 item.add(pageLink);
 
-                pageLink.add(new Label("nummer", rekening.getNummer()));
+                pageLink.add(new Label("nummer", rekening.getNaam() != null ? rekening.getNaam(): rekening.getNummer()));
                 item.add(new Label("balans", rekeningService.getBalans(rekening)));
             }
         };
@@ -91,15 +91,6 @@ public class OverzichtPage extends WicketPage {
 
         add(new Chart("chart", chartService.buildHistoryChartOptions(user.getRekeningen())));
 
-
-
-        Rekening rekening = new Rekening();
-        rekening.setNummer("BE57 0634 1777 9035");
-        Map<String, Double> doubles = statementService.getTotalenPerMaand(rekening);
-        System.out.println("hello, im alive");
-        for(Map.Entry<String, Double> myDouble: doubles.entrySet()){
-            System.out.println(myDouble.getKey() + ": " + myDouble.getValue());
-        }
     }
 
     private class RekeningForm extends Form {
@@ -116,7 +107,6 @@ public class OverzichtPage extends WicketPage {
 
         @Override
         protected void onSubmit() {
-            System.out.println("Rekeningnummer = " + rekening.getNummer() + "rekeningNaam = " + rekening.getNaam());
             rekeningService.createRekening("", rekening.getNummer(), rekening.getUser());
             isAddRekeningVisible = false;
             rekeningenLijst.setList(rekeningService.getRekeningen(user.getUsername()));

@@ -54,7 +54,7 @@ public class StatementDaoImpl implements StatementDao {
         Collections.sort(statements, new Comparator<Statement>() {
             @Override
             public int compare(Statement o1, Statement o2) {
-                return o1.getDatum().compareTo(o2.getDatum());
+                return o2.getDatum().compareTo(o1.getDatum());
             }
         });
         transaction.commit();
@@ -146,6 +146,7 @@ public class StatementDaoImpl implements StatementDao {
             sessionFactory.getCurrentSession().saveOrUpdate(statement);
             transaction.commit();
         } catch (ConstraintViolationException e) {
+            System.err.println("Contraint violation exception");
             transaction.rollback();
         }
     }

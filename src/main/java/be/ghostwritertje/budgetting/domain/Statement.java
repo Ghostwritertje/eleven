@@ -16,17 +16,18 @@ public class Statement implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vertrekRekeningId")
     private Rekening vertrekRekening;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "aankomstRekeningId")
     private Rekening aankomstRekening;
 
     @Column(nullable = false)
     private Date datum;
 
+    @Column(unique = true)
     private String mededeling;
 
     @Column
@@ -57,6 +58,14 @@ public class Statement implements Serializable {
     }
 
     public String getMededeling() {
+        return mededeling;
+    }
+
+    public String getKorteMededeling() {
+        if(mededeling == null) return "";
+        if(mededeling.length() > 20){
+            return mededeling.substring(0,20);
+        }
         return mededeling;
     }
 
