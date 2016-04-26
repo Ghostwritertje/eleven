@@ -8,6 +8,7 @@ import be.ghostwritertje.budgetting.domain.Categorie;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
 import be.ghostwritertje.budgetting.domain.User;
+import be.ghostwritertje.budgetting.wicket.WicketSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -77,6 +78,13 @@ public class UserService {
 
     public User getUser(String username) {
         return userDaoImpl.findUser(username);
+    }
+
+    public boolean signIn(String username) {
+        User user = this.getUser(username);
+        if (user == null) return false;
+        WicketSession.get().setLoggedInUser(user.getUsername());
+        return true;
     }
 
 

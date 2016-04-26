@@ -33,6 +33,13 @@ public class WicketApplication extends WebApplication {
         super.init();
         super.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         this.configureBootstrap();
+        this. addComponentInstantiationListener(new SpringComponentInjector(this));
+
+        CheesrAuthorizationStrategy cheesrAuthorizationStrategy = new CheesrAuthorizationStrategy();
+
+        getSecuritySettings().
+                setAuthorizationStrategy(cheesrAuthorizationStrategy);
+        getSecuritySettings().setUnauthorizedComponentInstantiationListener(cheesrAuthorizationStrategy);
     }
        @Override
     public Session newSession(Request request, Response response) {
