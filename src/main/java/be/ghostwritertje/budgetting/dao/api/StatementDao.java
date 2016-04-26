@@ -5,6 +5,7 @@ import be.ghostwritertje.budgetting.domain.Statement;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jorandeboever
@@ -12,6 +13,8 @@ import java.util.List;
  */
 public interface StatementDao {
     List<Statement> getStatements(Rekening rekening);
+
+    Map<String, Double> getTotalenPerMaand(Rekening rekening);
 
     void createStatement(Statement statement);
 

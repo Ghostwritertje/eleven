@@ -15,7 +15,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jorandeboever
@@ -47,7 +49,6 @@ public class StatementDaoImpl implements StatementDao {
         List<Statement> otherStatements = query.list();
 
         for (Statement statement : otherStatements) {
-            statement.setBedrag(statement.getBedrag());
             statements.add(statement);
         }
         Collections.sort(statements, new Comparator<Statement>() {
@@ -58,6 +59,83 @@ public class StatementDaoImpl implements StatementDao {
         });
         transaction.commit();
         return statements;
+    }
+
+    public double getTotaalTussenDatumsOld(Rekening rekening, Date beginDatum, Date eindDatum) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        Query query = sessionFactory.getCurrentSession().createQuery("SELECT SUM(s.bedrag) " +
+                " FROM Statement s \n" +
+                " WHERE s.aankomstRekening.nummer = :rekening AND s.datum BETWEEN :beginDatum and :eindDatum");
+        query.setParameter("rekening", rekening.getNummer());
+        query.setParameter("beginDatum", beginDatum);
+        query.setParameter("eindDatum", eindDatum);
+        double voorlopigTotaal = (double) query.uniqueResult();
+
+        query = sessionFactory.getCurrentSession().createQuery("SELECT SUM(t.bedrag)" +
+                "FROM Statement t  " +
+                "WHERE t.vertrekRekening.nummer = :rekening AND t.datum BETWEEN :beginDatum and :eindDatum");
+        query.setParameter("rekening", rekening.getNummer());
+        query.setParameter("beginDatum", beginDatum);
+        query.setParameter("eindDatum", eindDatum);
+        voorlopigTotaal -= (double) query.uniqueResult();
+
+        transaction.commit();
+        return voorlopigTotaal;
+    }
+
+    @Override
+    public Map<String, Double> getTotalenPerMaand(Rekening rekening) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        // TODO_JORAN: schrijf dit in één query
+        /*
+        SELECT
+             concat(year(s.datum), '/', month(s.datum)) AS "nieuweDatum",
+            IFNULL((SELECT sum(t.bedrag)
+            FROM t_statement t
+             WHERE
+             concat(year(t.datum), '/', MONTH(t.datum)) = nieuweDatum AND
+              s.aankomstRekeningId = 94), 0) -
+             IFNULL((SELECT sum(t.bedrag)
+             FROM t_statement t
+             WHERE
+            concat(year(t.datum), '/', MONTH(t.datum)) = nieuweDatum AND
+            s.vertrekRekeningId = 94), 0)
+
+           AS 'totaalMin'
+
+            FROM t_statement s
+            GROUP BY MONTH(s.datum), YEAR(s.datum)
+            ORDER BY nieuweDatum;
+
+         */
+
+        Query query = sessionFactory.getCurrentSession().createQuery("SELECT\n" +
+                " concat(year(s.datum), '/', month(s.datum))," +
+                " IFNULL((SELECT sum(t.bedrag)\n" +
+                " FROM Statement t\n" +
+                "  WHERE\n" +
+                "  year(t.datum) < year(s.datum) OR ( year(t.datum) = year(s.datum) AND month(t.datum) < month(s.datum))  AND\n" +
+                "   t.aankomstRekening.nummer = :rekeningNummer), 0) -\n" +
+                "  IFNULL((SELECT sum(t.bedrag)\n" +
+                "  FROM Statement t\n" +
+                "  WHERE\n" +
+                " year(t.datum) < year(s.datum) OR ( year(t.datum) = year(s.datum) AND month(t.datum) < month(s.datum))  AND\n" +
+                " t.vertrekRekening.nummer = :rekeningNummer), 0)\n" +
+                " FROM Statement s\n" +
+                " GROUP BY MONTH(s.datum), YEAR(s.datum)\n" +
+                " ORDER BY year(s.datum), month(s.datum)");
+        query.setParameter("rekeningNummer", rekening.getNummer());
+        List<Object[]> objects = query.list();
+
+        Map<String, Double> waarden = new HashMap<>();
+        for (Object[] object : objects) {
+            waarden.put((String) object[0], (Double) object[1]);
+        }
+
+        transaction.commit();
+        return waarden;
     }
 
 
@@ -95,8 +173,6 @@ public class StatementDaoImpl implements StatementDao {
             transaction.rollback();
         }
     }
-
-
 
 
 }

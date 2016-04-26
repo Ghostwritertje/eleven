@@ -1,14 +1,12 @@
 package be.ghostwritertje.budgetting.wicket;
 
-import be.ghostwritertje.budgetting.domain.Goal;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.User;
 import be.ghostwritertje.budgetting.services.RekeningService;
-import be.ghostwritertje.budgetting.services.SignInService;
+import be.ghostwritertje.budgetting.services.StatementService;
 import be.ghostwritertje.budgetting.services.UserService;
 import be.ghostwritertje.budgetting.wicket.charts.ChartService;
 import com.googlecode.wickedcharts.wicket7.highcharts.Chart;
-import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -21,7 +19,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jorandeboever
@@ -36,6 +34,9 @@ public class OverzichtPage extends WicketPage {
 
     @SpringBean
     private RekeningService rekeningService;
+
+    @SpringBean
+    private StatementService statementService;
 
     private User user;
     private boolean isAddRekeningVisible;
@@ -88,7 +89,17 @@ public class OverzichtPage extends WicketPage {
 
         add(new Label("totaal", rekeningService.getBalans(user)));
 
-        add(new Chart("chart", chartService.buildOverviewChartOptions(user.getRekeningen())));
+        add(new Chart("chart", chartService.buildHistoryChartOptions(user.getRekeningen())));
+
+
+
+        Rekening rekening = new Rekening();
+        rekening.setNummer("BE57 0634 1777 9035");
+        Map<String, Double> doubles = statementService.getTotalenPerMaand(rekening);
+        System.out.println("hello, im alive");
+        for(Map.Entry<String, Double> myDouble: doubles.entrySet()){
+            System.out.println(myDouble.getKey() + ": " + myDouble.getValue());
+        }
     }
 
     private class RekeningForm extends Form {

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jorandeboever
@@ -17,13 +18,11 @@ public class StatementService {
     @Autowired
     private StatementDao statementDao;
 
-
     protected void deleteAllStatements() {
         statementDao.deleteAllStatements();
     }
 
-    public void createStatement(Statement statement)
-    {
+    public void createStatement(Statement statement) {
 
         statementDao.createStatement(statement);
     }
@@ -31,4 +30,10 @@ public class StatementService {
     public List<Statement> getStatements(Rekening rekening) {
         return statementDao.getStatements(rekening);
     }
+
+    public Map<String, Double> getTotalenPerMaand(Rekening rekening) {
+        return statementDao.getTotalenPerMaand(rekening);
+    }
+
+
 }
