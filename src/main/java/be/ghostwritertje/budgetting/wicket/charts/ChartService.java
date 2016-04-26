@@ -126,6 +126,7 @@ public class ChartService {
             options.addSeries(new SimpleSeries()
                     .setName(rekening.getNaam() != null ? rekening.getNaam(): rekening.getNummer())
                     .setData(waarden));
+
         }
 
 

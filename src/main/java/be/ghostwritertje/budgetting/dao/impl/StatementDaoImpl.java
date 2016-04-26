@@ -112,20 +112,22 @@ public class StatementDaoImpl implements StatementDao {
          */
 
         Query query = sessionFactory.getCurrentSession().createQuery("SELECT\n" +
-                " concat(year(s.datum), '/', month(s.datum))," +
-                " IFNULL((SELECT sum(t.bedrag)\n" +
-                " FROM Statement t\n" +
-                "  WHERE\n" +
-                "  year(t.datum) < year(s.datum) OR ( year(t.datum) = year(s.datum) AND month(t.datum) < month(s.datum))  AND\n" +
-                "   t.aankomstRekening.nummer = :rekeningNummer), 0) -\n" +
+                "  concat(year(s.datum), '/', month(s.datum)),\n" +
                 "  IFNULL((SELECT sum(t.bedrag)\n" +
-                "  FROM Statement t\n" +
-                "  WHERE\n" +
-                " year(t.datum) < year(s.datum) OR ( year(t.datum) = year(s.datum) AND month(t.datum) < month(s.datum))  AND\n" +
-                " t.vertrekRekening.nummer = :rekeningNummer), 0)\n" +
-                " FROM Statement s\n" +
-                " GROUP BY MONTH(s.datum), YEAR(s.datum)\n" +
-                " ORDER BY year(s.datum), month(s.datum)");
+                "          FROM Statement t\n" +
+                "          WHERE t.aankomstRekening.nummer = :rekeningNummer and\n" +
+                "            (year(t.datum) < year(s.datum) OR (year(t.datum) = year(s.datum) AND month(t.datum) <= month(s.datum)))\n" +
+                "            ), 0) -\n" +
+                "  IFNULL((SELECT sum(t.bedrag)\n" +
+                "          FROM Statement t\n" +
+                "          WHERE t.vertrekRekening.nummer = :rekeningNummer AND\n" +
+                "                (year(t.datum) < year(s.datum) OR (year(t.datum) = year(s.datum) AND month(t.datum) <= month(s.datum)))\n" +
+                "\n" +
+                "         ), 0)\n" +
+                "\n" +
+                "FROM Statement s\n" +
+                "GROUP BY MONTH(s.datum), YEAR(s.datum)\n" +
+                "ORDER BY concat(year(s.datum), '/', month(s.datum))");
         query.setParameter("rekeningNummer", rekening.getNummer());
         List<Object[]> objects = query.list();
 
