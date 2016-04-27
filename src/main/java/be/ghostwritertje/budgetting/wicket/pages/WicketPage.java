@@ -21,6 +21,12 @@ public class WicketPage extends WebPage {
                 setResponsePage(OverzichtPage.class);
             }
         });
+        add(new Link("inkomsten") {
+            @Override
+            public void onClick() {
+                setResponsePage(InkomstenPage.class);
+            }
+        });
         add(new Link("Home") {
             @Override
             public void onClick() {

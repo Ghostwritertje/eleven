@@ -3,14 +3,10 @@ package be.ghostwritertje.budgetting.wicket.panels;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
 import be.ghostwritertje.budgetting.services.RekeningService;
-import be.ghostwritertje.budgetting.wicket.pages.GoalOptionForm;
-import be.ghostwritertje.budgetting.wicket.pages.RekeningPage;
-import be.ghostwritertje.budgetting.wicket.pages.StatementForm;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -44,18 +40,29 @@ public class StatementTablePanel extends Panel {
                 statementListItem.addOrReplace(new Label("bedrag", ""));
 
                 if (statement.getAankomstRekening() != null) {
-                    if (rekeningList.contains(statement.getAankomstRekening())) {
-                        statementListItem.addOrReplace(new Label("bedrag", statement.getBedrag()));
+                    boolean rekeningGevonden = false;
 
-                    } else {
+                    for (Rekening rekening: rekeningList){
+                        if(statement.getAankomstRekening().getNummer().equals(rekening.getNummer())){
+                            rekeningGevonden = true;
+
+                            statementListItem.addOrReplace(new Label("bedrag", statement.getBedrag()));
+                        }
+                    }
+                    if(!rekeningGevonden){
                         statementListItem.addOrReplace(new Label("andereRekening", statement.getAankomstRekening().getNummer()));
                     }
 
                 }
                 if (statement.getVertrekRekening() != null) {
-                    if (rekeningList.contains(statement.getAankomstRekening())) {
-                        statementListItem.addOrReplace(new Label("bedrag", -statement.getBedrag()));
-                    } else {
+                    boolean rekeningGevonden = false;
+                    for (Rekening rekening: rekeningList){
+                        if(statement.getVertrekRekening().getNummer().equals(rekening.getNummer())){
+                            rekeningGevonden = true;
+                            statementListItem.addOrReplace(new Label("bedrag", -statement.getBedrag()));
+                        }
+                    }
+                    if(!rekeningGevonden){
                         statementListItem.addOrReplace(new Label("andereRekening", statement.getVertrekRekening().getNummer()));
                     }
 

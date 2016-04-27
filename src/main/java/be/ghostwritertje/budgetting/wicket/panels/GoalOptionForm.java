@@ -1,4 +1,4 @@
-package be.ghostwritertje.budgetting.wicket.pages;
+package be.ghostwritertje.budgetting.wicket.panels;
 
 import be.ghostwritertje.budgetting.domain.Goal;
 import be.ghostwritertje.budgetting.domain.Rekening;

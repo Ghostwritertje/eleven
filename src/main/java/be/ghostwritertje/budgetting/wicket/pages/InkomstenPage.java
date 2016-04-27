@@ -5,6 +5,8 @@ import be.ghostwritertje.budgetting.services.GoalService;
 import be.ghostwritertje.budgetting.services.RekeningService;
 import be.ghostwritertje.budgetting.services.StatementService;
 import be.ghostwritertje.budgetting.services.UserService;
+import be.ghostwritertje.budgetting.wicket.WicketSession;
+import be.ghostwritertje.budgetting.wicket.panels.StatementTablePanel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
@@ -28,6 +30,7 @@ public class InkomstenPage extends WicketPage {
     private GoalService goalService;
 
     public InkomstenPage() {
-
+        String loggedInuser = WicketSession.get().getLoggedInUser();
+        this.add(new StatementTablePanel("statementTablePanel", statementService.getInkomendeStatementsOverAlleRekeningen(loggedInuser), rekeningService.getRekeningen(loggedInuser)));
     }
 }

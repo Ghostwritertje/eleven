@@ -17,7 +17,7 @@ public class WicketSession extends WebSession {
 
 
     private String loggedInUser = "Joran";
-    private boolean authenticated = false;
+    private boolean authenticated = true;
 
     /**
      * Constructor. Note that {@link RequestCycle} is not available until this constructor returns.

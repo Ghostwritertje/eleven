@@ -189,7 +189,7 @@ public class StatementDaoImpl implements StatementDao {
                 "                               WHERE r.user.username = :userName)\n" +
                 "      AND (t.vertrekRekening IS NULL OR t.vertrekRekening.Id NOT IN (SELECT r.Id\n" +
                 "                                                                  FROM Rekening r\n" +
-                "                                                                  WHERE r.user.username = :username))");
+                "                                                                  WHERE r.user.username = :userName))");
         query.setParameter("userName", userName);
         final List<Statement> statements = query.list();
 

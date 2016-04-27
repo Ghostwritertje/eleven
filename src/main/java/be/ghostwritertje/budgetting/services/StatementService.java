@@ -35,5 +35,9 @@ public class StatementService {
         return statementDao.getTotalenPerMaand(rekening);
     }
 
+    public List<Statement> getInkomendeStatementsOverAlleRekeningen(String username) {
+        return statementDao.getInkomendeStatementsOverAlleRekeningen(username);
+    }
+
 
 }
