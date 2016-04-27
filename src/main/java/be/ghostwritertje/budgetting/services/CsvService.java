@@ -38,8 +38,6 @@ public class CsvService {
                 // use comma as separator
                 String[] rij = line.split(cvsSplitBy);
 
-
-
                 if (rij.length > 0 && rij[0].startsWith("BE")) {
                     Statement statement = new Statement();
                     statement.setBedrag(Math.abs(Double.parseDouble(rij[10].replace(",", "."))));

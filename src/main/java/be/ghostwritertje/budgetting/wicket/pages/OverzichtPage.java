@@ -83,7 +83,6 @@ public class OverzichtPage extends WicketPage {
             }
         };
 
-
         this.add(rekeningenLijst);
 
         add(new Label("totaal", rekeningService.getBalans(user)));
@@ -92,14 +91,14 @@ public class OverzichtPage extends WicketPage {
 
     }
 
-    private class RekeningForm extends Form {
+    private class RekeningForm extends Form<Rekening> {
 
         private Rekening rekening = new Rekening();
 
         public RekeningForm(String id) {
             super(id);
             rekening.setUser(user);
-            setModel(new CompoundPropertyModel<Rekening>(rekening));
+            setModel(new CompoundPropertyModel<>(rekening));
             add(new TextField("nummer"));
             add(new Button("add"));
         }

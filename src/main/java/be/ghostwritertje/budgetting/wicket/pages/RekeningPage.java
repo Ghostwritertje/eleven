@@ -13,6 +13,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.components.progress.Prog
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
+import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.NumberTextField;
@@ -52,7 +53,6 @@ public class RekeningPage extends WicketPage {
     @SpringBean
     private GoalService goalService;
 
-
     private FileUploadField fileUpload;
     private String UPLOAD_FOLDER = "csvFiles";
 
@@ -81,6 +81,8 @@ public class RekeningPage extends WicketPage {
 
         addFileUpload(rekening);
         add(new GoalsPanel("goalsPanel", rekening));
+
+
     }
 
     private void addFileUpload(final Rekening rekening) {
