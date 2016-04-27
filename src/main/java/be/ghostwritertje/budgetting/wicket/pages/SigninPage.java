@@ -1,4 +1,4 @@
-package be.ghostwritertje.budgetting.wicket;
+package be.ghostwritertje.budgetting.wicket.pages;
 
 
 import be.ghostwritertje.budgetting.services.UserService;

@@ -1,10 +1,11 @@
-package be.ghostwritertje.budgetting.wicket;
+package be.ghostwritertje.budgetting.wicket.pages;
 
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.User;
 import be.ghostwritertje.budgetting.services.RekeningService;
 import be.ghostwritertje.budgetting.services.StatementService;
 import be.ghostwritertje.budgetting.services.UserService;
+import be.ghostwritertje.budgetting.wicket.WicketSession;
 import be.ghostwritertje.budgetting.wicket.charts.ChartService;
 import com.googlecode.wickedcharts.wicket7.highcharts.Chart;
 import org.apache.wicket.markup.html.basic.Label;
@@ -18,8 +19,6 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-
-import java.util.Map;
 
 /**
  * Created by jorandeboever

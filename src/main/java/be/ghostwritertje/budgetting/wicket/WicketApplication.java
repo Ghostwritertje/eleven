@@ -1,16 +1,12 @@
 package be.ghostwritertje.budgetting.wicket;
 
+import be.ghostwritertje.budgetting.wicket.pages.OverzichtPage;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
-import de.agilecoders.wicket.core.settings.CookieThemeProvider;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-import de.agilecoders.wicket.core.settings.ThemeProvider;
-import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
-import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
 import org.apache.log4j.Logger;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
-import org.apache.wicket.authorization.IAuthorizationStrategy;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;

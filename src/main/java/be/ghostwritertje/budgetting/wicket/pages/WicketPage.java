@@ -1,5 +1,7 @@
-package be.ghostwritertje.budgetting.wicket;
+package be.ghostwritertje.budgetting.wicket.pages;
 
+import be.ghostwritertje.budgetting.wicket.WicketSession;
+import be.ghostwritertje.budgetting.wicket.pages.OverzichtPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
