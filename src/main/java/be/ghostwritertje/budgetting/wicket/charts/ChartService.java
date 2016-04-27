@@ -11,6 +11,7 @@ import com.googlecode.wickedcharts.highcharts.options.DataLabels;
 import com.googlecode.wickedcharts.highcharts.options.HorizontalAlignment;
 import com.googlecode.wickedcharts.highcharts.options.Legend;
 import com.googlecode.wickedcharts.highcharts.options.LegendLayout;
+import com.googlecode.wickedcharts.highcharts.options.Marker;
 import com.googlecode.wickedcharts.highcharts.options.Options;
 import com.googlecode.wickedcharts.highcharts.options.PlotOptions;
 import com.googlecode.wickedcharts.highcharts.options.PlotOptionsChoice;
@@ -25,6 +26,7 @@ import com.googlecode.wickedcharts.highcharts.options.functions.PercentageFormat
 import com.googlecode.wickedcharts.highcharts.options.functions.StackTotalFormatter;
 import com.googlecode.wickedcharts.highcharts.options.series.Point;
 import com.googlecode.wickedcharts.highcharts.options.series.PointSeries;
+import com.googlecode.wickedcharts.highcharts.options.series.Series;
 import com.googlecode.wickedcharts.highcharts.options.series.SimpleSeries;
 import org.joda.time.LocalDate;
 import org.joda.time.Months;
@@ -143,6 +145,81 @@ public class ChartService {
         return options;
 
     }
+
+    public Options buildPensioenChartOptions(double geschatteIntrest, int leeftijd, double geschatteIndex) {
+
+        Options options = new Options();
+        options.setChartOptions(new ChartOptions()
+                .setType(SeriesType.COLUMN));
+
+        options.setTitle(new Title("Historiek"));
+
+        options.setyAxis(new Axis()
+                .setMin(0)
+                .setTitle(new Title("Money"))
+                .setStackLabels(new StackLabels()
+                        .setEnabled(Boolean.FALSE)));
+
+
+
+
+        options.setPlotOptions(new PlotOptionsChoice()
+                .setColumn(new PlotOptions()
+                        .setStacking(Stacking.NORMAL)
+                        .setDataLabels(new DataLabels()
+                                .setEnabled(Boolean.FALSE)
+                                .setColor(new HexColor("#FFFFFF")))));
+
+        double spaarBedrag = 940;
+        double totaalGespaard = 0;
+        double totaalIntrest = 0;
+        double totaalMinTaks = 0;
+        List<Number> spaarBedragen = new ArrayList<>();
+        List<Number> interestBedragen = new ArrayList<>();
+        List<Number> totaalMinTaksBedragen = new ArrayList<>();
+        List<String> categories = new ArrayList<>();
+
+        for (int i = leeftijd; i < 65; i++) {
+            if (i >= 27) {
+                spaarBedrag *= 1.02;
+            }
+            totaalGespaard += spaarBedrag;
+            totaalIntrest += (totaalGespaard + totaalIntrest) * 0.05;
+            totaalMinTaks = (totaalGespaard + totaalIntrest) * 0.92;
+
+
+            categories.add(String.format("%d", new LocalDate().getYear() - leeftijd + i));
+            spaarBedragen.add(Math.round(totaalGespaard * 100) / 100);
+            interestBedragen.add(Math.round(totaalIntrest * 100) / 100);
+            totaalMinTaksBedragen.add(Math.round(totaalMinTaks * 100) / 100);
+        }
+
+        options.addSeries(new SimpleSeries()
+                .setName("Interest")
+                .setData(interestBedragen));
+
+        options.addSeries(new SimpleSeries()
+                .setName("Gespaard")
+                .setData(spaarBedragen));
+
+        options.setxAxis(new Axis()
+                .setCategories(categories));
+
+        Series<Number> series4 = new SimpleSeries();
+        series4
+                .setType(SeriesType.LINE);
+        series4
+                .setName("Totaal na belastingen");
+        series4
+                .setData(totaalMinTaksBedragen);
+
+
+        options.addSeries(series4);
+
+        return options;
+
+    }
+
 
     public Options buildPieChartByCategorie(Map<String, Double> categorieWaardenMap) {
 
