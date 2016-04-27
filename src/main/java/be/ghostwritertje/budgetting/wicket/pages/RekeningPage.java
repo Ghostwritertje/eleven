@@ -74,15 +74,17 @@ public class RekeningPage extends WicketPage {
         rekeningList.add(rekening);
         add(new FeedbackPanel("feedback"));
 
-        this.add(new StatementTablePanel("statementTablePanel", rekeningService.getStatements(rekening), rekeningList));
+        StatementTablePanel statementTablePanel = new StatementTablePanel("statementTablePanel", rekeningService.getStatements(rekening), rekeningList);
+        statementTablePanel.setStatementFormVisible(true);
 
+        this.add(statementTablePanel);
 
         addFileUpload(rekening);
         add(new GoalsPanel("goalsPanel", rekening));
     }
 
     private void addFileUpload(final Rekening rekening) {
-        Form<Void> fileUploadForm = new Form<Void>("fileUploadForm"){
+        Form<Void> fileUploadForm = new Form<Void>("fileUploadForm") {
             @Override
             protected void onSubmit() {
 
@@ -124,8 +126,6 @@ public class RekeningPage extends WicketPage {
         fileUploadForm.add(new AjaxButton("submit") {
         });
     }
-
-
 
 
 }

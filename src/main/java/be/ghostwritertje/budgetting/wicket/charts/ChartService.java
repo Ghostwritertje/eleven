@@ -1,10 +1,12 @@
 package be.ghostwritertje.budgetting.wicket.charts;
 
 import be.ghostwritertje.budgetting.domain.Rekening;
+import be.ghostwritertje.budgetting.domain.Statement;
 import be.ghostwritertje.budgetting.services.RekeningService;
 import be.ghostwritertje.budgetting.services.StatementService;
 import com.googlecode.wickedcharts.highcharts.options.Axis;
 import com.googlecode.wickedcharts.highcharts.options.ChartOptions;
+import com.googlecode.wickedcharts.highcharts.options.Cursor;
 import com.googlecode.wickedcharts.highcharts.options.DataLabels;
 import com.googlecode.wickedcharts.highcharts.options.HorizontalAlignment;
 import com.googlecode.wickedcharts.highcharts.options.Legend;
@@ -19,7 +21,10 @@ import com.googlecode.wickedcharts.highcharts.options.Title;
 import com.googlecode.wickedcharts.highcharts.options.Tooltip;
 import com.googlecode.wickedcharts.highcharts.options.VerticalAlignment;
 import com.googlecode.wickedcharts.highcharts.options.color.HexColor;
+import com.googlecode.wickedcharts.highcharts.options.functions.PercentageFormatter;
 import com.googlecode.wickedcharts.highcharts.options.functions.StackTotalFormatter;
+import com.googlecode.wickedcharts.highcharts.options.series.Point;
+import com.googlecode.wickedcharts.highcharts.options.series.PointSeries;
 import com.googlecode.wickedcharts.highcharts.options.series.SimpleSeries;
 import org.joda.time.LocalDate;
 import org.joda.time.Months;
@@ -105,8 +110,6 @@ public class ChartService {
                         .setEnabled(Boolean.FALSE)));
 
 
-
-
         options.setTooltip(new Tooltip()
                 .setFormatter(new StackTotalFormatter()));
 
@@ -123,18 +126,49 @@ public class ChartService {
             List<Number> waarden = new ArrayList<>();
             for (String categorie : categories) {
                 Double categorieWaarde = doubles.get(categorie);
-                if(categorieWaarde != null){
-                    waarden.add(Math.round(categorieWaarde*100)/100);
+                if (categorieWaarde != null) {
+                    waarden.add(Math.round(categorieWaarde * 100) / 100);
                     tijdelijkeWaarde = categorieWaarde;
-                }else {
-                    waarden.add(Math.round(tijdelijkeWaarde*100)/100);
+                } else {
+                    waarden.add(Math.round(tijdelijkeWaarde * 100) / 100);
                 }
             }
             options.addSeries(new SimpleSeries()
-                    .setName(rekening.getNaam() != null ? rekening.getNaam(): rekening.getNummer())
+                    .setName(rekening.getNaam() != null ? rekening.getNaam() : rekening.getNummer())
                     .setData(waarden));
 
         }
+
+
+        return options;
+
+    }
+
+    public Options buildPieChartByCategorie(Map<String, Double> categorieWaardenMap) {
+
+        Options options = new Options();
+        options.setChartOptions(new ChartOptions()
+                .setType(SeriesType.PIE));
+
+        options.setTitle(new Title("Categorieën"));
+
+
+        options.setPlotOptions(new PlotOptionsChoice()
+                .setPie(new PlotOptions()
+                        .setAllowPointSelect(Boolean.TRUE)
+                        .setCursor(Cursor.POINTER)
+                        .setDataLabels(new DataLabels()
+                                .setEnabled(Boolean.TRUE)
+                                .setColor(new HexColor("#000000"))
+                                .setConnectorColor(new HexColor("#000000"))
+                                .setFormatter(new PercentageFormatter()))));
+
+        PointSeries pointSeries = new PointSeries();
+
+        for (Map.Entry categorieWaarde : categorieWaardenMap.entrySet()) {
+            pointSeries.addPoint(new Point((String) categorieWaarde.getKey(), (Double) categorieWaarde.getValue()));
+        }
+        options.addSeries(pointSeries);
 
 
         return options;

@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class WicketSession extends WebSession {
 
-
     private String loggedInUser = "Joran";
     private boolean authenticated = true;
 

@@ -3,6 +3,7 @@ package be.ghostwritertje.budgetting.services;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
+import be.ghostwritertje.budgetting.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +40,8 @@ public class StatementService {
         return statementDao.getInkomendeStatementsOverAlleRekeningen(username);
     }
 
+    public Map<String, Double> getTotaalPerCategorie(String user){
+        return statementDao.getTotaalPerCategorie(user);
+    }
 
 }

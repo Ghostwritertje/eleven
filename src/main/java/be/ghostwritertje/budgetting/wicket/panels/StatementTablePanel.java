@@ -21,6 +21,8 @@ public class StatementTablePanel extends Panel {
     @SpringBean
     RekeningService rekeningService;
 
+    private boolean statementFormVisible;
+
     public StatementTablePanel(String id, List<Statement> statementList, List<Rekening> rekeningList) {
         super(id);
         this.init(statementList, rekeningList);
@@ -76,8 +78,15 @@ public class StatementTablePanel extends Panel {
         add(new Label("totaal", rekeningService.getBalans(rekeningList.get(0))));
 
 
-        this.add(new StatementForm("statementForm", rekeningList.get(0)));
+        this.add(new StatementForm("statementForm", rekeningList.get(0)){
+            @Override
+            public boolean isVisible() {
+                return statementFormVisible;
+            }
+        });
     }
 
-
+    public void setStatementFormVisible(boolean statementFormVisible) {
+        this.statementFormVisible = statementFormVisible;
+    }
 }

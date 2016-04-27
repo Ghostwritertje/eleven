@@ -3,9 +3,9 @@ package be.ghostwritertje.budgetting.dao.impl;
 import be.ghostwritertje.budgetting.dao.HibernateUtil;
 import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
+import be.ghostwritertje.budgetting.domain.Categorie;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
-import be.ghostwritertje.budgetting.domain.User;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -135,6 +135,27 @@ public class StatementDaoImpl implements StatementDao {
         Map<String, Double> waarden = new HashMap<>();
         for (Object[] object : objects) {
             waarden.put((String) object[0], (Double) object[1]);
+        }
+
+        transaction.commit();
+        return waarden;
+    }
+
+    public Map<String, Double> getTotaalPerCategorie(String username) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        Query query = sessionFactory.getCurrentSession().createQuery("SELECT t.categorie, sum(bedrag)\n" +
+                "FROM Statement t\n" +
+                "WHERE t.aankomstRekening.user.username = :username \n" +
+                "AND  t.vertrekRekening IS NULL " + //TODO_JORAN: Case voor rekening van andere gebruiker?
+                "GROUP BY t.categorie");
+        query.setParameter("username", username);
+        List<Object[]> objects = query.list();
+
+        Map<String, Double> waarden = new HashMap<>();
+        for (Object[] object : objects) {
+            waarden.put(object[0].toString(), (Double) object[1]);
+            System.out.println(object[0].toString() + ": " + object[1]);
         }
 
         transaction.commit();

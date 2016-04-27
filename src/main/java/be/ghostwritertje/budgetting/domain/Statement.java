@@ -39,7 +39,7 @@ public class Statement implements Serializable {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Categorie categorie;
+    private Categorie categorie = Categorie.OVERIG;
 
     public Statement() {
     }
