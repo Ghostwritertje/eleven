@@ -2,6 +2,7 @@ package be.ghostwritertje.budgetting.dao.api;
 
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
+import be.ghostwritertje.budgetting.domain.User;
 
 import java.util.Date;
 import java.util.List;
@@ -22,4 +23,5 @@ public interface StatementDao {
 
     void createStatement(String vertrekRekening, String aankomstRekening, double bedrag, Date datum);
 
+    List<Statement> getInkomendeStatementsOverAlleRekeningen(String userName);
 }

@@ -5,6 +5,7 @@ import be.ghostwritertje.budgetting.dao.api.RekeningDao;
 import be.ghostwritertje.budgetting.dao.api.StatementDao;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
+import be.ghostwritertje.budgetting.domain.User;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -175,6 +176,25 @@ public class StatementDaoImpl implements StatementDao {
         } catch (ConstraintViolationException e) {
             transaction.rollback();
         }
+    }
+
+    @Override
+    public List<Statement> getInkomendeStatementsOverAlleRekeningen(String userName) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        Query query = sessionFactory.getCurrentSession().createQuery(" " +
+                "FROM Statement t\n" +
+                "WHERE t.aankomstRekening.Id IN (SELECT r.Id\n" +
+                "                               FROM Rekening r\n" +
+                "                               WHERE r.user.username = :userName)\n" +
+                "      AND (t.vertrekRekening IS NULL OR t.vertrekRekening.Id NOT IN (SELECT r.Id\n" +
+                "                                                                  FROM Rekening r\n" +
+                "                                                                  WHERE r.user.username = :username))");
+        query.setParameter("userName", userName);
+        final List<Statement> statements = query.list();
+
+        transaction.commit();
+        return statements;
     }
 
 

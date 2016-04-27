@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:panel>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Omschrijving</th>
+                        <th>Datum</th>
+                        <th>Categorie</th>
+                        <th>Naar rekening</th>
+                        <!--<th>Goal</th>-->
+                        <th>Bedrag</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr wicket:id="statements">
+                        <td wicket:id="mededeling">Anna</td>
+                        <td wicket:id="datum"></td>
+                        <td wicket:id="categorie"></td>
+                        <td wicket:id="andereRekening">Pitt</td>
+                        <!--<td>-->
+                            <!--<form wicket:id="goalOptionForm">-->
+                                <!--<select wicket:id="goal">-->
+                                    <!--<option>Optie 1</option>-->
+
+                                <!--</select>-->
+                            <!--</form>-->
+                        <!--</td>-->
+                        <td wicket:id="bedrag">1</td>
+                        <td><button class="btn-sm btn-danger">
+                            Remove
+                        </button></td>
+                    </tr>
+                    <tr>
+                        <form wicket:id="statementForm">
+                            <td><input wicket:id="mededeling"></td>
+                            <td><input type="date" wicket:id="datum"></td>
+                            <td></td>
+                            <td><input wicket:id="aankomstRekening.nummer"></td>
+                            <!--<td></td>-->
+                            <td><input type="number" wicket:id="bedrag"></td>
+                            <td>
+                                <button class="btn-sm btn-success">
+                                    Add
+                                </button>
+                            </td>
+                        </form>
+                    </tr>
+                    </tbody>
+                    <thead>
+                    <tr>
+                        <th>Totaal</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th wicket:id="totaal">5000</th>
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <ul class="pagination" wicket:id="navigator"></ul>
+
+        </div>
+    </div>
+
+</wicket:panel>
+</body>
+</html>
