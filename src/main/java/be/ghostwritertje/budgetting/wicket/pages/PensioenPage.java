@@ -13,7 +13,7 @@ public class PensioenPage extends WicketPage {
     private int leeftijd = 23;
     private double pensioenFondsRendement = 0.05;
     private double gewoonFondsRendement = 0.07;
-    private double indexToegepastOpInlegPensioen = 2.0;
+    private double indexToegepastOpInlegPensioen = 0.02;
 
     @SpringBean
     private ChartService chartService;
