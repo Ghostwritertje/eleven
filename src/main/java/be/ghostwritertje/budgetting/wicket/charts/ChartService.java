@@ -118,10 +118,17 @@ public class ChartService {
                                 .setColor(new HexColor("#FFFFFF")))));
 
         for (Rekening rekening : rekeningen) {
+            Double tijdelijkeWaarde = 0.00;
             Map<String, Double> doubles = statementService.getTotalenPerMaand(rekening);
             List<Number> waarden = new ArrayList<>();
             for (String categorie : categories) {
-                waarden.add(doubles.get(categorie)== null? 0 :Math.round(doubles.get(categorie)*100)/100);
+                Double categorieWaarde = doubles.get(categorie);
+                if(categorieWaarde != null){
+                    waarden.add(Math.round(categorieWaarde*100)/100);
+                    tijdelijkeWaarde = categorieWaarde;
+                }else {
+                    waarden.add(Math.round(tijdelijkeWaarde*100)/100);
+                }
             }
             options.addSeries(new SimpleSeries()
                     .setName(rekening.getNaam() != null ? rekening.getNaam(): rekening.getNummer())
