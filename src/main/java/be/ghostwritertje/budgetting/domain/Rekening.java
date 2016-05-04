@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "t_rekening")
-public class Rekening implements Serializable {
+public class Rekening implements Serializable, Comparable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
@@ -96,4 +96,9 @@ public class Rekening implements Serializable {
     }
 
 
+    @Override
+    public int compareTo(Object o) {
+        Rekening otherRekening = (Rekening) o;
+        return this.getRekeningType().toString().compareTo(otherRekening.getRekeningType().toString());
+    }
 }

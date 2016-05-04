@@ -89,6 +89,7 @@ public class OverzichtPage extends WicketPage {
 
         add(new Chart("chart", chartService.buildHistoryChartOptions(user.getRekeningen())));
 
+        add(new Chart("otherChart", chartService.buildPieChartByRekeningType()));
     }
 
     private class RekeningForm extends Form<Rekening> {

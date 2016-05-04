@@ -5,5 +5,6 @@ package be.ghostwritertje.budgetting.domain;
  * on 2/05/16.
  */
 public enum RekeningType {
-    SPAARREKENING, BELEGGINGSREKENING, ZICHTREKENING
+    SPAARREKENING, BELEGGINGSREKENING, ZICHTREKENING, VERZEKERING;
+
 }

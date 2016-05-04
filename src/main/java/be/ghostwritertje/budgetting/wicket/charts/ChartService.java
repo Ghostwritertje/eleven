@@ -12,6 +12,7 @@ import com.googlecode.wickedcharts.highcharts.options.HorizontalAlignment;
 import com.googlecode.wickedcharts.highcharts.options.Legend;
 import com.googlecode.wickedcharts.highcharts.options.LegendLayout;
 import com.googlecode.wickedcharts.highcharts.options.Options;
+import com.googlecode.wickedcharts.highcharts.options.PixelOrPercent;
 import com.googlecode.wickedcharts.highcharts.options.PlotOptions;
 import com.googlecode.wickedcharts.highcharts.options.PlotOptionsChoice;
 import com.googlecode.wickedcharts.highcharts.options.SeriesType;
@@ -20,7 +21,9 @@ import com.googlecode.wickedcharts.highcharts.options.Stacking;
 import com.googlecode.wickedcharts.highcharts.options.Title;
 import com.googlecode.wickedcharts.highcharts.options.Tooltip;
 import com.googlecode.wickedcharts.highcharts.options.VerticalAlignment;
+import com.googlecode.wickedcharts.highcharts.options.color.ColorReference;
 import com.googlecode.wickedcharts.highcharts.options.color.HexColor;
+import com.googlecode.wickedcharts.highcharts.options.color.HighchartsColor;
 import com.googlecode.wickedcharts.highcharts.options.functions.PercentageFormatter;
 import com.googlecode.wickedcharts.highcharts.options.functions.StackTotalFormatter;
 import com.googlecode.wickedcharts.highcharts.options.series.Point;
@@ -34,8 +37,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+
+import static be.ghostwritertje.budgetting.domain.RekeningType.BELEGGINGSREKENING;
 
 /**
  * Created by jorandeboever
@@ -189,7 +197,7 @@ public class ChartService {
                 .setData(map.get("taksBedragen")));
 
         List<String> leeftijdStrings = new ArrayList<>();
-        for (Number leeftijdNumber: map.get("leeftijden")) {
+        for (Number leeftijdNumber : map.get("leeftijden")) {
             leeftijdStrings.add(String.format("%.0f", Double.parseDouble(leeftijdNumber.toString())));
         }
         options.setxAxis(new Axis()
@@ -203,7 +211,7 @@ public class ChartService {
         series4
                 .setData(map.get("absoluutBedragen"));
 
-         options.addSeries(series4);
+        options.addSeries(series4);
 
         return options;
 
@@ -257,7 +265,7 @@ public class ChartService {
             totaalIntrest += (totaalGespaard + totaalIntrest - totaalTaks) * gewoonFondsRendement;
 
 
-            totaalTaks = ( totaalIntrest) * 0.009;
+            totaalTaks = (totaalIntrest) * 0.009;
 
             totaalTaksBedragen.add(-Math.round(totaalTaks * 100) / 100);
 
@@ -330,5 +338,140 @@ public class ChartService {
 
         return options;
 
+    }
+
+    public Options buildPieChartByRekeningType() {
+
+        Options options = new Options();
+        ChartOptions chartOptions = new ChartOptions();
+        chartOptions
+                .setType(SeriesType.PIE);
+        options.setChartOptions(chartOptions);
+
+        options.setTitle(new Title("Browser market share, April, 2011"));
+
+        Axis yAxis = new Axis();
+        yAxis
+                .setTitle(new Title("Total percent market share"));
+        options.setxAxis(yAxis);
+
+        PlotOptions plotOptions = new PlotOptions();
+        plotOptions
+                .setShadow(Boolean.FALSE);
+
+        PlotOptionsChoice plotOptionsChoice = new PlotOptionsChoice();
+        plotOptionsChoice
+                .setPie(plotOptions);
+        options.setPlotOptions(plotOptionsChoice);
+
+        options.setTooltip(new Tooltip());
+
+        DataLabels browserDataLabels = new DataLabels();
+        // browserDataLabels
+        // .setFormatter(new Function());
+        browserDataLabels
+                .setColor(new HexColor("#ffffff"));
+        browserDataLabels
+                .setDistance(-30);
+
+        List<Rekening> browserData = rekeningService.getRekeningen("Joran");
+
+        PointSeries browserSeries = toRekeningTypeSeries(browserData);
+        browserSeries
+                .setName("Browsers");
+        browserSeries
+                .setSize(new PixelOrPercent(60, PixelOrPercent.Unit.PERCENT));
+        browserSeries
+                .setDataLabels(browserDataLabels);
+
+        DataLabels versionDataLabels = new DataLabels();
+        // versionDataLabels
+        // .setFormatter(new Function());
+
+        PointSeries versionSeries = toRekeningSeries(browserData);
+        versionSeries
+                .setName("Versions");
+        versionSeries
+                .setInnerSize(new PixelOrPercent(60, PixelOrPercent.Unit.PERCENT));
+        versionSeries
+                .setDataLabels(versionDataLabels);
+
+        options.addSeries(browserSeries);
+        options.addSeries(versionSeries);
+        return options;
+
+    }
+
+
+    private PointSeries toRekeningTypeSeries(final List<Rekening> rekeningen) {
+        PointSeries rekeningTypeSeries = new PointSeries();
+        Map<String, Double> rekeningTypeTotalen = new TreeMap<>();
+        for (Rekening rekening : rekeningen) {
+            Double vorigTotaal = rekeningTypeTotalen.get(rekening.getRekeningType().toString());
+            if (vorigTotaal != null) {
+                rekeningTypeTotalen.remove(rekening.getRekeningType().toString());
+                rekeningTypeTotalen.put(rekening.getRekeningType().toString(), vorigTotaal + rekeningService.getBalans(rekening));
+            } else {
+                rekeningTypeTotalen.put(rekening.getRekeningType().toString(), rekeningService.getBalans(rekening));
+            }
+        }
+
+
+        for (Map.Entry<String, Double> rekeningType : rekeningTypeTotalen.entrySet()) {
+            ColorReference reference;
+            switch (rekeningType.getKey()) {
+                case "BELEGGINGSREKENING":
+                    reference = new HighchartsColor(0);
+                    break;
+                case "VERZEKERING":
+                    reference = new HighchartsColor(1);
+                    break;
+                case "SPAARREKENING":
+                    reference = new HighchartsColor(2);
+                    break;
+                case "ZICHTREKENING":
+                    reference = new HighchartsColor(3);
+                    break;
+                default:
+                    reference = new HighchartsColor(4);
+            }
+
+            rekeningTypeSeries
+                    .addPoint(new Point(rekeningType.getKey()
+                            , rekeningType.getValue()
+                            , reference));
+        }
+        return rekeningTypeSeries;
+    }
+
+
+    private PointSeries toRekeningSeries(final List<Rekening> rekeningen) {
+        PointSeries versionSeries = new PointSeries();
+        Collections.sort(rekeningen);
+        for (Rekening rekening : rekeningen) {
+            ColorReference reference;
+            switch (rekening.getRekeningType()) {
+                case BELEGGINGSREKENING:
+                    reference = new HighchartsColor(0);
+                    break;
+                case VERZEKERING:
+                    reference = new HighchartsColor(1);
+                    break;
+                case SPAARREKENING:
+                    reference = new HighchartsColor(2);
+                    break;
+                case ZICHTREKENING:
+                    reference = new HighchartsColor(3);
+                    break;
+                default:
+                    reference = new HighchartsColor(4);
+            }
+
+            versionSeries.addPoint(new Point(rekening
+                    .getNaam(), rekeningService.getBalans(rekening)
+                    , reference));
+
+        }
+        return versionSeries;
     }
 }
