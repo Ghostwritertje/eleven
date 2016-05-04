@@ -2,6 +2,7 @@ package be.ghostwritertje.budgetting.wicket.charts;
 
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.services.RekeningService;
+import be.ghostwritertje.budgetting.services.SpeculatieService;
 import be.ghostwritertje.budgetting.services.StatementService;
 import com.googlecode.wickedcharts.highcharts.options.Axis;
 import com.googlecode.wickedcharts.highcharts.options.ChartOptions;
@@ -48,6 +49,9 @@ public class ChartService {
 
     @Autowired
     private StatementService statementService;
+
+    @Autowired
+    private SpeculatieService speculatieService;
 
     public Options buildOverviewChartOptions(List<Rekening> rekeningen) {
         Options options = new Options();
@@ -169,60 +173,27 @@ public class ChartService {
                                 .setEnabled(Boolean.FALSE)
                                 .setColor(new HexColor("#FFFFFF")))));
 
-        double spaarBedrag = 940;
-        double totaalGespaard = 0;
-        double totaalIntrest = 0;
-        double totaalTaks = 0;
-        double totaalMinTaks = 0;
-        List<Number> spaarBedragen = new ArrayList<>();
-        List<Number> interestBedragen = new ArrayList<>();
-        List<Number> totaalMinTaksBedragen = new ArrayList<>();
-        List<Number> totaalTaksBedragen = new ArrayList<>();
 
-        List<String> categories = new ArrayList<>();
-
-        double aantalJarenStopzettingIndex = 4;
-
-        for (int i = leeftijd; i < 65; i++) {
-            if (aantalJarenStopzettingIndex-- <= 0) {
-                spaarBedrag *= (1 + geschatteIndex);
-            }
-            totaalGespaard += spaarBedrag;
-            totaalIntrest += (totaalGespaard + totaalIntrest - totaalTaks) * geschatteIntrest;
-            if (i >= 60) {
-                if (i == 60) {
-                    totaalTaks = (totaalGespaard + totaalIntrest) * 0.08;
-                }
-                totaalTaksBedragen.add(-Math.round(totaalTaks * 100) / 100);
-            } else {
-                totaalTaksBedragen.add(0);
-            }
-
-            totaalMinTaks = (totaalGespaard + totaalIntrest) - totaalTaks;
-
-
-            categories.add(String.format("%d", i));
-            spaarBedragen.add(Math.round(totaalGespaard * 100) / 100);
-            interestBedragen.add(Math.round(totaalIntrest * 100) / 100);
-            totaalMinTaksBedragen.add(Math.round(totaalMinTaks * 100) / 100);
-
-
-        }
+        Map<String, List<Number>> map = speculatieService.berekenPensioenFonds(geschatteIntrest, leeftijd, geschatteIndex);
 
         options.addSeries(new SimpleSeries()
                 .setName("Interest")
-                .setData(interestBedragen));
+                .setData(map.get("intrestBedragen")));
 
         options.addSeries(new SimpleSeries()
                 .setName("Gespaard")
-                .setData(spaarBedragen));
+                .setData(map.get("inlegBedragen")));
 
         options.addSeries(new SimpleSeries()
                 .setName("Belastingen")
-                .setData(totaalTaksBedragen));
+                .setData(map.get("taksBedragen")));
 
+        List<String> leeftijdStrings = new ArrayList<>();
+        for (Number leeftijdNumber: map.get("leeftijden")) {
+            leeftijdStrings.add(String.format("%.0f", Double.parseDouble(leeftijdNumber.toString())));
+        }
         options.setxAxis(new Axis()
-                .setCategories(categories));
+                .setCategories(leeftijdStrings));
 
         Series<Number> series4 = new SimpleSeries();
         series4
@@ -230,9 +201,9 @@ public class ChartService {
         series4
                 .setName("Totaal na belastingen");
         series4
-                .setData(totaalMinTaksBedragen);
+                .setData(map.get("absoluutBedragen"));
 
-        // options.addSeries(series4);
+         options.addSeries(series4);
 
         return options;
 
