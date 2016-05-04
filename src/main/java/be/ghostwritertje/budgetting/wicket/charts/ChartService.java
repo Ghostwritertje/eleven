@@ -189,19 +189,19 @@ public class ChartService {
             }
             totaalGespaard += spaarBedrag;
             totaalIntrest += (totaalGespaard + totaalIntrest - totaalTaks) * geschatteIntrest;
-            if(i >= 60) {
-                if(i == 60) {
+            if (i >= 60) {
+                if (i == 60) {
                     totaalTaks = (totaalGespaard + totaalIntrest) * 0.08;
                 }
-                totaalTaksBedragen.add(-Math.round(totaalTaks*100)/100);
-            }else  {
+                totaalTaksBedragen.add(-Math.round(totaalTaks * 100) / 100);
+            } else {
                 totaalTaksBedragen.add(0);
             }
 
             totaalMinTaks = (totaalGespaard + totaalIntrest) - totaalTaks;
 
 
-            categories.add(String.format("%d",  i));
+            categories.add(String.format("%d", i));
             spaarBedragen.add(Math.round(totaalGespaard * 100) / 100);
             interestBedragen.add(Math.round(totaalIntrest * 100) / 100);
             totaalMinTaksBedragen.add(Math.round(totaalMinTaks * 100) / 100);
@@ -232,12 +232,103 @@ public class ChartService {
         series4
                 .setData(totaalMinTaksBedragen);
 
-       // options.addSeries(series4);
+        // options.addSeries(series4);
 
         return options;
 
     }
 
+
+    public Options buildAlternatiefPensioenChartOptions(double gewoonFondsRendement, int leeftijd, double indexToegepastOpInlegPensioen) {
+
+        Options options = new Options();
+        options.setChartOptions(new ChartOptions()
+                .setType(SeriesType.COLUMN));
+
+        options.setTitle(new Title("Historiek"));
+
+        options.setyAxis(new Axis()
+                .setMin(-5000)
+                .setTitle(new Title("Money"))
+                .setStackLabels(new StackLabels()
+                        .setEnabled(Boolean.FALSE)));
+
+        options.setTooltip(new Tooltip()
+                .setShared(true));
+
+
+        options.setPlotOptions(new PlotOptionsChoice()
+                .setColumn(new PlotOptions()
+                        .setStacking(Stacking.NORMAL)
+                        .setDataLabels(new DataLabels()
+                                .setEnabled(Boolean.FALSE)
+                                .setColor(new HexColor("#FFFFFF")))));
+
+        double spaarBedrag = 658;
+        double totaalGespaard = 0;
+        double totaalIntrest = 0;
+        double totaalTaks = 0;
+        double totaalMinTaks = 0;
+        List<Number> spaarBedragen = new ArrayList<>();
+        List<Number> interestBedragen = new ArrayList<>();
+        List<Number> totaalMinTaksBedragen = new ArrayList<>();
+        List<Number> totaalTaksBedragen = new ArrayList<>();
+
+        List<String> categories = new ArrayList<>();
+
+        double aantalJarenStopzettingIndex = 4;
+
+        for (int i = leeftijd; i < 65; i++) {
+            if (aantalJarenStopzettingIndex-- <= 0) {
+                spaarBedrag *= (1 + indexToegepastOpInlegPensioen);
+            }
+            totaalGespaard += spaarBedrag;
+            totaalIntrest += (totaalGespaard + totaalIntrest - totaalTaks) * gewoonFondsRendement;
+
+
+            totaalTaks = ( totaalIntrest) * 0.009;
+
+            totaalTaksBedragen.add(-Math.round(totaalTaks * 100) / 100);
+
+
+            totaalMinTaks = (totaalGespaard + totaalIntrest) - totaalTaks;
+
+            categories.add(String.format("%d", i));
+            spaarBedragen.add(Math.round(totaalGespaard * 100) / 100);
+            interestBedragen.add(Math.round(totaalIntrest * 100) / 100);
+            totaalMinTaksBedragen.add(Math.round(totaalMinTaks * 100) / 100);
+
+
+        }
+
+        options.addSeries(new SimpleSeries()
+                .setName("Interest")
+                .setData(interestBedragen));
+
+        options.addSeries(new SimpleSeries()
+                .setName("Gespaard")
+                .setData(spaarBedragen));
+
+        options.addSeries(new SimpleSeries()
+                .setName("Belastingen")
+                .setData(totaalTaksBedragen));
+
+        options.setxAxis(new Axis()
+                .setCategories(categories));
+
+        Series<Number> series4 = new SimpleSeries();
+        series4
+                .setType(SeriesType.LINE);
+        series4
+                .setName("Totaal na belastingen");
+        series4
+                .setData(totaalMinTaksBedragen);
+
+        // options.addSeries(series4);
+
+        return options;
+
+    }
 
     public Options buildPieChartByCategorie(Map<String, Double> categorieWaardenMap) {
 

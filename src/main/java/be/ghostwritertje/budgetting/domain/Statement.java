@@ -49,7 +49,6 @@ public class Statement implements Serializable {
         this.aankomstRekening = aankomstRekening;
         this.bedrag = bedrag;
         this.datum = datum;
-        if (aankomstRekening != null && aankomstRekening.getCategorie() != null) this.categorie = aankomstRekening.getCategorie();
     }
 
     public Statement(double bedrag, Date datum) {

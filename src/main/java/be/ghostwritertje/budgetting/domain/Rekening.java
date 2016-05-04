@@ -31,7 +31,7 @@ public class Rekening implements Serializable {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Categorie categorie;
+    private RekeningType rekeningType;
 
     public Rekening() {
     }
@@ -74,12 +74,12 @@ public class Rekening implements Serializable {
         this.naam = naam;
     }
 
-    public Categorie getCategorie() {
-        return categorie;
+    public RekeningType getRekeningType() {
+        return rekeningType;
     }
 
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
+    public void setRekeningType(RekeningType rekeningType) {
+        this.rekeningType = rekeningType;
     }
 
     public String getBank() {
