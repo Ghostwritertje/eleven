@@ -1,7 +1,11 @@
 package be.ghostwritertje.budgetting.wicket.pages;
 
+import be.ghostwritertje.budgetting.wicket.reference.SimpleSidebarCSSReference;
 import be.ghostwritertje.budgetting.wicket.WicketSession;
-import be.ghostwritertje.budgetting.wicket.pages.OverzichtPage;
+import de.agilecoders.wicket.core.Bootstrap;
+import org.apache.wicket.markup.head.CssReferenceHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -49,5 +53,17 @@ public class WicketPage extends WebPage {
 
    /*     add(new Label("host", System.getenv("OPENSHIFT_MYSQL_DB_HOST")));
         add(new Label("port", System.getenv("OPENSHIFT_MYSQL_DB_PORT")));*/
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        Bootstrap.renderHead(response);
+
+        response.render(JavaScriptHeaderItem.forReference(this.getApplication().getJavaScriptLibrarySettings().getJQueryReference()));
+
+        response.render(CssReferenceHeaderItem.forReference(SimpleSidebarCSSReference.get()));
+
     }
 }
