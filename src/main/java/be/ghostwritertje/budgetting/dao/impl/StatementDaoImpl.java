@@ -133,7 +133,7 @@ public class StatementDaoImpl implements StatementDao {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
 
         List<Map<String, Double>> lijst = new ArrayList<>();
-        for (Categorie categorie : Categorie.values()) {
+        for (Categorie categorie : Categorie.getUitgavenCategorieen()) {
 
             Query query = sessionFactory.getCurrentSession().createQuery("SELECT\n" +
                     "  concat(year(s.datum), '/', month(s.datum)),\n" +

@@ -216,7 +216,7 @@ public class ChartService {
             }
 
             options.addSeries(new SimpleSeries()
-                    .setName(Categorie.values()[i++].toString())
+                    .setName(Categorie.getUitgavenCategorieen().get(i++).toString())
                     .setData(waarden));
 
         }
