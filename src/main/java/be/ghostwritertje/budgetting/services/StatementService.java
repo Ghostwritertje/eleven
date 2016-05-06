@@ -42,6 +42,10 @@ public class StatementService {
         return statementDao.getTotalenPerMaand(rekening);
     }
 
+    public List<Map<String, Double>> getTotaleUitgavenPerMaand(String username) {
+        return statementDao.getTotaleUitgavenPerMaand(username);
+    }
+
     public List<Statement> getInkomendeStatementsOverAlleRekeningen(String username) {
         return statementDao.getInkomendeStatementsOverAlleRekeningen(username);
     }

@@ -1,5 +1,6 @@
 package be.ghostwritertje.budgetting.wicket.charts;
 
+import be.ghostwritertje.budgetting.domain.Categorie;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.services.RekeningService;
 import be.ghostwritertje.budgetting.services.SpeculatieService;
@@ -148,6 +149,73 @@ public class ChartService {
             }
             options.addSeries(new SimpleSeries()
                     .setName(rekening.getNaam() != null ? rekening.getNaam() : rekening.getNummer())
+                    .setData(waarden));
+
+        }
+
+
+        return options;
+
+    }
+
+    public Options buildUitgavenChart(String username) {
+
+        Options options = new Options();
+        options.setChartOptions(new ChartOptions()
+                .setType(SeriesType.COLUMN));
+
+        options.setTitle(new Title("Historiek"));
+
+
+        LocalDate startDate = new LocalDate(2011, 10, 1);
+        LocalDate now = new LocalDate();
+        int aantalMaanden = Months.monthsBetween(startDate, now).getMonths();
+        List<String> categories = new ArrayList<>();
+        for (int i = 0; i <= aantalMaanden; i++) {
+            categories.add(String.format("%d/%d", startDate.getYear(), startDate.getMonthOfYear()));
+            startDate = startDate.plusMonths(1);
+        }
+
+        options.setxAxis(new Axis()
+                .setCategories(categories));
+
+        options.setyAxis(new Axis()
+                .setMin(0)
+                .setTitle(new Title("Money"))
+                .setStackLabels(new StackLabels()
+                        .setEnabled(Boolean.FALSE))
+        );
+
+
+        options.setTooltip(new Tooltip()
+                .setFormatter(new StackTotalFormatter()));
+
+        options.setPlotOptions(new PlotOptionsChoice()
+                .setColumn(new PlotOptions()
+                        .setStacking(Stacking.NORMAL)
+                        .setDataLabels(new DataLabels()
+                                .setEnabled(Boolean.FALSE)
+                                .setColor(new HexColor("#FFFFFF")))));
+
+        List<Map<String, Double>> lijst = statementService.getTotaleUitgavenPerMaand("Joran");
+        int i = 0;
+        for (Map<String, Double> map : lijst) {
+
+            Double tijdelijkeWaarde = 0.00;
+            List<Number> waarden = new ArrayList<>();
+
+            for (String categorie : categories) {
+                Double categorieWaarde = map.get(categorie);
+                if (categorieWaarde != null) {
+                    waarden.add(Math.round(categorieWaarde * 100) / 100);
+                    tijdelijkeWaarde = categorieWaarde;
+                } else {
+                    waarden.add(Math.round(tijdelijkeWaarde * 100) / 100);
+                }
+            }
+
+            options.addSeries(new SimpleSeries()
+                    .setName(Categorie.values()[i++].toString())
                     .setData(waarden));
 
         }

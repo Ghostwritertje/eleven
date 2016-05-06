@@ -14,6 +14,7 @@ import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -44,7 +45,7 @@ public class StatementDaoImpl implements StatementDao {
                 "or s.vertrekRekening.nummer = :aankomstRekeningNummer " +
                 "order by s.datum desc"*/);
         query.setParameter("aankomstRekeningNummer", rekening.getNummer());
-        LocalDate datum =  LocalDate.now();
+        LocalDate datum = LocalDate.now();
         query.setParameter("datum", datum.toDate());
         final List<Statement> statements = query.list();
 
@@ -93,28 +94,6 @@ public class StatementDaoImpl implements StatementDao {
     public Map<String, Double> getTotalenPerMaand(Rekening rekening) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
 
-        // TODO_JORAN: schrijf dit in één query
-        /*
-        SELECT
-             concat(year(s.datum), '/', month(s.datum)) AS "nieuweDatum",
-            IFNULL((SELECT sum(t.bedrag)
-            FROM t_statement t
-             WHERE
-             concat(year(t.datum), '/', MONTH(t.datum)) = nieuweDatum AND
-              s.aankomstRekeningId = 94), 0) -
-             IFNULL((SELECT sum(t.bedrag)
-             FROM t_statement t
-             WHERE
-            concat(year(t.datum), '/', MONTH(t.datum)) = nieuweDatum AND
-            s.vertrekRekeningId = 94), 0)
-
-           AS 'totaalMin'
-
-            FROM t_statement s
-            GROUP BY MONTH(s.datum), YEAR(s.datum)
-            ORDER BY nieuweDatum;
-
-         */
 
         Query query = sessionFactory.getCurrentSession().createQuery("SELECT\n" +
                 "  concat(year(s.datum), '/', month(s.datum)),\n" +
@@ -135,7 +114,7 @@ public class StatementDaoImpl implements StatementDao {
                 "GROUP BY MONTH(s.datum), YEAR(s.datum)\n" +
                 "ORDER BY concat(year(s.datum), '/', month(s.datum))");
         query.setParameter("rekeningNummer", rekening.getNummer());
-        LocalDate datum =  LocalDate.now();
+        LocalDate datum = LocalDate.now();
         query.setParameter("datum", datum.toDate());
         List<Object[]> objects = query.list();
 
@@ -148,6 +127,60 @@ public class StatementDaoImpl implements StatementDao {
         return waarden;
     }
 
+    private List<Rekening> getRekeningen(String username) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        Query query = sessionFactory.getCurrentSession().createQuery("from Rekening r where r.user.username = :username");
+        query.setParameter("username", username);
+        List<Rekening> rekeningen = query.list();
+        transaction.commit();
+        return rekeningen;
+
+    }
+
+    @Override
+    public List<Map<String, Double>> getTotaleUitgavenPerMaand(String username) {
+        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
+
+        List<Map<String, Double>> lijst = new ArrayList<>();
+        for (Categorie categorie : Categorie.values()) {
+
+            Query query = sessionFactory.getCurrentSession().createQuery("SELECT\n" +
+                    "  concat(year(s.datum), '/', month(s.datum)),\n" +
+                    "  IFNULL((SELECT sum(t.bedrag)\n" +
+                    "          FROM Statement t\n" +
+                    "          WHERE" +
+                    "          (year(t.datum) = year(s.datum)  AND month(t.datum) = month(s.datum))\n" +
+                    "            ), 0) -\n" +
+                    "  0.00\n" +
+                    "\n" +
+                    "FROM Statement s\n" +
+                    "WHERE s.datum < :datum " +
+                    "AND s.categorie = :categorie " +
+                    " and s.vertrekRekening.user.username = :username \n" +
+                    " and s.aankomstRekening IS NULL  \n" +
+                    "GROUP BY MONTH(s.datum), YEAR(s.datum)\n" +
+                    "ORDER BY concat(year(s.datum), '/', month(s.datum))");
+//            query.setParameter("rekeningenLijst", this.getRekeningen("Joran"));
+            System.out.println("2.1");
+            query.setParameter("username", "Joran");
+            LocalDate datum = LocalDate.now();
+            query.setParameter("datum", datum.toDate());
+            query.setParameter("categorie", categorie);
+            List<Object[]> objects = query.list();
+
+            Map<String, Double> waarden = new HashMap<>();
+            for (Object[] object : objects) {
+                waarden.put((String) object[0], (Double) object[1]);
+            }
+            lijst.add(waarden);
+        }
+
+        transaction.commit();
+        return lijst;
+    }
+
+
     public Map<String, Double> getTotaalPerCategorie(String username) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
 
@@ -157,7 +190,7 @@ public class StatementDaoImpl implements StatementDao {
                 "AND  t.vertrekRekening IS NULL " + //TODO_JORAN: Case voor rekening van andere gebruiker?
                 "GROUP BY t.categorie");
         query.setParameter("username", username);
-        LocalDate datum =  LocalDate.now();
+        LocalDate datum = LocalDate.now();
         query.setParameter("datum", datum.toDate());
         List<Object[]> objects = query.list();
 
@@ -221,7 +254,7 @@ public class StatementDaoImpl implements StatementDao {
                 "                                                                  FROM Rekening r\n" +
                 "                                                                  WHERE r.user.username = :userName))");
         query.setParameter("userName", userName);
-        LocalDate datum =  LocalDate.now();
+        LocalDate datum = LocalDate.now();
         query.setParameter("datum", datum.toDate());
         final List<Statement> statements = query.list();
 

@@ -1,5 +1,6 @@
 package be.ghostwritertje.budgetting.dao.api;
 
+import be.ghostwritertje.budgetting.domain.Categorie;
 import be.ghostwritertje.budgetting.domain.Rekening;
 import be.ghostwritertje.budgetting.domain.Statement;
 
@@ -25,4 +26,6 @@ public interface StatementDao {
     List<Statement> getInkomendeStatementsOverAlleRekeningen(String userName);
 
     Map<String, Double> getTotaalPerCategorie(String user);
+
+    List<Map<String,Double>> getTotaleUitgavenPerMaand(String username);
 }
