@@ -9,40 +9,49 @@
 <wicket:extend>
     <h1>Overzicht rekeningen</h1>
 
-<div class="col-sm-12">
-        <div class="col-sm-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">Rekeningen
-                    <button wicket:id="addRekening" type="button" style="float: right;"
-                            class="btn btn-primary btn-xs">Add
-                    </button>
-                </div>
-                <div wicket:id="rekeningen" class="panel-body">
-                    <a wicket:id="link" href="#">
-                        <span wicket:id="nummer">Nummer</span>
-                    </a>
-                    <span wicket:id="balans" style="float: right;" class="badge">$ 500,00</span>
-
-                </div>
-                <form wicket:id="rekeningForm" class="panel-body">
-                    <input wicket:id="nummer">
-                    <button wicket:id="add" type="submit" style="float: right;" class="btn btn-primary btn-xs">Add
-                    </button>
-
-                </form>
-                <div class="panel-footer">
-                    Totaal:
-                    <span wicket:id="totaal" style="float: right;" class="badge">$ 500,00</span>
-                </div>
-
-            </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Rekeningen
+            <button wicket:id="addRekening" type="button" style="float: right;"
+                    class="btn btn-primary btn-xs">Add
+            </button>
         </div>
-        <div class="col-sm-6 col-md-8" wicket:id="chart"></div>
-</div>
-        <div class="col-sm-8 col-md-8 mobileInvisible" wicket:id="otherChart" style="width: 600px; height: 400px; margin: 0 auto"></div>
+        <div wicket:id="rekeningen" class="panel-body">
+            <a wicket:id="link" href="#">
+                <span wicket:id="nummer">Nummer</span>
+            </a>
+            <span wicket:id="balans" style="float: right;" class="badge">$ 500,00</span>
 
+        </div>
+        <form wicket:id="rekeningForm" class="panel-body">
+            <input wicket:id="nummer">
+            <button wicket:id="add" type="submit" style="float: right;" class="btn btn-primary btn-xs">Add
+            </button>
 
+        </form>
+        <div class="panel-footer">
+            Totaal:
+            <span wicket:id="totaal" style="float: right;" class="badge">$ 500,00</span>
+        </div>
 
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Historiek
+        </div>
+        <div class="panel-body">
+            <div wicket:id="chart"></div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Verdeling
+        </div>
+        <div class="panel-body">
+            <div class=" mobileInvisible" wicket:id="otherChart"
+                 style="width: 600px; height: 400px; margin: 0 auto"></div>
+        </div>
+    </div>
 
 </wicket:extend>
 </body>
