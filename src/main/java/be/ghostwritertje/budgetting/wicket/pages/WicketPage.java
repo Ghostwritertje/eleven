@@ -1,6 +1,7 @@
 package be.ghostwritertje.budgetting.wicket.pages;
 
-import be.ghostwritertje.budgetting.wicket.reference.SimpleSidebarCSSReference;
+import be.ghostwritertje.budgetting.wicket.reference.MobileCssReference;
+import be.ghostwritertje.budgetting.wicket.reference.SideBarCssReference;
 import be.ghostwritertje.budgetting.wicket.WicketSession;
 import de.agilecoders.wicket.core.Bootstrap;
 import org.apache.wicket.markup.head.CssReferenceHeaderItem;
@@ -63,7 +64,8 @@ public class WicketPage extends WebPage {
 
         response.render(JavaScriptHeaderItem.forReference(this.getApplication().getJavaScriptLibrarySettings().getJQueryReference()));
 
-        response.render(CssReferenceHeaderItem.forReference(SimpleSidebarCSSReference.get()));
+        response.render(CssReferenceHeaderItem.forReference(SideBarCssReference.get()));
+        response.render(CssReferenceHeaderItem.forReference(MobileCssReference.get()));
 
     }
 }

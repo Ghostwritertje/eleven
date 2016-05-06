@@ -8,12 +8,15 @@
 
 <wicket:extend>
     <h1>Overzicht rekeningen</h1>
-    <p>Hello, <span wicket:id="userName"> username</span></p>
-    <div class="row">
 
+<div class="col-sm-12">
         <div class="col-sm-4">
             <div class="panel panel-default">
-                <div class="panel-heading">Rekeningen <button wicket:id="addRekening" type="button" style="float: right;"  class="btn btn-primary btn-xs">Voeg rekening toe</button></div>
+                <div class="panel-heading">Rekeningen
+                    <button wicket:id="addRekening" type="button" style="float: right;"
+                            class="btn btn-primary btn-xs">Add
+                    </button>
+                </div>
                 <div wicket:id="rekeningen" class="panel-body">
                     <a wicket:id="link" href="#">
                         <span wicket:id="nummer">Nummer</span>
@@ -23,7 +26,8 @@
                 </div>
                 <form wicket:id="rekeningForm" class="panel-body">
                     <input wicket:id="nummer">
-                    <button wicket:id="add" type="submit" style="float: right;"  class="btn btn-primary btn-xs">Add</button>
+                    <button wicket:id="add" type="submit" style="float: right;" class="btn btn-primary btn-xs">Add
+                    </button>
 
                 </form>
                 <div class="panel-footer">
@@ -33,10 +37,13 @@
 
             </div>
         </div>
-        <div class="col-sm-8" wicket:id="chart"></div>
-        <div class="col-sm-8" wicket:id="otherChart"></div>
+        <div class="col-sm-6 col-md-8" wicket:id="chart"></div>
+</div>
+        <div class="col-sm-8 col-md-8 mobileInvisible" wicket:id="otherChart" style="width: 600px; height: 400px; margin: 0 auto"></div>
 
-    </div>
+
+
+
 </wicket:extend>
 </body>
 </html>

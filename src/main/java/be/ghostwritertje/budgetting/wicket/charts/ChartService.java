@@ -354,7 +354,7 @@ public class ChartService {
         Axis yAxis = new Axis();
         yAxis
                 .setTitle(new Title("Total percent market share"));
-        options.setxAxis(yAxis);
+        options.setyAxis(yAxis);
 
         PlotOptions plotOptions = new PlotOptions();
         plotOptions

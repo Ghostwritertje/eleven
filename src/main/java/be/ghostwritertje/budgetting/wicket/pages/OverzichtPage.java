@@ -44,16 +44,7 @@ public class OverzichtPage extends WicketPage {
 
     public OverzichtPage() {
         user = userService.getUser("Joran");
-        add(new Label("userName", user.getUsername()));
 
-     /*   add(new Button("addRekening") {
-            @Override
-            public void onSubmit() {
-                System.out.println("make rekeningForm visible");
-                isAddRekeningVisible = true;
-            }
-        });
-        */
         add(new Link("addRekening") {
             @Override
             public void onClick() {
