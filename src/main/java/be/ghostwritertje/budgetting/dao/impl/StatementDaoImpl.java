@@ -127,16 +127,6 @@ public class StatementDaoImpl implements StatementDao {
         return waarden;
     }
 
-    private List<Rekening> getRekeningen(String username) {
-        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
-
-        Query query = sessionFactory.getCurrentSession().createQuery("from Rekening r where r.user.username = :username");
-        query.setParameter("username", username);
-        List<Rekening> rekeningen = query.list();
-        transaction.commit();
-        return rekeningen;
-
-    }
 
     @Override
     public List<Map<String, Double>> getTotaleUitgavenPerMaand(String username) {
@@ -148,21 +138,19 @@ public class StatementDaoImpl implements StatementDao {
             Query query = sessionFactory.getCurrentSession().createQuery("SELECT\n" +
                     "  concat(year(s.datum), '/', month(s.datum)),\n" +
                     "  IFNULL((SELECT sum(t.bedrag)\n" +
-                    "          FROM Statement t\n" +
+                    "          FROM Statement t  left join t.aankomstRekening a\n" +
                     "          WHERE" +
-                    "          (year(t.datum) = year(s.datum)  AND month(t.datum) = month(s.datum))\n" +
+                    " a is null  and" +
+                    " t.vertrekRekening.user.username = :username   and " +
+                    " t.categorie = :categorie  AND  " +
+                    "        (year(t.datum) = year(s.datum)  AND month(t.datum) = month(s.datum))\n" +
                     "            ), 0) -\n" +
                     "  0.00\n" +
                     "\n" +
                     "FROM Statement s\n" +
                     "WHERE s.datum < :datum " +
-                    "AND s.categorie = :categorie " +
-                    " and s.vertrekRekening.user.username = :username \n" +
-                    " and s.aankomstRekening IS NULL  \n" +
                     "GROUP BY MONTH(s.datum), YEAR(s.datum)\n" +
                     "ORDER BY concat(year(s.datum), '/', month(s.datum))");
-//            query.setParameter("rekeningenLijst", this.getRekeningen("Joran"));
-            System.out.println("2.1");
             query.setParameter("username", "Joran");
             LocalDate datum = LocalDate.now();
             query.setParameter("datum", datum.toDate());

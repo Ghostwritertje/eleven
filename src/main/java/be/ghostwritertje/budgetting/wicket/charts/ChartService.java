@@ -197,20 +197,18 @@ public class ChartService {
                                 .setEnabled(Boolean.FALSE)
                                 .setColor(new HexColor("#FFFFFF")))));
 
-        List<Map<String, Double>> lijst = statementService.getTotaleUitgavenPerMaand("Joran");
+        List<Map<String, Double>> lijst = statementService.getTotaleUitgavenPerMaand(username);
         int i = 0;
         for (Map<String, Double> map : lijst) {
 
-            Double tijdelijkeWaarde = 0.00;
             List<Number> waarden = new ArrayList<>();
 
             for (String categorie : categories) {
                 Double categorieWaarde = map.get(categorie);
                 if (categorieWaarde != null) {
                     waarden.add(Math.round(categorieWaarde * 100) / 100);
-                    tijdelijkeWaarde = categorieWaarde;
                 } else {
-                    waarden.add(Math.round(tijdelijkeWaarde * 100) / 100);
+                    waarden.add(0.0);
                 }
             }
 
