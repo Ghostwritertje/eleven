@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
+import org.joda.time.LocalDate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -52,9 +53,10 @@ public class RekeningDaoImpl implements RekeningDao {
     public double getBalans(final Rekening rekening) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
 
-        Query query = sessionFactory.getCurrentSession().createQuery("select sum(s.bedrag) from Statement s where s.aankomstRekening.nummer = :rekeningNummer");
+        Query query = sessionFactory.getCurrentSession().createQuery("select sum(s.bedrag) from Statement s where  s.datum < :datum AND  s.aankomstRekening.nummer = :rekeningNummer");
         query.setParameter("rekeningNummer", rekening.getNummer());
-
+        LocalDate datum =  LocalDate.now();
+        query.setParameter("datum", datum.toDate());
         double balans;
         try {
             balans = (double) query.uniqueResult();
@@ -62,8 +64,9 @@ public class RekeningDaoImpl implements RekeningDao {
             balans = 0;
         }
 
-        query = sessionFactory.getCurrentSession().createQuery("select sum(s.bedrag) from Statement s where s.vertrekRekening.nummer = :rekeningNummer");
+        query = sessionFactory.getCurrentSession().createQuery("select sum(s.bedrag) from Statement s where  s.datum < :datum AND  s.vertrekRekening.nummer = :rekeningNummer");
         query.setParameter("rekeningNummer", rekening.getNummer());
+        query.setParameter("datum", datum.toDate());
         double negatieveBalans;
         try {
             negatieveBalans = (double) query.uniqueResult();

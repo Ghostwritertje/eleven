@@ -51,6 +51,11 @@ public class Statement implements Serializable {
         this.datum = datum;
     }
 
+    public Statement(Rekening vertrekRekening, Rekening aankomstRekening, double bedrag, Date datum, String mededeling) {
+        this(vertrekRekening, aankomstRekening, bedrag, datum);
+        this.mededeling = mededeling;
+    }
+
     public Statement(double bedrag, Date datum) {
         this.bedrag = bedrag;
         this.datum = datum;
@@ -61,9 +66,9 @@ public class Statement implements Serializable {
     }
 
     public String getKorteMededeling() {
-        if(mededeling == null) return "";
-        if(mededeling.length() > 20){
-            return mededeling.substring(0,20);
+        if (mededeling == null) return "";
+        if (mededeling.length() > 20) {
+            return mededeling.substring(0, 20);
         }
         return mededeling;
     }

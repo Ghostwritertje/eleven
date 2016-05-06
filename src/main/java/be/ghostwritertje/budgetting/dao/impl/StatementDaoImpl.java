@@ -10,6 +10,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -39,10 +40,12 @@ public class StatementDaoImpl implements StatementDao {
         //TODO_JORAN: schrijf dit in één query
         Query query = sessionFactory.getCurrentSession().createQuery("" +
                 "from Statement s " +
-                "where s.aankomstRekening.nummer = :aankomstRekeningNummer "/* +
+                "where  s.datum < :datum AND  s.aankomstRekening.nummer = :aankomstRekeningNummer "/* +
                 "or s.vertrekRekening.nummer = :aankomstRekeningNummer " +
                 "order by s.datum desc"*/);
         query.setParameter("aankomstRekeningNummer", rekening.getNummer());
+        LocalDate datum =  LocalDate.now();
+        query.setParameter("datum", datum.toDate());
         final List<Statement> statements = query.list();
 
         query = sessionFactory.getCurrentSession().createQuery("from Statement s where s.vertrekRekening.nummer = :vertrekRekeningNummer");
@@ -62,6 +65,7 @@ public class StatementDaoImpl implements StatementDao {
         return statements;
     }
 
+    @Deprecated
     public double getTotaalTussenDatumsOld(Rekening rekening, Date beginDatum, Date eindDatum) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
 
@@ -127,9 +131,12 @@ public class StatementDaoImpl implements StatementDao {
                 "         ), 0)\n" +
                 "\n" +
                 "FROM Statement s\n" +
+                "WHERE s.datum < :datum " +
                 "GROUP BY MONTH(s.datum), YEAR(s.datum)\n" +
                 "ORDER BY concat(year(s.datum), '/', month(s.datum))");
         query.setParameter("rekeningNummer", rekening.getNummer());
+        LocalDate datum =  LocalDate.now();
+        query.setParameter("datum", datum.toDate());
         List<Object[]> objects = query.list();
 
         Map<String, Double> waarden = new HashMap<>();
@@ -146,10 +153,12 @@ public class StatementDaoImpl implements StatementDao {
 
         Query query = sessionFactory.getCurrentSession().createQuery("SELECT t.categorie, sum(bedrag)\n" +
                 "FROM Statement t\n" +
-                "WHERE t.aankomstRekening.user.username = :username \n" +
+                "WHERE t.datum < :datum AND t.aankomstRekening.user.username = :username \n" +
                 "AND  t.vertrekRekening IS NULL " + //TODO_JORAN: Case voor rekening van andere gebruiker?
                 "GROUP BY t.categorie");
         query.setParameter("username", username);
+        LocalDate datum =  LocalDate.now();
+        query.setParameter("datum", datum.toDate());
         List<Object[]> objects = query.list();
 
         Map<String, Double> waarden = new HashMap<>();
@@ -205,13 +214,15 @@ public class StatementDaoImpl implements StatementDao {
 
         Query query = sessionFactory.getCurrentSession().createQuery(" " +
                 "FROM Statement t\n" +
-                "WHERE t.aankomstRekening.Id IN (SELECT r.Id\n" +
+                "WHERE t.datum < :datum AND t.aankomstRekening.Id IN (SELECT r.Id\n" +
                 "                               FROM Rekening r\n" +
                 "                               WHERE r.user.username = :userName)\n" +
                 "      AND (t.vertrekRekening IS NULL OR t.vertrekRekening.Id NOT IN (SELECT r.Id\n" +
                 "                                                                  FROM Rekening r\n" +
                 "                                                                  WHERE r.user.username = :userName))");
         query.setParameter("userName", userName);
+        LocalDate datum =  LocalDate.now();
+        query.setParameter("datum", datum.toDate());
         final List<Statement> statements = query.list();
 
         transaction.commit();

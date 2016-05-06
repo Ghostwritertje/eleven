@@ -31,6 +31,7 @@ public class Rekening implements Serializable, Comparable {
 
     @Column
     @Enumerated(EnumType.STRING)
+    @Access(AccessType.PROPERTY)
     private RekeningType rekeningType;
 
     public Rekening() {
@@ -75,6 +76,9 @@ public class Rekening implements Serializable, Comparable {
     }
 
     public RekeningType getRekeningType() {
+        if(rekeningType == null){
+            rekeningType = RekeningType.ZICHTREKENING;
+        }
         return rekeningType;
     }
 

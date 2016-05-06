@@ -22,18 +22,29 @@ public class StatementForm extends Form<Statement> {
     private Statement statement = new Statement();
 
     public StatementForm(String id, Rekening rekening) {
-        super(id);
+        this(id);
         this.statement.setVertrekRekening(rekening);
+    }
+
+    public StatementForm(String id) {
+        super(id);
+        this.statement.setVertrekRekening(new Rekening());
         this.statement.setAankomstRekening(new Rekening());
         this.setModel(new CompoundPropertyModel<>(statement));
         this.add(new TextField("aankomstRekening.nummer"));
+        this.add(new TextField("vertrekRekening.nummer"));
         this.add(new TextField("mededeling"));
-        this.add(new DateTextField("datum"));
+        this.add(new DateTextField("datum", "dd/MM/yyyy"));
         this.add(new NumberTextField("bedrag"));
     }
 
     @Override
     protected void onSubmit() {
+        berekenStatement();
+        rekeningService.createStatement(statement);
+    }
+
+    protected void berekenStatement() {
         if(statement.getBedrag() < 0){
             Rekening rekeningAankomstTemp = statement.getAankomstRekening();
             Rekening rekeningVertrekTemp = statement.getVertrekRekening();
@@ -42,6 +53,9 @@ public class StatementForm extends Form<Statement> {
             statement.setAankomstRekening(rekeningVertrekTemp);
             statement.setBedrag(Math.abs(statement.getBedrag()));
         }
-        rekeningService.createStatement(statement);
+    }
+
+    protected Statement getStatement() {
+        return statement;
     }
 }

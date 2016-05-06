@@ -33,6 +33,12 @@ public class WicketPage extends WebPage {
                 setResponsePage(PensioenPage.class);
             }
         });
+        add(new Link("doorlopendStatement") {
+            @Override
+            public void onClick() {
+                setResponsePage(DoorlopendStatementPage.class);
+            }
+        });
         add(new Link("Home") {
             @Override
             public void onClick() {

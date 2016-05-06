@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+    <form wicket:id="statementForm">
+        <div class="form-group">
+            <label>Mededeling:
+                <input class="form-control" wicket:id="mededeling">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Datum:
+                <input class="form-control" type="date" wicket:id="datum" placeholder="dd/mm/yyyy">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Van rekening:
+                <input class="form-control" wicket:id="vertrekRekening.nummer">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Naar rekening:
+                <input class="form-control" wicket:id="aankomstRekening.nummer">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Bedrag:
+                <input class="form-control" type="number" wicket:id="bedrag">
+            </label>
+        </div>
+
+        <button class="btn-sm btn-success">
+            Add
+        </button>
+
+    </form>
+
+</wicket:extend>
+</body>
+</html>

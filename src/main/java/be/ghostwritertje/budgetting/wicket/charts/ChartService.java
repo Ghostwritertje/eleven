@@ -119,7 +119,8 @@ public class ChartService {
                 .setMin(0)
                 .setTitle(new Title("Money"))
                 .setStackLabels(new StackLabels()
-                        .setEnabled(Boolean.FALSE)));
+                        .setEnabled(Boolean.FALSE))
+        );
 
 
         options.setTooltip(new Tooltip()
@@ -348,7 +349,7 @@ public class ChartService {
                 .setType(SeriesType.PIE);
         options.setChartOptions(chartOptions);
 
-        options.setTitle(new Title("Browser market share, April, 2011"));
+        options.setTitle(new Title("Rekening Types"));
 
         Axis yAxis = new Axis();
         yAxis
@@ -378,19 +379,17 @@ public class ChartService {
 
         PointSeries browserSeries = toRekeningTypeSeries(browserData);
         browserSeries
-                .setName("Browsers");
+                .setName("Totaal");
         browserSeries
                 .setSize(new PixelOrPercent(60, PixelOrPercent.Unit.PERCENT));
         browserSeries
                 .setDataLabels(browserDataLabels);
 
         DataLabels versionDataLabels = new DataLabels();
-        // versionDataLabels
-        // .setFormatter(new Function());
 
         PointSeries versionSeries = toRekeningSeries(browserData);
         versionSeries
-                .setName("Versions");
+                .setName("Balans");
         versionSeries
                 .setInnerSize(new PixelOrPercent(60, PixelOrPercent.Unit.PERCENT));
         versionSeries
