@@ -19,6 +19,7 @@ import com.googlecode.wickedcharts.highcharts.options.PlotOptionsChoice;
 import com.googlecode.wickedcharts.highcharts.options.SeriesType;
 import com.googlecode.wickedcharts.highcharts.options.StackLabels;
 import com.googlecode.wickedcharts.highcharts.options.Stacking;
+import com.googlecode.wickedcharts.highcharts.options.TickmarkPlacement;
 import com.googlecode.wickedcharts.highcharts.options.Title;
 import com.googlecode.wickedcharts.highcharts.options.Tooltip;
 import com.googlecode.wickedcharts.highcharts.options.VerticalAlignment;
@@ -99,12 +100,12 @@ public class ChartService {
 
         Options options = new Options();
         options.setChartOptions(new ChartOptions()
-                .setType(SeriesType.COLUMN));
+                .setType(SeriesType.AREA));
 
         options.setTitle(new Title("Historiek"));
 
 
-        LocalDate startDate = new LocalDate(2011, 10, 1);
+        LocalDate startDate = LocalDate.now().minusYears(1);
         LocalDate now = new LocalDate();
         int aantalMaanden = Months.monthsBetween(startDate, now).getMonths();
         List<String> categories = new ArrayList<>();
@@ -114,13 +115,15 @@ public class ChartService {
         }
 
         options.setxAxis(new Axis()
-                .setCategories(categories));
+                .setCategories(categories)
+//                .setTickmarkPlacement(TickmarkPlacement.ON)
+                .setTitle(new Title("hello").setEnabled(Boolean.TRUE)));
 
         options.setyAxis(new Axis()
                 .setMin(0)
                 .setTitle(new Title("Money"))
-                .setStackLabels(new StackLabels()
-                        .setEnabled(Boolean.FALSE))
+//                .setStackLabels(new StackLabels()
+//                        .setEnabled(Boolean.TRUE))
         );
 
 
@@ -128,7 +131,7 @@ public class ChartService {
                 .setFormatter(new StackTotalFormatter()));
 
         options.setPlotOptions(new PlotOptionsChoice()
-                .setColumn(new PlotOptions()
+                .setArea(new PlotOptions()
                         .setStacking(Stacking.NORMAL)
                         .setDataLabels(new DataLabels()
                                 .setEnabled(Boolean.FALSE)
@@ -167,7 +170,7 @@ public class ChartService {
         options.setTitle(new Title("Historiek"));
 
 
-        LocalDate startDate = new LocalDate(2011, 10, 1);
+        LocalDate startDate =  LocalDate.now().minusYears(1);
         LocalDate now = new LocalDate();
         int aantalMaanden = Months.monthsBetween(startDate, now).getMonths();
         List<String> categories = new ArrayList<>();
