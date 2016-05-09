@@ -23,6 +23,7 @@ public class SpeculatieService {
 
         List<Number> leeftijden = new ArrayList<>();
         List<Number> inlegBedragen = new ArrayList<>();
+        List<Number> taxReductieBedragen = new ArrayList<>();
         List<Number> intrestBedragen = new ArrayList<>();
         List<Number> taksBedragen = new ArrayList<>();
         List<Number> absoluutBedragen = new ArrayList<>();
@@ -33,15 +34,14 @@ public class SpeculatieService {
 
         for (int i = leeftijd, j = LocalDate.now().getYear(), k = 0; i < 65; i++, j++, k++) {
 
-
-
             Double intrest = (totaalInleg + totaalIntrest) * geschatteIntrest;
             totaalIntrest += intrest;
             intrestBedragen.add(Math.round(totaalIntrest));
 
             Double inleg = j > pensioenIndexVastTotEnMet ? pensioenInleg2016 * Math.pow(1 + geschatteIndex, k) : pensioenInleg2016;
             totaalInleg += inleg;
-            inlegBedragen.add(Math.round(totaalInleg));
+            inlegBedragen.add(Math.round(totaalInleg*0.7));
+            taxReductieBedragen.add(Math.round(totaalInleg*0.3));
 
             Double taks = i == 60 ? (totaalInleg + totaalIntrest) * 0.08 : 0;
             totaalTaks -= taks;
@@ -53,6 +53,8 @@ public class SpeculatieService {
 
         map.put("leeftijden", leeftijden);
         map.put("inlegBedragen", inlegBedragen);
+        map.put("taxReductieBedragen", taxReductieBedragen);
+
         map.put("intrestBedragen", intrestBedragen);
         map.put("taksBedragen", taksBedragen);
         map.put("absoluutBedragen", absoluutBedragen);

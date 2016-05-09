@@ -277,14 +277,22 @@ public class ChartService {
 
         options.addSeries(new SimpleSeries()
                 .setName("Interest")
+                .setColor(new HighchartsColor(0))
                 .setData(map.get("intrestBedragen")));
 
         options.addSeries(new SimpleSeries()
+                .setName("Bijdrage vadertje staat")
+                .setColor(new HighchartsColor(2))
+                .setData(map.get("taxReductieBedragen")));
+
+        options.addSeries(new SimpleSeries()
                 .setName("Gespaard")
+                .setColor(new HighchartsColor(1))
                 .setData(map.get("inlegBedragen")));
 
         options.addSeries(new SimpleSeries()
                 .setName("Belastingen")
+                .setColor(new HighchartsColor(5))
                 .setData(map.get("taksBedragen")));
 
         List<String> leeftijdStrings = new ArrayList<>();
@@ -294,15 +302,11 @@ public class ChartService {
         options.setxAxis(new Axis()
                 .setCategories(leeftijdStrings));
 
-        Series<Number> series4 = new SimpleSeries();
-        series4
-                .setType(SeriesType.LINE);
-        series4
-                .setName("Totaal na belastingen");
-        series4
-                .setData(map.get("absoluutBedragen"));
-
-        options.addSeries(series4);
+        options.addSeries(new SimpleSeries()
+                .setType(SeriesType.LINE)
+                .setName("Totaal")
+                .setColor(new HighchartsColor(7))
+                .setData(map.get("absoluutBedragen")));
 
         return options;
 
