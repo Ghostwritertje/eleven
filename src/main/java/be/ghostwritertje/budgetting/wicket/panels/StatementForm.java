@@ -22,20 +22,26 @@ public class StatementForm extends Form<Statement> {
     private Statement statement = new Statement();
 
     public StatementForm(String id, Rekening rekening) {
-        this(id);
+        super(id);
+        init();
         this.statement.setVertrekRekening(rekening);
     }
 
-    public StatementForm(String id) {
-        super(id);
+    public void init(){
         this.statement.setVertrekRekening(new Rekening());
         this.statement.setAankomstRekening(new Rekening());
         this.setModel(new CompoundPropertyModel<>(statement));
         this.add(new TextField("aankomstRekening.nummer"));
-        this.add(new TextField("vertrekRekening.nummer"));
         this.add(new TextField("mededeling"));
         this.add(new DateTextField("datum", "dd/MM/yyyy"));
         this.add(new NumberTextField("bedrag"));
+    }
+
+    public StatementForm(String id) {
+        super(id);
+        init();
+        this.add(new TextField("vertrekRekening.nummer"));
+
     }
 
     @Override

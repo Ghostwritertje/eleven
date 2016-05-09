@@ -28,4 +28,5 @@ public interface StatementDao {
     Map<String, Double> getTotaalPerCategorie(String user);
 
     List<Map<String,Double>> getTotaleUitgavenPerMaand(String username);
+
 }

@@ -66,6 +66,10 @@ public class StatementDaoImpl implements StatementDao {
         return statements;
     }
 
+
+
+
+
     @Deprecated
     public double getTotaalTussenDatumsOld(Rekening rekening, Date beginDatum, Date eindDatum) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();

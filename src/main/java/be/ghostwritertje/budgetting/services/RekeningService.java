@@ -9,6 +9,7 @@ import be.ghostwritertje.budgetting.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +29,16 @@ public class RekeningService {
     public List<Statement> getStatements(Rekening rekening) {
         return statementService.getStatements(rekening);
     }
+
+    public List<Statement> getStatements(String username) {
+        List<Statement> statements = new ArrayList<>();
+        for(Rekening rekening: this.getRekeningen(username)){
+            statements.addAll(statementService.getStatements(rekening));
+        }
+
+        return statements;
+    }
+
 
     public void createStatement(String vertrekRekeningNummer, String aankomstRekeningNummer, double bedrag, Date datum) {
         Rekening aankomstRekening = rekeningDao.getRekening(aankomstRekeningNummer);

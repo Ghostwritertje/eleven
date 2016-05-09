@@ -50,6 +50,12 @@ public class WicketPage extends WebPage {
                 setResponsePage(DoorlopendStatementPage.class);
             }
         });
+        add(new Link("transactieManager") {
+            @Override
+            public void onClick() {
+                setResponsePage(TransactieManagerPage.class);
+            }
+        });
         add(new Link("Home") {
             @Override
             public void onClick() {
