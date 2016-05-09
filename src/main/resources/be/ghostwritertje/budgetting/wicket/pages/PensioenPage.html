@@ -2,20 +2,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    <div wicket:id="pensioenChart"></div>
-    <div wicket:id="beleggingsChart"></div>
 
-    <form wicket:id="pensioenForm">
-        <label>Leeftijd:
-            <input type="number" wicket:id="leeftijd">
-        </label>
-        <label>Leeftijd:
-            <input type="number" wicket:id="pensioenFondsRendement">
-        </label>
-        <label>Leeftijd:
-            <input type="number" wicket:id="gewoonFondsRendement">
-        </label>
-    </form>
+    <div class=" col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Jouw gegevens
+            </div>
+            <div class="panel-body">
+                <form wicket:id="pensioenForm" class="form-horizontal" role="form">
+
+                        <label class="control-label" for="leeftijd">Leeftijd: </label>
+                        <input id="leeftijd" class="form-control" type="number" wicket:id="leeftijd"
+                               placeholder="leeftijd">
+
+
+                        <label class="control-label" for="rendement">Rendement: </label>
+                        <input id="rendement" class="form-control" type="number" wicket:id="rendement"
+                               placeholder="rendement">
+
+                        <label class="control-label " for="index">Index:</label>
+                        <input id="index" class="form-control" type="number" wicket:id="verwachteIndex"
+                               placeholder="verwachteIndex">
+
+                        <button type="submit" class="btn btn-default" wicket:id="submit">Bereken</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+    <div class="panel panel-default  ">
+        <div class="panel-heading">
+            Projectie
+        </div>
+        <div class="panel-body">
+            <div wicket:id="pensioenChart"></div>
+        </div>
+    </div>
+    </div>
+    <p>Geannualiseerd rendement <span wicket:id="jaarlijkseIntrest">0</span>%</p>
+    <!--<div wicket:id="beleggingsChart"></div>-->
 </wicket:extend>
 </body>
 </html>

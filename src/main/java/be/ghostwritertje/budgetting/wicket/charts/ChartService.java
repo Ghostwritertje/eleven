@@ -232,7 +232,7 @@ public class ChartService {
         options.setChartOptions(new ChartOptions()
                 .setType(SeriesType.COLUMN));
 
-        options.setTitle(new Title("Historiek"));
+        options.setTitle(new Title(" ").setEnabled(false));
 
         options.setyAxis(new Axis()
                 .setMin(-5000)
@@ -243,6 +243,27 @@ public class ChartService {
         options.setTooltip(new Tooltip()
                 .setShared(true));
 
+
+        Legend legend = new Legend();
+        legend
+                .setLayout(LegendLayout.VERTICAL);
+        legend
+                .setAlign(HorizontalAlignment.LEFT);
+        legend
+                .setVerticalAlign(VerticalAlignment.TOP);
+        legend
+                .setX(100);
+        legend
+                .setY(70);
+        legend
+                .setFloating(Boolean.TRUE);
+        legend
+                .setBackgroundColor(new HexColor("#FFFFFF"));
+        legend
+                .setBorderWidth(1);
+
+        options
+                .setLegend(legend);
 
         options.setPlotOptions(new PlotOptionsChoice()
                 .setColumn(new PlotOptions()
