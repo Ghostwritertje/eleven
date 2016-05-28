@@ -17,7 +17,6 @@ public class ReadCsv {
 
         ReadCsv obj = new ReadCsv();
         obj.run();
-
     }
 
     public void run() {
