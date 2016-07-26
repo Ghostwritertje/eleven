@@ -1,7 +1,8 @@
-package be.ghostwritertje.budgetting.wicket.pages;
+package be.ghostwritertje.estateeleven.wicket.pages;
 
-import be.ghostwritertje.budgetting.domain.User;
-import be.ghostwritertje.budgetting.services.api.UserService;
+import be.ghostwritertje.estateeleven.domain.Eigenaar;
+import be.ghostwritertje.estateeleven.domain.User;
+import be.ghostwritertje.estateeleven.services.api.UserService;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
@@ -16,7 +17,7 @@ public class OverzichtPage extends WicketPage {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        User user = new User();
+        User user = new Eigenaar();
         user.setUsername("Joran");
         this.userService.create(user);
 

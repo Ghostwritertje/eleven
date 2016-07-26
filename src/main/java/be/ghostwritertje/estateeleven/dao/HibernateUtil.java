@@ -1,4 +1,4 @@
-package be.ghostwritertje.budgetting.dao;
+package be.ghostwritertje.estateeleven.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;

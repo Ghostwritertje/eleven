@@ -22,7 +22,7 @@
         <init-param>
             <param-name>applicationClassName</param-name>
             <param-value>
-                be.ghostwritertje.budgetting.wicket.WicketApplication
+                be.ghostwritertje.estateeleven.wicket.WicketApplication
             </param-value>
         </init-param>
     </filter>

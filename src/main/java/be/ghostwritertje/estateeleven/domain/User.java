@@ -1,7 +1,8 @@
-package be.ghostwritertje.budgetting.domain;
+package be.ghostwritertje.estateeleven.domain;
 
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "t_user")
+@DiscriminatorColumn(name = "FUNCTIE")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

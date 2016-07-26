@@ -1,8 +1,8 @@
-package be.ghostwritertje.budgetting.services.impl;
+package be.ghostwritertje.estateeleven.services.impl;
 
-import be.ghostwritertje.budgetting.dao.api.UserDao;
-import be.ghostwritertje.budgetting.domain.User;
-import be.ghostwritertje.budgetting.services.api.UserService;
+import be.ghostwritertje.estateeleven.dao.api.UserDao;
+import be.ghostwritertje.estateeleven.domain.User;
+import be.ghostwritertje.estateeleven.services.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

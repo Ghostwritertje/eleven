@@ -1,8 +1,7 @@
-package be.ghostwritertje.budgetting.wicket;
+package be.ghostwritertje.estateeleven.wicket;
 
-import be.ghostwritertje.budgetting.wicket.pages.OverzichtPage;
+import be.ghostwritertje.estateeleven.wicket.pages.OverzichtPage;
 import org.apache.wicket.Component;
-import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.authorization.Action;
 import org.apache.wicket.authorization.IAuthorizationStrategy;
 import org.apache.wicket.authorization.IUnauthorizedComponentInstantiationListener;

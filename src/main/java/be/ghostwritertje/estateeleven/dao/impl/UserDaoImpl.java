@@ -1,8 +1,8 @@
-package be.ghostwritertje.budgetting.dao.impl;
+package be.ghostwritertje.estateeleven.dao.impl;
 
-import be.ghostwritertje.budgetting.dao.HibernateUtil;
-import be.ghostwritertje.budgetting.dao.api.UserDao;
-import be.ghostwritertje.budgetting.domain.User;
+import be.ghostwritertje.estateeleven.dao.HibernateUtil;
+import be.ghostwritertje.estateeleven.dao.api.UserDao;
+import be.ghostwritertje.estateeleven.domain.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;

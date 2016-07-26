@@ -1,6 +1,6 @@
-package be.ghostwritertje.budgetting.wicket;
+package be.ghostwritertje.estateeleven.wicket;
 
-import be.ghostwritertje.budgetting.wicket.pages.OverzichtPage;
+import be.ghostwritertje.estateeleven.wicket.pages.OverzichtPage;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;

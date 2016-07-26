@@ -1,4 +1,4 @@
-package be.ghostwritertje.budgetting.wicket;
+package be.ghostwritertje.estateeleven.wicket;
 
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebSession;

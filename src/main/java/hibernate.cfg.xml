@@ -6,8 +6,8 @@
         <!-- Database connection settings -->
 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://127.3.167.130:3306/wicket</property>
-        <!--<property name="connection.url">jdbc:mysql://127.0.0.1:3306/wicket</property>-->
+        <!--<property name="connection.url">jdbc:mysql://127.3.167.130:3306/wicket</property>-->
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/wicket</property>
 
         <property name="connection.username">wicket</property>
         <property name="connection.password">wicket</property>
@@ -29,7 +29,9 @@
         <property name="hbm2ddl.auto"> create</property>
 
 
-        <mapping class="be.ghostwritertje.budgetting.domain.User"/>
+        <mapping class="be.ghostwritertje.estateeleven.domain.User"/>
+        <mapping class="be.ghostwritertje.estateeleven.domain.Eigenaar"/>
+        <mapping class="be.ghostwritertje.estateeleven.domain.Ondernemer"/>
 
 
     </session-factory>

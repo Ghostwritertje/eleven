@@ -1,4 +1,4 @@
-package be.ghostwritertje.budgetting.wicket.pages;
+package be.ghostwritertje.estateeleven.wicket.pages;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import org.apache.wicket.markup.head.IHeaderResponse;
