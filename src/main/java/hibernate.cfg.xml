@@ -6,8 +6,8 @@
         <!-- Database connection settings -->
 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://127.3.167.130:3306/wicket</property>
-        <!--<property name="connection.url">jdbc:mysql://127.0.0.1:3306/wicket</property>-->
+        <!--<property name="connection.url">jdbc:mysql://127.3.167.130:3306/wicket</property>-->
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/wicket</property>
 
         <property name="connection.username">wicket</property>
         <property name="connection.password">wicket</property>
@@ -26,12 +26,11 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">false</property>
 
-        <property name="hbm2ddl.auto"> update</property>
+        <property name="hbm2ddl.auto"> create</property>
 
-        <mapping class="be.ghostwritertje.budgetting.domain.Rekening"/>
+
         <mapping class="be.ghostwritertje.budgetting.domain.User"/>
-        <mapping class="be.ghostwritertje.budgetting.domain.Statement"/>
-        <mapping class="be.ghostwritertje.budgetting.domain.Goal"/>
+
 
     </session-factory>
 

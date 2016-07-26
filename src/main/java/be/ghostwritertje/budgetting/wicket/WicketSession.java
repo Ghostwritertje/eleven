@@ -1,13 +1,9 @@
 package be.ghostwritertje.budgetting.wicket;
 
-import be.ghostwritertje.budgetting.domain.User;
-import be.ghostwritertje.budgetting.services.UserService;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
-import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by jorandeboever

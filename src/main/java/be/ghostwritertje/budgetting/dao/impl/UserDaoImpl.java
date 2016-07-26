@@ -3,19 +3,13 @@ package be.ghostwritertje.budgetting.dao.impl;
 import be.ghostwritertje.budgetting.dao.HibernateUtil;
 import be.ghostwritertje.budgetting.dao.api.UserDao;
 import be.ghostwritertje.budgetting.domain.User;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Repository;
 
-/**
- * Created by jorandeboever
- * on 16/03/16.
- */
-@Repository("userDaoImpl")
+@Repository
 public class UserDaoImpl implements UserDao {
-
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
 
@@ -30,32 +24,4 @@ public class UserDaoImpl implements UserDao {
             transaction.rollback();
         }
     }
-
-
-    @Override
-    public User findUser(String username) {
-        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
-        Query query = sessionFactory.getCurrentSession().createQuery("from User u where u.username = :name");
-        query.setParameter("name", username);
-        try {
-            return (User) query.list().get(0);
-        } catch (Exception e) {
-            return null;
-        } finally {
-            transaction.commit();
-        }
-
-    }
-
-    @Override
-    public void deleteAllUsers() {
-        Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
-
-        Query query = sessionFactory.getCurrentSession().createQuery("delete from User r");
-        query.executeUpdate();
-
-        transaction.commit();
-    }
-
-
 }

@@ -1,10 +1,13 @@
 package be.ghostwritertje.budgetting.domain;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by jorandeboever
@@ -16,9 +19,6 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Rekening> rekeningen = new ArrayList<Rekening>();
 
     @Column
     private String username;
@@ -46,11 +46,4 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public List<Rekening> getRekeningen() {
-        return rekeningen;
-    }
-
-    public void setRekeningen(List<Rekening> rekeningen) {
-        this.rekeningen = rekeningen;
-    }
 }

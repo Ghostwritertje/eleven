@@ -1,7 +1,6 @@
 package be.ghostwritertje.budgetting.wicket;
 
 import be.ghostwritertje.budgetting.wicket.pages.OverzichtPage;
-import be.ghostwritertje.budgetting.wicket.pages.SigninPage;
 import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.authorization.Action;
@@ -36,6 +35,5 @@ public class WicketAuthorizationStrategy  implements IAuthorizationStrategy, IUn
 
     @Override
     public void onUnauthorizedInstantiation(Component component) {
-        throw new RestartResponseAtInterceptPageException(SigninPage.class);
     }
 }
