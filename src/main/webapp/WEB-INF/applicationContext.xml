@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="be.ghostwritertje.estateeleven">
+    <context:component-scan base-package="be.estateeleven">
         <!-- <context:exclude-filter type="regex" expression="cds.cheesr.dao.hibernateImpl*" />-->
     </context:component-scan>
 
@@ -47,7 +47,7 @@ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.spri
                     <prop key="hibernate.hbm2ddl.auto">create</prop>
                 </props>
             </property>
-            <property name="packagesToScan" value="be.ghostwritertje.budgetting"/>
+            <property name="packagesToScan" value="be.estateeleven"/>
         </bean>-->
 
     <!--   <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">

@@ -29,9 +29,9 @@
         <property name="hbm2ddl.auto"> create</property>
 
 
-        <mapping class="be.ghostwritertje.estateeleven.domain.User"/>
-        <mapping class="be.ghostwritertje.estateeleven.domain.Eigenaar"/>
-        <mapping class="be.ghostwritertje.estateeleven.domain.Ondernemer"/>
+        <mapping class="be.estateeleven.domain.User"/>
+        <mapping class="be.estateeleven.domain.Eigenaar"/>
+        <mapping class="be.estateeleven.domain.Ondernemer"/>
 
 
     </session-factory>

@@ -1,0 +1,1159 @@
+/* fonts */
+@font-face {font-family: 'hasteristicobold';src: url('../fonts/hasteristicobold-webfont.woff2') format('woff2'),url('../fonts/hasteristicobold-webfont.woff') format('woff');font-weight: normal;font-style: normal;}
+@font-face {font-family: 'hasteristicolight';src: url('../fonts/hasteristico-webfont.woff2') format('woff2'),url('../fonts/hasteristico-webfont.woff') format('woff');font-weight: normal;font-style: normal;}
+
+html {
+      overflow-x: hidden;
+}
+
+body {
+  font-weight: 300;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  color: #000;
+  line-height: 1.8;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-name: fontfix2;
+  -webkit-animation-duration: .1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  webkit-tap-highlight-color: #efa026;
+  overflow-x: hidden;
+  position:relative;
+}
+
+.clickDiv {cursor: pointer;}
+
+/* Block-grid */
+.block-grid { display: block; overflow: hidden; padding: 0; margin:0; } .block-grid > li { display: block; height: auto; float: left; } .block-grid.one-up > li, .block-grid.up1 > li { width: 100%; } .block-grid.two-up > li, .block-grid.up2 > li { width: 50%; } .block-grid.two-up > li:nth-child(2n+1), .block-grid.up2 > li:nth-child(2n+1) { clear: left; } .block-grid.three-up > li, .block-grid.up3 > li { width: 33.33333%; } .block-grid.three-up > li:nth-child(3n+1), .block-grid.up3 > li:nth-child(3n+1) { clear: left; } .block-grid.four-up > li, .block-grid.up4 > li { width: 25%; } .block-grid.four-up > li:nth-child(4n+1), .block-grid.up4 > li:nth-child(4n+1) { clear: left; } .block-grid.five-up > li, .block-grid.up5 > li { width: 20%; } .block-grid.five-up > li:nth-child(5n+1), .block-grid.up5 > li:nth-child(5n+1) { clear: left; } .block-grid.six-up > li, .block-grid.up6 > li { width: 16.66667%; } .block-grid.six-up > li:nth-child(6n+1), .block-grid.up6 > li:nth-child(6n+1) { clear: left; } .block-grid.seven-up > li, .block-grid.up7 > li { width: 14.28571%; } .block-grid.seven-up > li:nth-child(7n+1), .block-grid.up7 > li:nth-child(7n+1) { clear: left; } .block-grid.eight-up > li, .block-grid.up8 > li { width: 12.5%; } .block-grid.eight-up > li:nth-child(8n+1), .block-grid.up8 > li:nth-child(8n+1) { clear: left; } .block-grid.nine-up > li, .block-grid.up9 > li { width: 11.11111%; } .block-grid.nine-up > li:nth-child(9n+1), .block-grid.up9 > li:nth-child(9n+1) { clear: left; } .block-grid.ten-up > li, .block-grid.up10 > li { width: 10%; } .block-grid.ten-up > li:nth-child(10n+1), .block-grid.up10 > li:nth-child(10n+1) { clear: left; } .block-grid.eleven-up, .block-grid.up11 > li > li { width: 9.09091%; } .block-grid.eleven-up > li:nth-child(11n+1), .block-grid.up11 > li:nth-child(11n+1) { clear: left; } .block-grid.twelve-up > li, .block-grid.up12 > li { width: 8.33333%; } .block-grid.twelve-up > li:nth-child(12n+1), .block-grid.up12 > li:nth-child(12n+1) { clear: left; }
+figure img {max-width: 100%;height: auto!important;}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {line-height: 1.6; margin:0;}
+header > .h1, header > .h2, header > .h3, header > .h4, header > .h5, header > .h6, header > h1, header > h2, header > h3, header > h4, header > h5, header > h6 {text-transform: uppercase;}
+
+/* Header */
+#Header {background-color:#000;}
+#Header #mobile-header {text-align: center;margin: 0;border-radius: 0;border: 0;}
+#Header .navbar-nav {background:none;display: inline-block;float: none;margin-top: 10px;}
+#Header .navbar-nav > li > a {color:#fff;padding: 5px;line-height: 18px;margin: 0 20px;text-transform: uppercase;}
+#Header .navbar-nav > li.active > a, #Header .navbar-nav>li>a:hover,#Header .navbar-nav>li>a:focus {color:#efa026;background:none;}
+#Header .navbar-nav > li.fav.active > a .fa-star-o:before, #Header .navbar-nav>li.fav>a:hover .fa-star-o:before,#Header .navbar-nav>li.fav>a:focus .fa-star-o:before {content:'\f005';color:#efa026;}
+#Header .navbar-nav > li > .dropdown-menu {border-radius:0;-webkit-border-radius:0;border:none;left: 15px;}
+#Header .navbar-nav > li > a .caret {margin-right:-10px;}
+#Header .dropdown:hover .dropdown-menu {display: block;margin-top: 0;}
+#Header .navbar-toggle {border-radius:0;border-color: #fff;background-color: transparent;margin-top: 8px;}
+#Header .navbar-toggle .icon-bar {background-color: #fff;}
+
+.home #Header {background-color: #fff;border-bottom: 1px solid #eee;}
+.home #Header #mobile-header .navbar-collapse {text-align: center;margin: 0;border-radius: 0;border: 0;}
+.home #Header .navbar-nav {background:none;display: inline-block;float: none;margin-top: 10px;}
+.home #Header .navbar-nav > li > a {color: #000;padding: 5px;line-height: 18px;margin: 0 25px;text-transform: uppercase;}
+.home #Header .navbar-nav > li.active > a, .home #Header .navbar-nav>li>a:hover,.home #Header .navbar-nav>li>a:focus {color: #777;background:none;}
+.home #Header .navbar-nav > li.fav.active > a .fa-star-o:before,.home #Header .navbar-nav>li.fav>a:hover .fa-star-o:before, .home #Header .navbar-nav>li.fav>a:focus .fa-star-o:before {content:'\f005';color:#efa026;}
+.home #Header .navbar-nav > li > .dropdown-menu {border-radius:0;-webkit-border-radius:0;border:none;left: 15px;}
+.home #Header .navbar-nav > li > a .caret {margin-right:-10px;}
+.home #Header .dropdown:hover .dropdown-menu {display: block;margin-top: 0;}
+.home #Header .navbar-toggle {border-radius:0;border-color: #000;background-color: #fff;margin-top: 10px;}
+.home #Header .navbar-toggle .icon-bar {background-color: #000;}
+.home section.main {padding-bottom: 30px;}
+
+#Header.Dashboard {background-color:#fff;}
+#Header.Dashboard .navbar-nav > li > a {color:#000;margin: 0 5px;}
+#Header.Dashboard .navbar-nav > li.active > a, #Header.Dashboard .navbar-nav>li>a:hover,#Header.Dashboard .navbar-nav>li>a:focus {color:#efa026;background:none;}
+#Header.Dashboard .navbar-right.Account {position:absolute;right:0;margin-right: 0;}
+#Header.Dashboard .navbar-right.Account > li > a {margin:0 5px;text-transform: none;}
+#Header.Dashboard .navbar-right.Account > li.logout > a {color:#777;}
+#Header.Dashboard .navbar-right.Account > li > a:hover,#Header.Dashboard .navbar-right.Account > li > a:focus {color:#efa026;}
+#Header.Dashboard .navbar-nav > li button {border:none;background:none;box-shadow:none;border-radius:0;}
+#Header.Dashboard .navbar-nav > li .btn-group.open button, #Header.Dashboard .navbar-nav > li button:hover .fa-bell {color:#efa026;}
+#Header.Dashboard .navbar-nav > li .fa-bell {position:relative;-moz-transition: all .15s ease-in; -o-transition: all .15s ease-in; -webkit-transition: all .15s ease-in; transition: all .15s ease-in;}
+#Header.Dashboard .navbar-nav > li .fa-bell > span {position:absolute;top:-10px;left:5px;background-color:#f00;color:#fff;font-family:'Raleway', sans-serif;font-weight:bold;width:18px;height:18px;font-size:13px;line-height:1.3;text-indent:1px;-webkit-border-radius: 50%; border-radius: 50%;}
+#Header.Dashboard .navbar-nav .dropdown-menu {border-radius:0;border:none;-webkit-box-shadow: 1px 2px 1px 0px rgba(0,0,0,0.3);box-shadow: 1px 2px 1px 0px rgba(0,0,0,0.3);margin-top: 10px;min-width: 420px;padding: 0;}
+#Header.Dashboard .navbar-nav .dropdown-menu:before {content: "";position: absolute;top: -13px;right: 0;width: 0;border-bottom: 16px solid #fff;border-left: 16px solid transparent;border-right: 16px solid transparent;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li > h5 {text-transform:uppercase;font-weight:bold;text-align:left;margin-bottom:5px;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li .info {text-transform:uppercase;}
+#Header.Dashboard .navbar-nav .dropdown-menu span.more a {text-align:center;display:block;color:#0969c3;text-decoration:underline;font-size:15px;}
+#Header.Dashboard .navbar-nav .dropdown-menu span.read a {padding:5px;display:block;color:#0969c3;text-decoration:underline;font-size:12px;}
+#Header.Dashboard .navbar-nav .dropdown-menu span a:hover, #Header.Dashboard .navbar-nav .dropdown-menu span.read a:focus {color:#efa026;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li .period span {font-weight:bold;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li .col-sm-2 {padding:0;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li .bid {color:#0969c3;font-size:15px;font-weight:bold;line-height:2.5;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li .address {color:#0969c3;text-decoration:underline;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li {text-align:center;padding:5px;font-size:12px;border-bottom:1px solid #d2d2d2;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li:first-child {border-top:1px solid #d2d2d2;}
+#Header.Dashboard .navbar-nav .dropdown-menu.Notifications li.new {background-color:#eee;}
+
+.Program .newsletter {display:none;}
+
+hr {border-color:#efa026;}
+
+.Breadcrumbs {position: absolute;top: -50px;left: 0;}
+.Breadcrumbs > ul {padding:0;margin:0;list-style: none;}
+.Breadcrumbs > ul > li {display: inline;color:#efa026;font-size:80%;}
+.Breadcrumbs > ul > li > a {color:#efa026;}
+.Breadcrumbs > ul > li > a:hover,.Breadcrumbs > ul > li > a:focus {text-decoration: underline;;}
+.Breadcrumbs > ul > li:after {content:'-';padding:0 5px;margin: 0;display: inline-block;width: 0;}
+.Breadcrumbs > ul > li.intro:after,.Breadcrumbs > ul > li:last-child:after {display: none;}
+
+.socialmedia > ul {list-style: none;padding:0;}
+.socialmedia > ul > li {display: inline;padding-right:10px;}
+
+.tabs {text-align: center;margin:50px 150px;}
+.tabs li {padding:5px;}
+.tabs nav .button {padding:5px 50px;}
+
+nav .button {display:inline-block;text-transform:uppercase;padding:5px 15px;background-color:transparent;color:#000;border:1px solid #000;}
+nav .button.active, nav .button:hover,nav .button:focus {color:#fff;background-color:#000;text-decoration:none;}
+
+nav .button.blue {border-color:#0969c3;color:#0969c3;}
+nav .button.active.blue, nav .button.blue:hover,nav .button.blue:focus {color:#fff;background-color:#0969c3;text-decoration:none;}
+
+nav .button.green {border-color:#95c11f;color:#95c11f;}
+nav .button.active.green, nav .button.green:hover,nav .button.green:focus {color:#fff;background-color:#95c11f;text-decoration:none;}
+
+nav .button.orange {border-color:#efa026;color:#efa026;}
+nav .button.active.orange, nav .button.orange:hover,nav .button.orange:focus {color:#fff;background-color:#efa026;text-decoration:none;}
+
+nav .button.red {border-color:#f00;color:#f00;}
+nav .button.active.red, nav .button.red:hover,nav .button.red:focus {color:#fff;background-color:#f00;text-decoration:none;}
+
+nav .button.white {color:#fff;border-color:#fff;}
+nav .button.white:hover, nav .button.white:focus {color:#000!important;background-color:#fff;}
+
+button.formButton {border: 1px solid #000;font-size: 10px;width: 100%;background-color: transparent;margin: 5px 0;text-transform: uppercase;height: 25px;}
+button.formButton:hover, button.formButton:focus, button.formButton.active {background-color:#000;color:#fff;}
+
+nav .more {color:#0969c3;}
+
+.Refine .col-sm-6.left {padding-right:5px;}
+.Refine .col-sm-6.right {padding-left:5px;}
+
+.small.icon {padding-right:5px;}
+.small.icon:before {content:'';width: 15px;height: 15px;display: inline-block;background: no-repeat center center;position: absolute;bottom: 5px;left: 5px;}
+*:hover > .small.icon.Horeca:before {background-image:url('../images/icons/icon-drink2.png');}
+.small.icon.Horeca:before {background-image:url('../images/icons/icon-drink.png');}
+*:hover > .small.icon.Horeca:before {background-image:url('../images/icons/icon-drink2.png');}
+.small.icon.Share:before {background-image:url('../images/icons/icon-symbol.png');}
+*:hover > .small.icon.Share:before {background-image:url('../images/icons/icon-symbol2.png');}
+.small.icon.Expositie:before {background-image:url('../images/icons/icon-picture.png');}
+*:hover > .small.icon.Expositie:before {background-image:url('../images/icons/icon-picture2.png');}
+.small.icon.Retail:before {background-image:url('../images/icons/icon-sales.png');}
+*:hover > .small.icon.Retail:before {background-image:url('../images/icons/icon-sales2.png');}
+.small.icon.Wifi:before {background-image:url('../images/icons/icon-connection.png');}
+*:hover > .small.icon.Wifi:before {background-image:url('../images/icons/icon-connection2.png');}
+.small.icon.Verlichting:before {background-image:url('../images/icons/icon-bulb.png');}
+*:hover > .small.icon.Verlichting:before {background-image:url('../images/icons/icon-bulb2.png');}
+.small.icon.Electriciteit:before {background-image:url('../images/icons/icon-stroom.png');}
+*:hover > .small.icon.Electriciteit:before {background-image:url('../images/icons/icon-stroom2.png');}
+.small.icon.Parking:before {background-image:url('../images/icons/icon-parking.png');}
+*:hover > .small.icon.Parking:before {background-image:url('../images/icons/icon-parking2.png');}
+.small.icon.Winkelinrichting:before {background-image: url('../images/icons/icon-clothes.png');}
+*:hover > .small.icon.Winkelinrichting:before {background-image: url('../images/icons/icon-clothes2.png');}
+.small.icon.Beveiliging:before {background-image:url('../images/icons/icon-shield.png');}
+*:hover > .small.icon.Beveiliging:before {background-image:url('../images/icons/icon-shield2.png');}
+.small.icon.Etalage:before {background-image:url('../images/icons/icon-window.png');}
+*:hover > .small.icon.Etalage:before {background-image:url('../images/icons/icon-window2.png');}
+.small.icon.Water:before {background-image:url('../images/icons/icon-food.png');}
+*:hover > .small.icon.Water:before {background-image:url('../images/icons/icon-food2.png');}
+.small.icon.Verwarming:before {background-image:url('../images/icons/icon-tool.png');}
+*:hover > .small.icon.Verwarming:before {background-image:url('../images/icons/icon-tool2.png');}
+.small.icon.Terras:before {background-image:url('../images/icons/icon-board.png');}
+*:hover > .small.icon.Terras:before {background-image:url('../images/icons/icon-board2.png');}
+.small.icon.Sanitair:before {background-image:url('../images/icons/icon-sanitair.png');}
+*:hover > .small.icon.Sanitair:before {background-image:url('../images/icons/icon-sanitair2.png');}
+.small.icon.Keuken:before {background-image:url('../images/icons/icon-keuken.png');}
+*:hover > .small.icon.Keuken:before {background-image:url('../images/icons/icon-keuken2.png');}
+
+.big.icon {padding-right:5px;}
+.big.icon:before {content:'';width: 24px;height: 20px;display: inline-block;background: no-repeat center center;position: absolute;bottom: 9px;left: 10px;}
+.big.icon.Gids:before {background-image:url('../images/icons/icon-stadgids.png');}
+*:hover > .big.icon.Gids:before {background-image:url('../images/icons/icon-stadgids2.png');}
+
+.left > nav {float: right;}
+
+.home header#Header .navbar-nav {margin-top:10px;display: inline-block;float: none!important;vertical-align: top;}
+.home header#Header .navbar-collapse {text-align: center;}
+.home header#Header #mobile-header .navbar-brand {display:none;}
+.home header#Header #mobile-header .navbar-collapse .navbar-nav {
+    margin: 10px 0;
+}
+.home header#Header #mobile-header:after {display:none;}
+
+section.main.home .maincolumn > header > h1, section.main.home .maincolumn > header > h2 {margin: 30px 0 10px;}
+
+/* Text */
+a {color: #efa026;}
+a:hover, a:focus { color:#efa026;text-decoration:underline;outline:none; }
+
+section.main .container {position: relative;}
+section.main .maincolumn > header {margin-bottom:30px;}
+section.main .maincolumn > header > h3, section.main .maincolumn > header > h2, section.main .maincolumn > header > h1 {font-family:'hasteristicobold';text-align: center;font-size:220%;letter-spacing: 2px;padding-bottom:20px;position:relative;}
+section.main .maincolumn > header > .subtitle {text-align: center;display: block;font-size: 110%;margin: 20px;}
+.home section.main .maincolumn > header > .subtitle {font-size: 100%}
+section.main .maincolumn > header > h1:after {content:'';position:absolute;width:65px;height:2px;background-color:#000;left:50%;margin-left:15px;bottom:0;}
+section.main .maincolumn > header > h1:before {content:'';position:absolute;width:65px;height:2px;background-color:#000;right:50%;margin-right:15px;bottom:0;}
+
+::-moz-selection {
+  text-shadow: none;
+  background: #efa026;
+  color:#fff;
+}
+::selection {
+  text-shadow: none;
+  background: #efa026;
+  color:#fff;
+}
+img::selection {
+  background: transparent;
+}
+img::-moz-selection {
+  background: transparent;
+}
+
+/* Slider */
+body .flexslider { border:0; box-shadow:none; margin:0; }
+
+.flexslider {margin: 0; padding: 0;overflow: hidden;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+.flexslider .captioncontainer { position: absolute; width:100%; height:100%; left:0; top:0; z-index:98; }
+.flexslider .captioncontainer .container { padding:0; }
+.flexslider .captioncontainer .caption { text-align:center;position: relative; display:table; width:100%; padding:0; margin:0; }
+.flexslider .captioncontainer .caption > * { display:table-cell;vertical-align: middle;padding-bottom: 25px; float:none;}
+
+#aanbodBanner.flexslider .captioncontainer .caption > * {vertical-align: bottom;}
+#aanbodBanner.flexslider .captioncontainer .caption h1 {color:#fff;text-align:right;font-size: 320%;text-shadow: 2px 3px 2px #000;text-transform:uppercase;font-weight:bold;}
+
+#aanbodDetailBanner.flexslider {overflow:visible; z-index:2; position: relative; }
+#aanbodDetailBanner.flexslider:before { content:''; width:5000px; left:50%; margin-left:-2500px; top:0; position: absolute; height:100%; display:block; background:#ebeaea; }
+#aanbodDetailBanner.flexslider .flex-viewport { overflow:visible!important; }
+#aanbodDetailBanner.flexslider .flex-viewport:before { content:''; width:2500px; height:100%; position: absolute; left:-2500px; display:block; background:#ebeaea; background:rgba(255,255,255,0.6); top:0; z-index:2; }
+#aanbodDetailBanner.flexslider .flex-viewport:after { content:''; width:2500px; height:100%; position: absolute; right:-2500px; display:block; background:#ebeaea; background:rgba(255,255,255,0.6); top:0; z-index:2; }
+
+#aanbodDetailBanner.flexslider:hover .flex-direction-nav .flex-prev {opacity:1;left: -50px;}
+#aanbodDetailBanner.flexslider:hover .flex-direction-nav .flex-next {opacity:1;right: -50px;}
+#aanbodDetailBanner.flexslider .flex-direction-nav .flex-next {right: -50px;text-align: right;}
+#aanbodDetailBanner.flexslider .flex-direction-nav .flex-prev {left: -50px;}
+#aanbodDetailBanner.flexslider .flex-direction-nav a:before {font-family:'FontAwesome';font-size: 60px;display: inline-block;content: '\f104';color: #000;text-shadow:none;}
+#aanbodDetailBanner.flexslider .flex-direction-nav a.flex-next:before { content: '\f105';}
+#aanbodDetailBanner.flexslider .flex-direction-nav a {height:80px;opacity:1!important;}
+
+#aanbodDetailBanner.flexslider .flex-control-nav {bottom: 20px;position: absolute;text-align: center;width: 100%;z-index: 1000;}
+.flex-control-paging li a:hover,.flex-control-paging li a:focus, .flex-control-paging li a.flex-active {background-color:#fff;text-shadow:none;-webkit-box-shadow: none;-moz-box-shadow: none;-o-box-shadow: none;box-shadow: none;-webkit-border-radius: 20px;-moz-border-radius: 20px;}
+.flex-control-paging li a {-webkit-box-shadow:none;-moz-box-shadow:none;-o-box-shadow:none;box-shadow:none;background-color:rgba(255,255,255,0.6);}
+
+
+#homebanner.flexslider .captioncontainer .Slogan {color:#fff;}
+
+#homebanner.flexslider .captioncontainer .Slogan h1 {font-family: 'hasteristicolight';line-height:1;font-size:900%;}
+#homebanner.flexslider .captioncontainer .Slogan h2 {font-family: 'hasteristicobold';}
+#homebanner.flexslider .captioncontainer .Slogan h3 {margin:50px 0;}
+#homebanner.flexslider .captioncontainer .Slogan h2, #homebanner.flexslider .captioncontainer .Slogan h3, #homebanner.flexslider .captioncontainer .Slogan h1 {text-shadow: 2px 3px 2px #000;}
+#homebanner.flexslider .captioncontainer .Slogan h2 > span {color: #efa026;}
+#homebanner.flexslider .captioncontainer nav {text-align: left;margin-top:50px}
+#homebanner.flexslider .captioncontainer nav > a {width:200px;text-align:center;}
+
+#homebanner.flexslider .captioncontainer .form-control:focus {border-color: #adadad;outline: 0;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,0,0,.2);box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,0,0,.2);}
+#homebanner.flexslider .captioncontainer header > h3 {text-align:center;margin-bottom:10px;}
+#homebanner.flexslider .captioncontainer .input-group {max-width:600px;margin:0 auto;}
+#homebanner.flexslider .captioncontainer .input-group .form-control {border-radius:0;}
+#homebanner.flexslider .captioncontainer button, section.newsletter input {border:1px solid #fff;box-shadow:none;border-radius:0;}
+#homebanner.flexslider .captioncontainer button {background-color:#000;color:#fff;text-transform:uppercase;padding: 5px 50px;}
+
+/* Modules */
+.mediaSnippet figure {padding:20px;}
+
+.conceptSnippet {color:#fff;background:url('../images/banner-antwerpen.jpg') no-repeat center center ;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}
+.conceptSnippet h4 {margin:60px 0;text-align:center;font-size: 320%;font-weight:bold;text-transform:uppercase;}
+.conceptSnippet header > h3 {font-family:'hasteristicobold';text-align: center;font-size:180%;letter-spacing: 2px;padding-bottom:20px;position:relative;}
+.conceptSnippet header > h3:after {content:'';position:absolute;width:65px;height:2px;background-color:#fff;left:50%;margin-left:15px;bottom:0;}
+.conceptSnippet header > h3:before {content:'';position:absolute;width:65px;height:2px;background-color:#fff;right:50%;margin-right:15px;bottom:0;}
+.conceptSnippet nav > a {padding:5px 60px;}
+
+.Concept h3 {text-transform:uppercase;font-size: 160%;text-align:center;}
+.Concept ul.Concept > li {padding: 10px 50px 60px;}
+.Concept ul.Concept > li > article:before {content: "";position: absolute;bottom:-31px;left: 50%;margin-left: -30px;width: 0;border-top: 30px solid #000;border-left: 30px solid transparent;border-right: 30px solid transparent;}
+.Concept ul.Concept > li > article:after { content: ""; position: absolute; bottom:-30px; left: 50%; margin-left:-30px; width: 0; border-top: 30px solid #fff; border-left: 30px solid transparent; border-right: 30px solid transparent; }
+.Concept ul.Concept > li > article {position:relative;text-align:center;border:1px solid #000;background-color:#fff;padding:20px;}
+.Concept ul.Concept > li > article > h5 {text-transform:uppercase;font-size:130%;margin-top:20px;}
+.Concept ul.Concept > li.deal > article {max-width:300px;margin:0 auto;}
+.Concept ul.Concept > li.deal > article > h5 {margin-top:0;}
+.Concept ul.Concept > li.deal > article > h4 {margin-top: 90px;font-size: 310%;text-transform:uppercase;font-family: 'hasteristicobold';}
+.Concept ul.Concept > li.deal > article:before {content: "";position: absolute;bottom:50%;margin-bottom:-30px;left: initial;right: -61px;width:0;border-left: 30px solid #000;border-bottom: 30px solid transparent;border-top: 30px solid transparent;}
+.Concept ul.Concept > li.deal > article:after {content: "";position: absolute;bottom:50%;margin-bottom:-30px;right: -60px;left: initial;width:0;border-left: 30px solid #fff;border-bottom: 30px solid transparent;border-top: 30px solid transparent;}
+.Concept ul.Concept > li.deal.right > article:before {content: "";position: absolute;bottom:50%;margin-bottom:-30px;left:-1px;width:0;border-left:none;border-right: 30px solid #000;border-bottom: 30px solid transparent;border-top: 30px solid transparent;}
+.Concept ul.Concept > li.deal.right > article:after {content: "";position: absolute;bottom:50%;margin-bottom:-30px;left:0;width:0;border-left:none;border-right: 30px solid #fff;border-bottom: 30px solid transparent;border-top: 30px solid transparent;}
+.Concept ul.Concept > li.deal.right:after {background-image:url('../images/concept-deal.png');content:'';width:172px;height:201px;position:absolute;left:-86px;bottom:50px;}
+
+.aanbodSnippet header > h3 {font-family:'hasteristicobold';text-align: center;font-size:180%;letter-spacing: 2px;padding-bottom:20px;position:relative;}
+.aanbodSnippet header > h3:after {content:'';position:absolute;width:65px;height:2px;background-color:#000;left:50%;margin-left:15px;bottom:0;}
+.aanbodSnippet header > h3:before {content:'';position:absolute;width:65px;height:2px;background-color:#000;right:50%;margin-right:15px;bottom:0;}
+.aanbodSnippet .block-grid {margin-right:-30px;margin-top:30px;}
+.aanbodSnippet .block-grid > li {padding: 0 30px 30px 0;}
+.aanbodSnippet.Include main {position:relative;text-align:center;}
+.aanbodSnippet.Include main .contentWrap > h3 {position:relative;text-transform:uppercase;font-weight:bold;font-size: 180%;padding-bottom: 10px;margin-bottom: 10px;}
+.aanbodSnippet.Include main .contentWrap > h3:after {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;left:50%;margin-left:15px;bottom: 0;}
+.aanbodSnippet.Include main .contentWrap > h3:before {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;right:50%;margin-right:15px;bottom: 0;}
+.aanbodSnippet.Include main .overlay .contentWrap {display:table-cell;vertical-align:middle;}
+.aanbodSnippet.Include main .overlay .content {display:table;height:100%;width:100%;}
+.aanbodSnippet.Include main .overlay {color:#fff;cursor:pointer;position: absolute;left: 15px;right: 15px;bottom: 15px;top: 15px;background-color:#000;background-color:rgba(0, 0, 0, 0.75);}
+.aanbodSnippet.Include main .overlay img {padding: 10px;}
+.aanbodSnippet.Include main .overlay a {color:#fff;}
+.aanbodSnippet.Include main .overlay:hover a,.aanbodSnippet.Include main .overlay:focus a {color:#efa026;text-decoration:none;}
+
+.Aanbod.Detail.main {padding:30px 0;}
+.Aanbod.Detail {position:relative;}
+.Aanbod.Detail .maincolumn > header {margin-bottom:0;}
+.Aanbod.Detail .maincolumn > header > h1 {text-align: left;padding-bottom: 10px;margin-bottom: 10px;}
+.Aanbod.Detail .maincolumn > header > .subtitle {text-align: left;margin:0;}
+.Aanbod.Detail .maincolumn > header > .subtitle {text-transform:uppercase;}
+.Aanbod.Detail .maincolumn > header > .subtitle span {text-transform:none;}
+.Aanbod.Detail .maincolumn > header .icon {margin:0 5px;}
+.Aanbod.Detail .maincolumn > header > h1:after {content:'';position:absolute;width:65px;height:2px;background-color:#000;left:0;bottom:0;margin-left: 0;}
+.Aanbod.Detail .maincolumn > header > h1:before {content:'';position:absolute;width:65px;height:2px;background-color:#000;left: 85px;bottom:0;margin-right: 0;}
+.Aanbod.Detail .Facilities > ul.block-grid > li {padding:0 15px;}
+.Aanbod.Detail ul.rules { padding-left:0; list-style:none; }
+.Aanbod.Detail ul.rules li { margin-bottom:10px; }
+.Aanbod.Detail ul.rules li:before {font-family: 'FontAwesome';content: '\f00c';margin:0 10px 0;}
+.Aanbod.Detail ul.reaction { padding-left:0; list-style:none; }
+.Aanbod.Detail ul.reaction li { margin-bottom:10px;color:#8A754F;font-weight:bold;}
+.Aanbod.Detail ul.reaction li.perc:before {font-family: 'FontAwesome';content: '\f10c';margin: 0 10px 0 0;font-weight:normal;font-size: 130%;}
+.Aanbod.Detail ul.reaction li.time:before {font-family: 'FontAwesome';content: '\f017';margin: 0 10px 0 0;font-weight:normal;font-size: 130%;}
+.Aanbod.Detail .Text {padding-right:80px;}
+.Aanbod.Detail .Text > h2, .Aanbod.Detail .Text > h3 {margin-bottom:10px;font-size:100%;font-weight:bold;}
+.Aanbod.Detail .Text > h3 {margin-top:30px;}
+.Aanbod.Detail .Fav {position:absolute;right:10px;top:0;display: block;text-align: center;}
+.Aanbod.Detail .Fav a i {font-size: 160%;color: #000;}
+.Aanbod.Detail .Fav a:hover > i:before,.Aanbod.Detail .Fav > a:focus i:before {content: '\f005';color: #efa026;}
+.Aanbod.Detail .Fav > span {font-size:10px;display: block;}
+.Aanbod.Detail .Bieding.Overview > li {margin-bottom:20px;padding-bottom: 30px;}
+.Aanbod.Detail .rating {float:left;}
+.Aanbod.Detail .rating:not(:checked) > input {position:absolute;top:-9999px;clip:rect(0,0,0,0);}
+.Aanbod.Detail .rating:not(:checked) > label {float: right;width: 1em;padding:0 .1em;overflow:hidden;white-space:nowrap;cursor:pointer;font-size: 180%;font-weight: normal;line-height:1.2;color: #8A754F;font-family:'FontAwesome';}
+.Aanbod.Detail .rating:not(:checked) > label:before {content: '\f006 ';}
+.Aanbod.Detail .rating > input:checked ~ label:before {content: '\f005 ';}
+.Aanbod.Detail .rating:not(:checked) > label:hover:before,
+.Aanbod.Detail .rating:not(:checked) > label:hover ~ label:before {content: '\f005';}
+.Aanbod.Detail .rating > input:checked + label:hover:before,
+.Aanbod.Detail .rating > input:checked + label:hover ~ label:before,
+.Aanbod.Detail .rating > input:checked ~ label:hover:before,
+.Aanbod.Detail .rating > input:checked ~ label:hover ~ label:before,
+.Aanbod.Detail .rating > label:hover ~ input:checked ~ label:before {content: '\f005';}
+.Aanbod.Detail .rating > label:active {position:relative;top: 1px;}
+
+.Bieding.Overview > li {border:1px solid #000;}
+.Bieding.Overview > li.Running h5 {text-transform:uppercase;font-size: 13px;}
+.Bieding.Overview > li.Running .min {padding-left:0;}
+.Bieding.Overview > li.Running .bod {font-weight:bold;color: #0969c3;font-size: 16px;}
+.Bieding.Overview > li.Running .daily {font-size:10px;text-transform:uppercase;}
+.Bieding.Overview > li.Running .daily span {font-weight:bold;}
+.Bieding.Overview > li.Running .days {font-size:10px;text-transform:uppercase;}
+.Bieding.Overview > li.Running .days span {font-weight:bold;}
+.Bieding.Overview > li.Running .countdown ul {padding:0;margin:0;}
+.Bieding.Overview > li.Running .countdown ul > li {display:inline;width:30px;display:inline-block;margin-right:5px;font-weight:bold;}
+.Bieding.Overview > li.Running .countdownDesc {padding:0;margin:0;}
+.Bieding.Overview > li.Running .countdownDesc li {display:inline-block;text-transform:uppercase;font-size:8px;width:30px;margin-right:5px;}
+.Bieding.Overview > li.Running .period {font-size: 12px;margin: 6px 0;text-transform:uppercase;}
+.Bieding.Overview > li.Running .period span {font-weight:bold;text-align: right;}
+.Bieding.Overview > li.Running {height:400px;overflow:auto;}
+.Bieding.Overview > li.Register h5 {text-align:center;margin:5px 0;}
+.Bieding.Overview > li.Register {padding:0 100px}
+.Bieding.Overview > li.Register .input-space {padding-bottom:15px;}
+.Bieding.Overview > li.Register .input-group-addon {background: #000; text-shadow: none; color: #fff;}
+.Bieding.Overview > li.Register h6 {text-align:center;font-style:italic;}
+.Bieding.Overview > li.Register .bid {text-align:center;display:block;font-weight: bold;color: #0969c3;font-size: 20px;}
+.Bieding.Overview > li.Register .note {display:block;text-align:center;font-style:italic;font-size:10px;}
+.Bieding.Overview > li.Register .warning {display:block;text-align:center;font-weight:bold;color: #efa026;margin-top: 12px;font-size:10px;}
+.Bieding.Overview > li.Register .checkbox {text-align:center;font-size:12px;font-style:italic;text-decoration:underline;color:#0969c3;}
+.Bieding.Overview > li.Register .checkbox span {text-decoration:underline;}
+.Bieding.Overview > li.Register nav {text-align:center;}
+.Bieding.Overview > li.Register nav > a {text-align:center;padding:5px 80px;}
+.Bieding.Overview > li > header > h3 {text-align:center;position:relative;margin-bottom:25px;margin-top:10px;padding-bottom:10px;}
+.Bieding.Overview > li > header > h3:after {content:'';position:absolute;width:65px;height:2px;background-color:#000;left:50%;margin-left:15px;bottom:0;}
+.Bieding.Overview > li > header > h3:before {content:'';position:absolute;width:65px;height:2px;background-color:#000;right:50%;margin-right:15px;bottom:0;}
+.Bieding.Overview .Bieding.Item > li {padding:10px;}
+.Bieding.Overview .Bieding.Item > li:nth-child(odd) {background-color:#eee;}
+
+.Aanbod.Overview .Controls {display: block;text-align: center;}
+.Aanbod.Overview .Controls > ul.pagination > li > a {background-color: #fff;border: 1px solid #000;border-radius: 50%;color: #000;margin: 0 5px;}
+.Aanbod.Overview .Controls > ul.pagination > li > a:hover, .Aanbod.Overview .Controls > ul.pagination > li > a:focus, .Aanbod.Overview .Controls > ul.pagination > li.active > a {background-color: #000;border: 1px solid #000;border-radius: 50%;color: #fff;margin: 0 5px;}
+.Aanbod.Overview .Controls > ul.pagination > li:first-child > a, .Aanbod.Overview .Controls > ul.pagination > li:last-child > a {border:none;background-color: transparent;}
+.Aanbod.Overview .Controls > ul.pagination > li:last-child > a:hover, .Aanbod.Overview .Controls > ul.pagination > li:last-child > a:focus, .Aanbod.Overview .Controls > ul.pagination > li:first-child > a:hover, .Aanbod.Overview .Controls > ul.pagination > li:first-child > a:focus {border:none;color:#000;background-color:transparent;}
+.Aanbod.Overview .Refine nav > a.Gids {position: relative;width: 100%;text-align: center;}
+.Aanbod.Overview .Refine form > h5 {text-transform:uppercase;margin-top:20px;margin-bottom:5px;}
+.Aanbod.Overview .Refine .input-group .form-control:focus {border-color: #adadad;outline: 0;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,0,0,.2);box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,0,0,.2);}
+.Aanbod.Overview .Refine .input-group {max-width:550px;margin:0 auto;}
+.Aanbod.Overview .Refine .input-group button, .Aanbod.Overview .Refine .input-group input {border: 1px solid #ccc;box-shadow:none;border-radius:0;}
+.Aanbod.Overview .Refine .input-group button {background-color:#000;color:#fff;text-transform:uppercase;}
+.range {position:relative;padding-bottom:25px;}
+.range .min {position:absolute;left:0;bottom:0;font-size:11px;color: #777777;}
+.range .max {position:absolute;right:0;bottom:0;font-size:11px;color: #777777;}
+.range #js-output {position:absolute;text-align:center;width:100%;bottom: 0;color:#000;}
+.range #js-output:after {content:' m2';}
+.Aanbod.Overview .block-grid {margin-right:-40px;}
+.Aanbod.Overview .block-grid > li {padding: 0 30px 30px 0;}
+.Aanbod.Overview .Refine .input-daterange .input-group-addon {background: #000; text-shadow: none; color: #fff;}
+.Type .formButton, .Facilities .formButton {text-align:left;position: relative;padding-left: 19px;}
+.datepicker table tr td.active.active:hover, .datepicker table tr td.active.active, .datepicker table tr td.active.highlighted.active, .datepicker table tr td.active.highlighted:active, .datepicker table tr td.active:active {background-color:#000;border-color:#777;}
+
+.Aanbod.Include main {position:relative;text-align:center;}
+.Aanbod.Include main .contentWrap > h4 {text-transform:uppercase;position:relative;font-size: 160%;padding-bottom: 10px;margin-bottom: 10px;}
+.Aanbod.Include main .contentWrap > h4:after {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;left:50%;margin-left:15px;bottom: 0;}
+.Aanbod.Include main .contentWrap > h4:before {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;right:50%;margin-right:15px;bottom: 0;}
+.Aanbod.Include main .contentWrap > h3 {position:relative;font-size: 110%;padding-bottom: 10px;margin-bottom: 10px;}
+.Aanbod.Include main .contentWrap > h3:after {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;left:50%;margin-left:15px;bottom: 0;}
+.Aanbod.Include main .contentWrap > h3:before {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;right:50%;margin-right:15px;bottom: 0;}
+.Aanbod.Include main > nav a {color:#fff;position:absolute;right: 30px;top: 20px;font-size:25px;text-shadow: 1px 1px 1px #000;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);z-index: 1;}
+.Aanbod.Include main > nav a:focus, .Aanbod.Include main > nav a:hover {color:#efa026;}
+.Aanbod.Include main .overlay nav {margin-top:20px;}
+.Aanbod.Include main .overlay nav > a {padding:5px 60px; }
+.Aanbod.Include main .overlay .contentWrap {display:table-cell;vertical-align:middle;}
+.Aanbod.Include main .overlay .content {display:table;height:100%;width:100%;}
+.Aanbod.Include main .overlay {-moz-transition: all .15s ease-in;-o-transition: all .15s ease-in;-webkit-transition: all .15s ease-in;transition: all .15s ease-in;opacity: 0;color:#fff;position: absolute;left: 15px;right: 15px;bottom: 15px;top: 15px;background-color:#000;background-color:rgba(0, 0, 0, 0.75);}
+.Aanbod.Include main .overlay img {padding: 10px;}
+.Aanbod.Include main .overlay a:hover,.Aanbod.Include main .overlay a:focus {color:#efa026;}
+.Aanbod.Include:hover main .overlay, .Aanbod.Include:focus main .overlay {opacity: 1;}
+.Aanbod.Include footer > h4 {text-align:center;font-weight:bold;text-transform:uppercase;font-size:100%;margin-top:10px;}
+.Aanbod.Include footer > h4 span {text-transform:none;}
+
+.Fav.Overview {padding-top:0;}
+.Fav.Overview .block-grid {margin-right:-40px;}
+.Fav.Overview .block-grid > li {padding: 0 40px 40px 0;}
+.Fav.Overview .Fav.Include main {position:relative;text-align:center;}
+.Fav.Overview .Fav.Include main .subtitle {position:relative;padding-top: 10px;margin-top:10px;}
+.Fav.Overview .Fav.Include main .subtitle:after {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;left:50%;margin-left:15px;top: 0;}
+.Fav.Overview .Fav.Include main .subtitle:before {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;right:50%;margin-right:15px;top: 0;}
+.Fav.Overview .Fav.Include main > nav a {color:#fff;position:absolute;right: 30px;top: 20px;font-size:25px;text-shadow: 1px 1px 1px #000;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);z-index: 1;}
+.Fav.Overview .Fav.Include main > nav a:focus, .Fav.Overview .Fav.Include main > nav a:hover {color:#efa026;}
+.Fav.Overview .Fav.Include main .overlay nav {margin-top:20px;}
+.Fav.Overview .Fav.Include main .overlay nav > a {padding:5px 60px; }
+.Fav.Overview .Fav.Include main .overlay .contentWrap {display:table-cell;vertical-align:middle;}
+.Fav.Overview .Fav.Include main .overlay .content {display:table;height:100%;width:100%;}
+.Fav.Overview .Fav.Include main .overlay {-moz-transition: all .15s ease-in;-o-transition: all .15s ease-in;-webkit-transition: all .15s ease-in;transition: all .15s ease-in;opacity: 0;color:#fff;position: absolute;left: 15px;right: 15px;bottom: 15px;top: 15px;background-color:#000;background-color:rgba(0, 0, 0, 0.75);}
+.Fav.Overview .Fav.Include main .overlay img {padding: 10px;}
+.Fav.Overview .Fav.Include main .overlay a:hover,.Fav.Overview .Fav.Include main .overlay a:focus {color:#efa026;}
+.Fav.Overview .Fav.Include:hover main .overlay, .Fav.Overview .Fav.Include:focus main .overlay {opacity: 1;}
+.Fav.Overview .Fav.Include footer > h4 {text-align:center;font-weight:bold;text-transform:uppercase;font-size:100%;margin-top:10px;}
+.Fav.Overview .Fav.Include footer > h4 span {text-transform:none;}
+.home .Fav.Overview > nav {text-align:center;}
+
+.Media.Overview {padding-top:0;}
+.Media.Overview .block-grid {margin-right:-40px;}
+.Media.Overview .block-grid > li {padding: 0 40px 40px 0;}
+.Media.Overview .Media.Include main {position:relative;text-align:center;}
+.Media.Overview .Media.Include main .subtitle {position:relative;padding-top: 10px;margin-top:10px;}
+.Media.Overview .Media.Include main .subtitle:after {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;left:50%;margin-left:15px;top: 0;}
+.Media.Overview .Media.Include main .subtitle:before {content:'';position:absolute;width:65px;height: 1px;background-color:#fff;right:50%;margin-right:15px;top: 0;}
+.Media.Overview .Media.Include main nav {margin-top:20px;}
+.Media.Overview .Media.Include main nav > a {padding:5px 60px; }
+.Media.Overview .Media.Include main .overlay .contentWrap {display:table-cell;vertical-align:middle;}
+.Media.Overview .Media.Include main .overlay .content {display:table;height:100%;width:100%;}
+.Media.Overview .Media.Include main .overlay {-moz-transition: all .15s ease-in;-o-transition: all .15s ease-in;-webkit-transition: all .15s ease-in;transition: all .15s ease-in;opacity: 0;color:#fff;position: absolute;left: 15px;right: 15px;bottom: 15px;top: 15px;background-color:#000;background-color:rgba(0, 0, 0, 0.75);}
+.Media.Overview .Media.Include main .overlay img {padding: 10px;}
+.Media.Overview .Media.Include main .overlay a:hover,.Media.Overview .Media.Include main .overlay a:focus {color:#efa026;}
+.Media.Overview .Media.Include:hover main .overlay, .Media.Overview .Media.Include:focus main .overlay {opacity: 1;}
+.Media.Overview .Media.Include footer > h4 {text-align:center;font-weight:bold;text-transform:uppercase;font-size:100%;margin-top:10px;}
+
+.main.Media.Detail .row {position: relative;}
+.main.Media.Detail .share {position: static;}
+.main.Media.Detail .social {position: absolute;bottom: 30px;right: 0;}
+.main.Media.Detail {padding-bottom:0;}
+.main.Media.Detail header > h1 {font-family: 'Raleway', sans-serif;color:#000;text-align: left;font-weight: bold;letter-spacing:0;font-size:200%;margin-bottom:0;}
+.main.Media.Detail header > h1:before, .main.Media.Detail header > h1:after {display:none;}
+.main.Media.Detail .socialmedia {text-align: center;}
+.Media.Detail > nav {text-align:center;margin-top:20px;}
+.Media.Detail .Media.Text > header p {font-weight:bold;}
+.Media.Detail .Media.Images > figure {margin-bottom: 20px;}
+.Media.Detail .Media.Text > nav {margin-top:30px;text-align: center;}
+
+.News.Overview {padding:0;}
+.News.Overview .News.Include {padding:50px 0;background-color:#eee;}
+.News.Overview .News.Include header > h3 {font-weight:bold;}
+.News.Overview .News.Include header {margin-bottom:20px;}
+.News.Overview .News.Include main a.more {display:block;margin-top:20px;color:#0969c3;text-decoration:underline;}
+.News.Overview .News.Include main a.more:hover,.News.Overview .News.Include main a.more:focus {color: #efa026;}
+.News.Overview .News.Include main a.more:after {content:' >';}
+.News.Overview .News.Include:nth-child(even) {background-color:transparent;}
+.News.Overview .News.Include:nth-child(even) .figure {float:right;}
+
+.main.News.Detail .row {position: relative;}
+.main.News.Detail .share {position: static;}
+.main.News.Detail .social {position: absolute;bottom: 30px;right: 0;}
+.main.News.Detail {padding-bottom:0;}
+.main.News.Detail header > h1 {font-family: 'Raleway', sans-serif;color:#000;text-align: left;font-weight: bold;letter-spacing:0;font-size:200%;margin-bottom:0;}
+.main.News.Detail header > h1:before, .main.News.Detail header > h1:after {display:none;}
+.main.News.Detail .socialmedia {text-align: center;}
+.News.Detail > nav {text-align:center;margin-top:20px;}
+.News.Detail .News.Text > header p {font-weight:bold;}
+.News.Detail .News.Images > figure {margin-bottom: 20px;}
+.News.Detail .News.Text > nav {margin-top:20px;text-align: center;}
+
+.Login.Overview {padding-top:0;}
+.Login.Overview figure {text-align:center;margin-bottom:20px;}
+.Login.Overview nav > a {width:100%;text-align:center;}
+.Login.Overview article {padding:25px;border:1px solid #000;}
+.Login.Overview .Login {background:#eee;border:none;}
+.Login.Overview .Login label {font-weight:normal;}
+.Login.Overview .Login .text-muted > a {display:block;color: #0969c3;text-decoration: underline;}
+.Login.Overview header {font-family;font-family: 'hasteristicobold';text-align: center;margin-bottom:20px;}
+.Login.Overview .Owner header > h3, .Login.Overview .User header > h3 {font-size:200%;margin-bottom:50px}
+.Login.Overview .Munici {margin-top:20px;}
+.Login.Overview .Munici header > h3 {font-size:200%;margin-top:10px;}
+.Login.Overview .Munici nav {padding-left:35px;margin-top:40px;}
+
+.Register.Overview {padding-top:0;margin-top: -25px;}
+.Register.Overview .wizard {text-align:center;position: relative;height: 600px;}
+.Register.Overview .wizard input[type="radio"] {background:transparent;border: none;}
+.Register.Overview input[type="password"], .Register.Overview input[type="text"] {border:none;border-bottom: 1px solid #777;background:none;box-shadow:none;border-radius:0;-webkit-box-shadow: none;}
+.Register.Overview input[type="password"]::-webkit-input-placeholder, .Register.Overview input[type="text"]::-webkit-input-placeholder {text-align:center;font-weight:bold;}
+.Register.Overview input[type="password"]:-moz-placeholder, .Register.Overview input[type="text"]:-moz-placeholder {text-align:center;font-weight:bold;}
+.Register.Overview input[type="password"]::-moz-placeholder, .Register.Overview input[type="text"]::-moz-placeholder {text-align:center;font-weight:bold;}
+.Register.Overview input[type="password"]:-ms-input-placeholder, .Register.Overview input[type="text"]:-ms-input-placeholder {text-align:center;font-weight:bold;}
+.Register.Overview article > h2 {margin-bottom: 30px;}
+.Register.Overview .success {text-align:center;}
+.Register.Overview .success h2 {margin-bottom:50px;}
+.Register.Overview .block-grid {margin-right:-5px;margin-bottom:50px;}
+.Register.Overview .block-grid > li {list-style:none;padding-right:5px;}
+.Register.Overview .wizard .form-group {max-width: 560px;margin: 20px auto 20px;}
+.Register.Overview .wizard .form-group .drop {margin:0 auto;width:200px;height:200px;text-align:center;border:1px dotted #777}
+.Register.Overview .wizard .form-group .drop > i {font-size:100px;margin-top:45px;margin-bottom:10px;color:#fff;text-shadow: 0px 0px 1px #000000;}
+.Register.Overview .wizard .form-group .drop span {display:block;font-size:11px;font-style:italic;}
+.Register.Overview .input-group-addon {background:transparent;box-shadow:none;outline:0;text-shadow: none;color: #000;border: none;}
+.Register.Overview .input-group-addon button {background:#000;border:none;color:#fff;border-radius:50%;padding: 0 7px;height: 24px;}
+.Register.Overview .input-group-addon a {color: #000;}
+.Register.Overview .input-group-addon a:hover, .Register.Overview .input-group-addon:focus{color:#efa026;}
+.Register.Overview .wizard .radio {text-align: left;width: 200px;margin:0 auto;}
+.Register.Overview .wizard input[type=radio] {display: none;}
+.Register.Overview .wizard input[type=radio]:checked+label span {background: #000;}
+.Register.Overview .wizard input[type=radio]+label span {display: inline-block;width: 19px;height: 19px;margin: -1px 8px 0 0;vertical-align: middle;background: #fff;cursor: pointer;border-radius: 150%;border: 1px solid #000;padding: 2px;}
+
+.stickem-container {
+    position: relative;
+}
+
+.Munici.Overview {padding-top:0;}
+.Munici.Overview .Munici.Register {text-align:center;width:100%;max-width: 495px;margin:0 auto;}
+.Munici.Overview input[type="text"] {border-radius:0;}
+.Munici.Overview input[type="text"]::-webkit-input-placeholder {text-align:center;font-style:italic;}
+.Munici.Overview input[type="text"]:-moz-placeholder {text-align:center;font-style:italic;}
+.Munici.Overview input[type="text"]::-moz-placeholder {text-align:center;font-style:italic;}
+.Munici.Overview input[type="text"]:-ms-input-placeholder {text-align:center;font-style:italic;}
+.Munici.Overview nav {margin-top:50px;}
+
+.Munici.Portal .Summary article {text-align:center;padding:10px;background-color: #fff;-webkit-box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.1);box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.1);}
+.Munici.Portal .Summary article figure {background:#eee;display:inline-block;padding:30px;margin:-10px;}
+.Munici.Portal .Summary article.Total h5 {color:#0969c3;font-weight:bold;font-size:40px;margin-bottom:10px;}
+.Munici.Portal .Summary article.Use h5 {color:#95c11f;font-weight:bold;font-size:40px;margin-bottom:10px;}
+.Munici.Portal .Form {text-align:center;margin:50px 0;text-transform:uppercase;}
+.Munici.Portal .Form .form-group > select {max-width:300px;margin:10px auto;border:1px solid #000;border-radius: 0;}
+
+.Profile.Overview {padding-top:0;}
+.Profile.Overview .Profile.Settings h4 {text-transform:uppercase;margin: 30px 0 20px;}
+.Profile.Overview .Profile.Settings h5 {margin-bottom:10px;}
+.Profile.Overview .Profile.Settings {text-align:center;width:100%;max-width:600px;margin:0 auto;}
+.Profile.Overview .Profile.Settings figure img {border-radius:50%;max-width:100px;border:1px solid #000;}
+.Profile.Overview .Profile.Settings .form-group {margin-bottom:20px;}
+.Profile.Overview input[type="password"],.Profile.Overview input[type="email"],.Profile.Overview input[type="text"] {border-radius:0;border:0;border-bottom:1px solid #000;box-shadow:none;}
+.Profile.Overview input[type="password"],.Profile.Overview input[type="email"],.Profile.Overview input[type="text"]::-webkit-input-placeholder {text-align:center;font-weight:bold;}
+.Profile.Overview input[type="password"],.Profile.Overview input[type="email"],.Profile.Overview input[type="text"]:-moz-placeholder {text-align:center;font-weight:bold;}
+.Profile.Overview input[type="password"],.Profile.Overview input[type="email"],.Profile.Overview input[type="text"]::-moz-placeholder {text-align:center;font-weight:bold;}
+.Profile.Overview input[type="password"],.Profile.Overview input[type="email"],.Profile.Overview input[type="text"]:-ms-input-placeholder {text-align:center;font-weight:bold;}
+.Profile.Overview nav {margin-top:50px;}
+
+ul.social { margin:0; padding:0; list-style:none; }
+ul.social li {list-style:none; float:left;padding-right:10px;}
+ul.social li a { display:block; overflow:hidden; position: relative; background:#efa026; color:#fff; width:25px; height:25px; line-height:25px; font-size:16px; padding:0; text-decoration: none; text-align: center; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; }
+ul.social li a:focus, ul.social li a:hover {text-decoration: none;color: #fff;background: #adadad;}
+
+.EstateSummary nav > a.more {text-transform:uppercase;font-size:12px;}
+.EstateSummary nav.right {text-align:right;}
+.EstateSummary.Overview {padding-top:0;}
+.EstateSummary.Overview .clearfix {padding-bottom:30px;}
+.EstateSummary.Overview textarea, .EstateSummary.Overview input {border-radius:0;}
+.EstateSummary.Overview .input-group-addon {background:transparent;box-shadow:none;outline:0;text-shadow: none;color: #000;border: none;}
+.EstateSummary.Overview .input-group-addon button {background:#000;border:none;color:#fff;border-radius:50%;padding: 0 7px;height: 24px;}
+.EstateSummary.Overview .input-group-addon a {color: #000;}
+.EstateSummary.Overview .input-group-addon a:hover, .Register.Overview .input-group-addon:focus{color:#efa026;}
+.EstateSummary .block-grid.Facilities,.EstateSummary .block-grid.Type {margin-right:-10px;}
+.EstateSummary .block-grid.Facilities > li,.EstateSummary .block-grid.Type > li {padding-right:10px;}
+.EstateSummary .Del {position:absolute;right:10px;color:#ff0000;top:0;display: block;text-align: center;}
+.EstateSummary .Del a i {font-size: 160%;color: #ff0000;}
+.EstateSummary .Del a:hover > i:before,.Aanbod.Detail .Fav > a:focus i:before {content: '\f1f8';}
+.EstateSummary .Del > span {font-size:10px;display: block;}
+.EstateSummary .imageDrop {margin-right:-10px;}
+.EstateSummary .imageDrop > li {padding-right:10px;}
+.EstateSummary .imageDrop > li .drop {margin:0 auto;width:100%;height:131px;text-align:center;border:1px dotted #777}
+.EstateSummary .imageDrop > li .drop > i {font-size:30px;margin-top:45px;margin-bottom:10px;color:#000;}
+.EstateSummary .imageDrop > li .drop span {display:block;font-size:11px;font-style:italic;}
+
+.EstateSummary.Final {padding:20px 0;text-align:center;margin-bottom:50px;}
+.EstateSummary.Final .Bieding.Overview > li.Running {list-style:none;overflow:initial;border: none;height: initial;}
+
+.EstateHistory.Overview {padding-top:0;}
+.EstateHistory.Overview .table span {display:block;font-size:10px;}
+.EstateHistory.Overview .table th {color: #0969c3;text-transform: uppercase;text-decoration:underline;}
+.EstateHistory.Overview .calendar {padding-top:30px;}
+
+.Dashboard.Owner {padding-top:0;}
+.Dashboard.Owner .tabs.View {padding:0;margin:0;text-align:right;}
+.Dashboard.Owner .tabs.View > li {list-style:none;display:inline-block;}
+.Dashboard.Owner .tabs.View > li > a {color:#777;font-size:120%;}
+.Dashboard.Owner .tabs.View > li > a.active {color:#000;}
+.Dashboard.Owner .tabs.Main {margin:0;}
+.Dashboard.Owner .tabs.Main > li {padding:0;margin:0;}
+.Dashboard.Owner .tabs.Main > li > a.active {background-color: #eee;border: 1px solid #eee;}
+.Dashboard.Owner .tabs.Main > li > a {padding:20px;background-color: #fff;border: 1px solid #000;display:block;height:100%;}
+.Dashboard.Owner .tabs.Main > li > a:hover,.Dashboard.Owner .tabs > li > a:focus {text-decoration:none;}
+.Dashboard.Owner .tabs.Main > li > a > figure {padding:20px;}
+.Dashboard.Owner .tabs.Main > li > a > h3 {font-weight:bold;color:#000;text-transform:uppercase;font-size:120%;text-decoration: none;}
+.Dashboard.Owner .tabs.Main > li > a > h4 {font-weight:bold;color:#000;text-transform:uppercase;font-size:200%;}
+.Dashboard.Owner .Panden.Overview ul.block-grid {margin-right:-20px;}
+.Dashboard.Owner .Panden.Overview ul.block-grid > li {padding: 0 20px 20px 0;}
+.Dashboard.Owner .Panden.Overview .Pand {position:relative;border:1px solid #000}
+.Dashboard.Owner .Panden.Overview .add {border:1px solid;text-align:center;padding:20px;}
+.Dashboard.Owner .Panden.Overview .add > h3 {font-size:;text-transform:uppercase;font-weight:bold;margin-bottom:15px;}
+.Dashboard.Owner .Panden.Overview .add > figure {margin-top:30px;}
+.Dashboard.Owner .Overview {padding:50px 0;}
+.Dashboard.Owner header > h2 {text-align:center;position:relative;margin-bottom:50px;padding-bottom:10px;}
+.Dashboard.Owner header > h2:after {content:'';position:absolute;width:65px;height:2px;background-color:#000;left:50%;margin-left:15px;bottom:0;}
+.Dashboard.Owner header > h2:before {content:'';position:absolute;width:65px;height:2px;background-color:#000;right:50%;margin-right:15px;bottom:0;}
+.Dashboard.Owner .bg-grey {background-color:#eee;margin-bottom: -50px;}
+.Dashboard.Owner .Panden.Overview .overlay {text-align:center;content:'';color:#fff;position: absolute;left: 0;right: 0;bottom: 0;top: 0;background-color:#000;background-color:rgba(0, 0, 0, 0.75);}
+.Dashboard.Owner .Panden.Overview .overlay h4 {text-transform:uppercase;position:relative;padding-top: 20px;margin-top: 20px;font-size:13px;}
+.Dashboard.Owner .Panden.Overview .overlay h4:after {content:'';position:absolute;width:65px;height:1px;background-color:#fff;left:50%;margin-left:15px;top:0;}
+.Dashboard.Owner .Panden.Overview .overlay h4:before {content:'';position:absolute;width:65px;height:1px;background-color:#fff;right:50%;margin-right:15px;top:0;}
+.Dashboard.Owner .Panden.Overview .overlay .status {display:block;font-weight:bold;text-transform: uppercase;font-size: 20px;}
+.Dashboard.Owner .Panden.Overview .overlay .status span {display:inline-block;font-weight:normal;width:100%;font-size:12px;color:#fff;}
+.Dashboard.Owner .Panden.Overview .overlay .status.green {color: #95c11f;}
+.Dashboard.Owner .Panden.Overview .overlay .status.orange {color: #efa026;}
+.Dashboard.Owner .Panden.Overview .overlay .status.red {color: #ff0000;}
+.Dashboard.Owner .Panden.Overview .overlay .indication {font-size:12px;margin-bottom:15px;}
+.Dashboard.Owner .Panden.Overview .overlay .info {display:block;width:100%;text-align:left;padding:0 30px;text-transform:uppercase}
+.Dashboard.Owner .Panden.Overview .overlay .info span {text-align:right;font-weight:bold;display:inline;float:right;}
+.Dashboard.Owner .Panden.Overview .overlay nav {margin-top:10px;text-transform:uppercase;}
+.Dashboard.Owner .Panden.Overview .overlay h3 {background-color:#fff;text-transform: uppercase;text-decoration: underline;text-align: center;padding: 10px 0;font-size: 140%;}
+.Dashboard.Owner .Panden.Overview .overlay h3 > a {color: #0969c3;}
+.Dashboard.Owner .Panden.Overview .overlay h3 > a:hover,.Dashboard.Owner .Panden.Overview .overlay h3 > a:focus {color: #efa026;}
+.Dashboard.Owner .Panden.Overview .table th {text-transform:uppercase;font-weight:normal;}
+.Dashboard.Owner .Panden.Overview .table td {vertical-align:middle;}
+.Dashboard.Owner .Panden.Overview .table figure > img {max-width:150px;height:auto;}
+.Dashboard.Owner .Panden.Overview .table h4 {text-transform:uppercase;position:relative;padding-top: 20px;margin-top: 20px;font-size:13px;}
+.Dashboard.Owner .Panden.Overview .table h4:after {content:'';position:absolute;width:65px;height:1px;background-color:#fff;left:50%;margin-left:15px;top:0;}
+.Dashboard.Owner .Panden.Overview .table h4:before {content:'';position:absolute;width:65px;height:1px;background-color:#fff;right:50%;margin-right:15px;top:0;}
+.Dashboard.Owner .Panden.Overview .table .status {display:block;font-weight:bold;text-transform: uppercase;font-size: 20px;}
+.Dashboard.Owner .Panden.Overview .table .status span {display:inline-block;font-weight:normal;width:100%;font-size:12px;color:#fff;}
+.Dashboard.Owner .Panden.Overview .table .status.green {color: #95c11f;}
+.Dashboard.Owner .Panden.Overview .table .status.orange {color: #efa026;}
+.Dashboard.Owner .Panden.Overview .table .status.red {color: #ff0000;}
+.Dashboard.Owner .Panden.Overview .table .indication {font-size:12px;margin-bottom:15px;}
+.Dashboard.Owner .Panden.Overview .table .info span {font-weight:bold;}
+.Dashboard.Owner .Panden.Overview .table nav {margin-top:10px;text-transform:uppercase;}
+.Dashboard.Owner .Panden.Overview .table h3 {text-transform: uppercase;text-decoration: underline;font-size: 140%;}
+.Dashboard.Owner .Panden.Overview .table h3 > a {color: #0969c3;font-size: 90%;}
+.Dashboard.Owner .Panden.Overview .table h3 > a:hover,.Dashboard.Owner .Panden.Overview .overlay h3 > a:focus {color: #efa026;}
+.Dashboard.Owner .Panden.Overview .New {background-color:#fff;text-align:center;padding:20px;}
+.Dashboard.Owner .Panden.Overview h4 {font-weight:bold;text-transform:uppercase;color: #BBB;font-size:140%;margin:0;}
+
+.Dashboard.Owner .Bieding.Overview {background-color:#fff;padding:40px 10px 10px;border:1px solid #000;position:relative;}
+.Dashboard.Owner .Bieding.Overview header > h3 {font-size:150%;margin-bottom:20px;text-align:center;}
+.Dashboard.Owner .Bieding.Overview header > h3 > a {color:#0969c3;text-decoration:underline;}
+.Dashboard.Owner .Bieding.Overview header > h2 {font-size:140%;margin-bottom: 50px;}
+.Dashboard.Owner .Bieding.Overview.Blue .status {background-color:#46a9e0;}
+.Dashboard.Owner .Bieding.Overview.Green .status {background-color:#95c11f;}
+.Dashboard.Owner .Bieding.Overview.Orange .status {background-color:#efa026;}
+.Dashboard.Owner .Bieding.Overview.Red .status {background-color:#f00;}
+.Dashboard.Owner .Bieding.Overview .status {text-transform:uppercase;font-weight:bold;text-align:center;position:absolute;left:0;top:0;width:100%;color:#fff;border-bottom:1px solid #000;padding:0 10px;}
+.Dashboard.Owner .Bieding.Overview .status:before {content:'status:';position:absolute;left:10px;}
+.Dashboard.Owner .Bieding.Overview .Running h5 {text-transform:uppercase;font-size: 13px;}
+.Dashboard.Owner .Bieding.Overview .Running .min {padding-left:0;}
+.Dashboard.Owner .Bieding.Overview .Running .bod {font-weight:bold;color: #0969c3;font-size: 16px;}
+.Dashboard.Owner .Bieding.Overview .Running .daily {font-size:10px;text-transform:uppercase;}
+.Dashboard.Owner .Bieding.Overview .Running .daily span {font-weight:bold;}
+.Dashboard.Owner .Bieding.Overview .Running .days {font-size:10px;text-transform:uppercase;}
+.Dashboard.Owner .Bieding.Overview .Running .days span {font-weight:bold;}
+.Dashboard.Owner .Bieding.Overview .Running .countdown ul {padding:0;margin:0;}
+.Dashboard.Owner .Bieding.Overview .Running .countdown ul > li {display:inline;width:30px;display:inline-block;margin-right:5px;font-weight:bold;}
+.Dashboard.Owner .Bieding.Overview .Running .countdownDesc {padding:0;margin:0;}
+.Dashboard.Owner .Bieding.Overview .Running .countdownDesc li {display:inline-block;text-transform:uppercase;font-size:8px;width:30px;margin-right:5px;}
+.Dashboard.Owner .Bieding.Overview .Running .period {font-size: 12px;margin: 6px 0;text-transform:uppercase;}
+.Dashboard.Owner .Bieding.Overview .Running .period span {font-weight:bold;text-align: right;}
+.Dashboard.Owner .Bieding.Overview .Running {height:300px;overflow:hidden;overflow-y:auto;}
+.Dashboard.Owner .Bieding.Overview .Running > li {padding:10px;border:2px solid transparent;}
+.Dashboard.Owner .Bieding.Overview .Running > li:nth-child(odd) {background-color:#eee;border:2px solid #eee;}
+.Dashboard.Owner .Bieding.Overview #map_canvas {height:300px;}
+.Dashboard.Owner .Bieding.Overview.Blue .Running > li.active, .Dashboard.Owner .Bieding.Overview.Blue .Running > li:focus, .Dashboard.Owner .Bieding.Overview.Blue .Running > li:hover {border: 2px solid #46a9e0;}
+.Dashboard.Owner .Bieding.Overview.Blue .Running > li:nth-child(odd):hover {border: 2px solid #46a9e0;}
+.Dashboard.Owner .Bieding.Overview.Orange .Running > li.active, .Dashboard.Owner .Bieding.Overview.Orange .Running > li:focus, .Dashboard.Owner .Bieding.Overview.Orange .Running > li:hover {border: 2px solid #efa026;}
+.Dashboard.Owner .Bieding.Overview.Orange .Running > li:nth-child(odd):hover {border: 2px solid #efa026;}
+.Dashboard.Owner .Bieding.Overview.Blue .Running > li.active, .Dashboard.Owner .Bieding.Overview.Blue .Running > li:focus, .Dashboard.Owner .Bieding.Overview.Blue .Running > li:hover {border: 2px solid #46a9e0;}
+.Dashboard.Owner .Bieding.Overview.Blue .Running > li:nth-child(odd):hover {border: 2px solid #46a9e0;}
+.Dashboard.Owner .Bieding.Overview.Green .Running > li.active, .Dashboard.Owner .Bieding.Overview.Green .Running > li:focus, .Dashboard.Owner .Bieding.Overview.Green .Running > li:hover {border: 2px solid #95c11f;}
+.Dashboard.Owner .Bieding.Overview.Green .Running > li:nth-child(odd):hover {border: 2px solid #95c11f;}
+
+.Dashboard.Owner .Bieding.Overview main.concept {height:300px;overflow:hidden;overflow-y:scroll;}
+.Dashboard.Owner .Bieding.Overview main.concept > h3 {color:#46a9e0;text-transform:uppercase;text-decoration:underline;font-size:13px;text-align:center;}
+.Dashboard.Owner .Bieding.Overview main.concept > h3 .icon {float:right;padding-right:5px;}
+.Dashboard.Owner .Bieding.Overview main.concept .Text {font-size:11px;padding-top:5px;}
+.Dashboard.Owner .Bieding.Overview main.concept .Text .more {display:block;}
+.Dashboard.Owner .Bieding.Overview main.concept .Images {margin-right:-5px;}
+.Dashboard.Owner .Bieding.Overview main.concept .Images > li {padding:5px 5px 5px 0;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter h5 {text-transform:uppercase;text-align:center;font-size:12px;margin-top:5px;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .bod {font-weight:bold;color: #0969c3;font-size: 16px;text-align:center;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .daily {font-size:10px;text-transform:uppercase;text-align:center;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .daily span {font-weight:bold;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .min {padding-left:0;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .days {font-size:10px;text-transform:uppercase;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .days span {font-weight:bold;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .countdown ul {padding:0;margin:0;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .countdown ul > li {display:inline;width:25px;display:inline-block;margin-right:5px;font-weight:bold;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .countdownDesc {padding:0;margin:0;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .countdownDesc li {display:inline-block;text-transform:uppercase;font-size:8px;width:25px;margin-right:5px;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .period {font-size: 12px;margin: 6px 0;text-transform:uppercase;}
+.Dashboard.Owner .Bieding.Overview main.concept .Counter .period span {font-weight:bold;text-align: right;}
+.Dashboard.Owner .Bieding.Overview main.concept .Accept {text-align:center;margin-top:5px;}
+.Dashboard.Owner .Bieding.Overview main.concept .Accept nav > a {width:100%;margin:5px 0;font-size:12px;border:2px solid;font-weight:bold;}
+
+.Dashboard.Owner .Transactie.Overview {background-color:#fff;padding:40px 10px 10px;border:1px solid #000;position:relative;}
+.Dashboard.Owner .Transactie.Overview header > h4 {text-align:center;font-size:14px;margin-bottom:10px;}
+.Dashboard.Owner .Transactie.Overview header > h3 {font-size:150%;margin-bottom:20px;text-align:center;}
+.Dashboard.Owner .Transactie.Overview header > h3 > a {color:#0969c3;text-decoration:underline;}
+.Dashboard.Owner .Transactie.Overview header > h2 {font-size:140%;margin-bottom: 50px;}
+.Dashboard.Owner .Transactie.Overview h2.accepted {text-align:center;font-weight:bold;text-transform:uppercase;font-size:150%;margin-bottom:25px;margin-top:-20px;color:#95c11f;}
+.Dashboard.Owner .Transactie.Overview.Blue .status {color:#46a9e0;}
+.Dashboard.Owner .Transactie.Overview.Green .status {color:#95c11f;}
+.Dashboard.Owner .Transactie.Overview.Orange .status {color:#efa026;}
+.Dashboard.Owner .Transactie.Overview .info {text-align:center;}
+.Dashboard.Owner .Transactie.Overview .date {text-align:right;margin-right:10px;margin-top:-5px;font-size:12px;}
+.Dashboard.Owner .Transactie.Overview .Text {text-align:center;}
+.Dashboard.Owner .Transactie.Overview figure {text-align:center;}
+.Dashboard.Owner .Transactie.Overview nav > a {width:100%;}
+.Dashboard.Owner .Transactie.Overview nav {text-align:center;margin-top:10px;}
+.Dashboard.Owner .Transactie.Overview .status {text-transform:uppercase;font-weight:bold;text-align:center;position:absolute;left:0;top:0;width:100%;color:#fff;border-bottom:1px solid #000;padding:0 10px;}
+.Dashboard.Owner .Transactie.Overview .status:before {content:'status:';position:absolute;left:10px;}
+.Dashboard.Owner .Transactie.Overview .payment {position:absolute;right: 5px;top: 6px;font-weight:bold;font-style:italic;text-transform:uppercase;font-size:12px;line-height:1.2;}
+.Dashboard.Owner .Transactie.Overview .payment span {width: 12px;height: 12px;background-color:#f00;display:inline-block;border-radius:50%;border:2px solid #000;margin-left:5px;}
+.Dashboard.Owner .Transactie.Overview .payment span.orange {background-color: #efa026;}
+.Dashboard.Owner .Transactie.Overview .payment span.green {background-color:#95c11f;}
+.Dashboard.Owner .Transactie.Overview.Blue .Running > li.active, .Dashboard.Owner .Transactie.Overview.Blue .Running > li:focus, .Dashboard.Owner .Transactie.Overview.Blue .Running > li:hover {border: 2px solid #46a9e0;}
+.Dashboard.Owner .Transactie.Overview.Blue .Running > li:nth-child(odd):hover {border: 2px solid #46a9e0;}
+.Dashboard.Owner .Transactie.Overview.Orange .Running > li.active, .Dashboard.Owner .Transactie.Overview.Orange .Running > li:focus, .Dashboard.Owner .Transactie.Overview.Orange .Running > li:hover {border: 2px solid #efa026;}
+.Dashboard.Owner .Transactie.Overview.Orange .Running > li:nth-child(odd):hover {border: 2px solid #efa026;}
+.Dashboard.Owner .Transactie.Overview.Blue .Running > li.active, .Dashboard.Owner .Transactie.Overview.Blue .Running > li:focus, .Dashboard.Owner .Transactie.Overview.Blue .Running > li:hover {border: 2px solid #46a9e0;}
+.Dashboard.Owner .Transactie.Overview.Blue .Running > li:nth-child(odd):hover {border: 2px solid #46a9e0;}
+.Dashboard.Owner .Transactie.Overview.Green .Running > li.active, .Dashboard.Owner .Transactie.Overview.Green .Running > li:focus, .Dashboard.Owner .Transactie.Overview.Green .Running > li:hover {border: 2px solid #95c11f;}
+.Dashboard.Owner .Transactie.Overview.Green .Running > li:nth-child(odd):hover {border: 2px solid #95c11f;}
+
+.Dashboard.Owner .Transactie.Overview .bod {text-align:center;font-size:160%;font-weight:bold;color:#95c11f;}
+.Dashboard.Owner .Transactie.Overview .daily {text-align:center;font-size:12px;}
+.Dashboard.Owner .Transactie.Overview .daily span {font-weight:bold;}
+.Dashboard.Owner .Transactie.Overview h5 {text-align:center;margin-top:20px;text-transform:uppercase;}
+.Dashboard.Owner .Transactie.Overview .period {text-align:center;font-size:14px;margin:5px 0;}
+.Dashboard.Owner .Transactie.Overview .period span {font-weight:bold;}
+.Dashboard.Owner .Transactie.Overview .days {text-align:center;font-size:12px;}
+.Dashboard.Owner .Transactie.Overview .Title {text-align:center;display:block;font-size:120%;text-decoration:underline;color:#46a9e0;}
+
+.Dashboard.Owner ul.Status > li {padding-bottom:50px;}
+.Dashboard.Owner .Bieding.Overview .none {text-transform:uppercase;text-align:center;font-weight: bold;color: #d2d2d2;font-style: italic;margin-top: 140px;}
+
+.Dashboard.User {padding-top:0;}
+.Dashboard.User .tabs.View {padding:0;margin:0;text-align:right;}
+.Dashboard.User .tabs.View > li {list-style:none;display:inline-block;}
+.Dashboard.User .tabs.View > li > a {color:#777;font-size:120%;}
+.Dashboard.User .tabs.View > li > a.active {color:#000;}
+.Dashboard.User .tabs.Main {margin:0;}
+.Dashboard.User .tabs.Main > li {padding:0;margin:0;}
+.Dashboard.User .tabs.Main > li > a.active {background-color: #eee;border: 1px solid #eee;}
+.Dashboard.User .tabs.Main > li > a {padding:20px;background-color: #fff;border: 1px solid #000;display:block;height:100%;}
+.Dashboard.User .tabs.Main > li > a:hover,.Dashboard.User .tabs > li > a:focus {text-decoration:none;}
+.Dashboard.User .tabs.Main > li > a > figure {padding:20px;}
+.Dashboard.User .tabs.Main > li > a > h3 {font-weight:bold;color:#000;text-transform:uppercase;font-size:120%;text-decoration: none;}
+.Dashboard.User .tabs.Main > li > a > h4 {font-weight:bold;color:#000;text-transform:uppercase;font-size:200%;}
+.Dashboard.User .Panden.Overview ul.block-grid {margin-right:-20px;}
+.Dashboard.User .Panden.Overview ul.block-grid > li {padding: 0 20px 20px 0;}
+.Dashboard.User .Panden.Overview .Pand {position:relative;border:1px solid #000}
+.Dashboard.User .Panden.Overview .add {border:1px solid;text-align:center;padding:20px;}
+.Dashboard.User .Panden.Overview .add > h3 {font-size:;text-transform:uppercase;font-weight:bold;margin-bottom:15px;}
+.Dashboard.User .Panden.Overview .add > figure {margin-top:30px;}
+.Dashboard.User .Overview {padding:50px 0;}
+.Dashboard.User header > h2 {text-align:center;position:relative;margin-bottom:50px;padding-bottom:10px;}
+.Dashboard.User header > h2:after {content:'';position:absolute;width:65px;height:2px;background-color:#000;left:50%;margin-left:15px;bottom:0;}
+.Dashboard.User header > h2:before {content:'';position:absolute;width:65px;height:2px;background-color:#000;right:50%;margin-right:15px;bottom:0;}
+.Dashboard.User .bg-grey {background-color:#eee;margin-bottom: -50px;}
+.Dashboard.User .Panden.Overview .overlay {text-align:center;content:'';color:#fff;position: absolute;left: 0;right: 0;bottom: 0;top: 0;background-color:#000;background-color:rgba(0, 0, 0, 0.75);}
+.Dashboard.User .Panden.Overview .overlay h4 {text-transform:uppercase;position:relative;padding-top: 20px;margin-top: 20px;font-size:13px;}
+.Dashboard.User .Panden.Overview .overlay h4:after {content:'';position:absolute;width:65px;height:1px;background-color:#fff;left:50%;margin-left:15px;top:0;}
+.Dashboard.User .Panden.Overview .overlay h4:before {content:'';position:absolute;width:65px;height:1px;background-color:#fff;right:50%;margin-right:15px;top:0;}
+.Dashboard.User .Panden.Overview .overlay .status {display:block;font-weight:bold;text-transform: uppercase;font-size: 20px;}
+.Dashboard.User .Panden.Overview .overlay .status span {display:inline-block;font-weight:normal;width:100%;font-size:12px;color:#fff;}
+.Dashboard.User .Panden.Overview .overlay .status.green {color: #95c11f;}
+.Dashboard.User .Panden.Overview .overlay .status.orange {color: #efa026;}
+.Dashboard.User .Panden.Overview .overlay .status.red {color: #ff0000;}
+.Dashboard.User .Panden.Overview .overlay .indication {font-size:12px;margin-bottom:15px;}
+.Dashboard.User .Panden.Overview .overlay .info {display:block;width:100%;text-align:left;padding:0 30px;text-transform:uppercase}
+.Dashboard.User .Panden.Overview .overlay .info span {text-align:right;font-weight:bold;display:inline;float:right;}
+.Dashboard.User .Panden.Overview .overlay nav {margin-top:10px;text-transform:uppercase;}
+.Dashboard.User .Panden.Overview .overlay h3 {background-color:#fff;text-transform: uppercase;text-decoration: underline;text-align: center;padding: 10px 0;font-size: 140%;}
+.Dashboard.User .Panden.Overview .overlay h3 > a {color: #0969c3;}
+.Dashboard.User .Panden.Overview .overlay h3 > a:hover,.Dashboard.User .Panden.Overview .overlay h3 > a:focus {color: #efa026;}
+.Dashboard.User .Panden.Overview .table th {text-transform:uppercase;font-weight:normal;}
+.Dashboard.User .Panden.Overview .table td {vertical-align:middle;}
+.Dashboard.User .Panden.Overview .table figure > img {max-width:150px;height:auto;}
+.Dashboard.User .Panden.Overview .table h4 {text-transform:uppercase;position:relative;padding-top: 20px;margin-top: 20px;font-size:13px;}
+.Dashboard.User .Panden.Overview .table h4:after {content:'';position:absolute;width:65px;height:1px;background-color:#fff;left:50%;margin-left:15px;top:0;}
+.Dashboard.User .Panden.Overview .table h4:before {content:'';position:absolute;width:65px;height:1px;background-color:#fff;right:50%;margin-right:15px;top:0;}
+.Dashboard.User .Panden.Overview .table .status {display:block;font-weight:bold;text-transform: uppercase;font-size: 20px;}
+.Dashboard.User .Panden.Overview .table .status span {display:inline-block;font-weight:normal;width:100%;font-size:12px;color:#fff;}
+.Dashboard.User .Panden.Overview .table .status.green {color: #95c11f;}
+.Dashboard.User .Panden.Overview .table .status.orange {color: #efa026;}
+.Dashboard.User .Panden.Overview .table .status.red {color: #ff0000;}
+.Dashboard.User .Panden.Overview .table .indication {font-size:12px;margin-bottom:15px;}
+.Dashboard.User .Panden.Overview .table .info span {font-weight:bold;}
+.Dashboard.User .Panden.Overview .table nav {margin-top:10px;text-transform:uppercase;}
+.Dashboard.User .Panden.Overview .table h3 {text-transform: uppercase;text-decoration: underline;font-size: 140%;}
+.Dashboard.User .Panden.Overview .table h3 > a {color: #0969c3;font-size: 90%;}
+.Dashboard.User .Panden.Overview .table h3 > a:hover,.Dashboard.User .Panden.Overview .overlay h3 > a:focus {color: #efa026;}
+.Dashboard.User .Panden.Overview .New {background-color:#fff;text-align:center;padding:20px;}
+.Dashboard.User .Panden.Overview h4 {font-weight:bold;text-transform:uppercase;color: #BBB;font-size:140%;margin:0;}
+
+.Dashboard.User .Bieding.Overview {background-color:#fff;padding:40px 10px 10px;border:1px solid #000;position:relative;}
+.Dashboard.User .Bieding.Overview header > h3 {font-size:150%;margin-bottom:20px;text-align:center;}
+.Dashboard.User .Bieding.Overview header > h3 > a {color:#0969c3;text-decoration:underline;}
+.Dashboard.User .Bieding.Overview header > h2 {font-size:140%;margin-bottom: 50px;}
+.Dashboard.User .Bieding.Overview.Blue .status {background-color:#46a9e0;}
+.Dashboard.User .Bieding.Overview.Green .status {background-color:#95c11f;}
+.Dashboard.User .Bieding.Overview.Orange .status {background-color:#efa026;}
+.Dashboard.User .Bieding.Overview.Red .status {background-color:#f00;}
+.Dashboard.User .Bieding.Overview.Red:after {position:absolute;right:5px;top:3px;content:'\f057';font-family:'FontAwesome';background-color:#fff;font-size:25px;line-height:20px;height:20px;width:20px;border-radius:10px;cursor:pointer;}
+.Dashboard.User .Bieding.Overview main.counter, .Dashboard.User .Bieding.Overview main.reject {text-align:center;}
+.Dashboard.User .Bieding.Overview main.reject p {padding-top:30px;}
+.Dashboard.User .Bieding.Overview main.reject .note {color:#777;font-size:12px;margin-bottom:30px;display:block;}
+.Dashboard.User .Bieding.Overview main.reject nav > a {width:100%;margin-top:10px;}
+.Dashboard.User .Bieding.Overview main.counter nav a {width:100%;border:2px solid;font-weight:bold;margin:5px 0;}
+.Dashboard.User .Bieding.Overview main.counter h5, .Dashboard.User .Bieding.Overview main.counter header > h4 {text-align: center;font-size: 14px;margin-bottom: 10px;text-transform:uppercase;}
+.Dashboard.User .Bieding.Overview main.counter .bod.orange {color:#efa026;}
+.Dashboard.User .Bieding.Overview main.counter .Accept {margin-top:20px;}
+.Dashboard.User .Bieding.Overview main.counter .days span, .Dashboard.User .Bieding.Overview main.counter .period span {font-weight:bold;}
+.Dashboard.User .Bieding.Overview main.counter .bod {font-weight:bold;font-size:20px;margin-bottom:20px;}
+.Dashboard.User .Bieding.Overview main.newbid h5 {font-size:12px;}
+.Dashboard.User .Bieding.Overview main.newbid {text-align:center;font-size:12px;}
+.Dashboard.User .Bieding.Overview main.newbid .bod {font-weight:bold;font-size:20px;}
+.Dashboard.User .Bieding.Overview main.newbid .days span {font-weight:bold;}
+.Dashboard.User .Bieding.Overview main.newbid .input-space {max-width: 350px;margin: 5px auto;}
+.Dashboard.User .Bieding.Overview main.newbid .input-group-addon {background: #000; text-shadow: none; color: #fff;}
+.Dashboard.User .Bieding.Overview main.newbid .note {font-size:11px;font-style:italic;}
+.Dashboard.User .Bieding.Overview main.newbid nav a {width:100%;font-size: 15px;}
+.Dashboard.User .Bieding.Overview main.newbid .checkbox {font-size:12px;}
+.Dashboard.User .Bieding.Overview main.newbid .checkbox a {color:#46a9e0;font-style:italic;text-decoration:underline;}
+
+.Dashboard.User .Bieding.Overview .status {text-transform:uppercase;font-weight:bold;text-align:center;position:absolute;left:0;top:0;width:100%;color:#fff;border-bottom:1px solid #000;padding:0 10px;}
+.Dashboard.User .Bieding.Overview .status:before {content:'status:';position:absolute;left:10px;}
+.Dashboard.User .Bieding.Overview .Running h5 {text-transform:uppercase;font-size: 13px;}
+.Dashboard.User .Bieding.Overview .Running .min {padding-left:0;}
+.Dashboard.User .Bieding.Overview .Running .bod {font-weight:bold;color: #0969c3;font-size: 16px;}
+.Dashboard.User .Bieding.Overview .Running .daily {font-size:10px;text-transform:uppercase;}
+.Dashboard.User .Bieding.Overview .Running .daily span {font-weight:bold;}
+.Dashboard.User .Bieding.Overview .Running .days {font-size:10px;text-transform:uppercase;}
+.Dashboard.User .Bieding.Overview .Running .days span {font-weight:bold;}
+.Dashboard.User .Bieding.Overview .Running .countdown ul {padding:0;margin:0;}
+.Dashboard.User .Bieding.Overview .Running .countdown ul > li {display:inline;width:30px;display:inline-block;margin-right:5px;font-weight:bold;}
+.Dashboard.User .Bieding.Overview .Running .countdownDesc {padding:0;margin:0;}
+.Dashboard.User .Bieding.Overview .Running .countdownDesc li {display:inline-block;text-transform:uppercase;font-size:8px;width:30px;margin-right:5px;}
+.Dashboard.User .Bieding.Overview .Running .period {font-size: 12px;margin: 6px 0;text-transform:uppercase;}
+.Dashboard.User .Bieding.Overview .Running .period span {font-weight:bold;text-align: right;}
+.Dashboard.User .Bieding.Overview .Running {height:300px;overflow:hidden;overflow-y:auto;}
+.Dashboard.User .Bieding.Overview .Running > li {padding:10px;border:2px solid transparent;}
+.Dashboard.User .Bieding.Overview .Running > li:nth-child(odd) {background-color:#eee;border:2px solid #eee;}
+.Dashboard.User .Bieding.Overview #map_canvas {height:300px;}
+.Dashboard.User .Bieding.Overview.Blue .Running > li.myBid, .Dashboard.User .Bieding.Overview.Blue .Running > li.active, .Dashboard.User .Bieding.Overview.Blue .Running > li:focus, .Dashboard.User .Bieding.Overview.Blue .Running > li:hover {border: 2px solid #46a9e0;}
+.Dashboard.User .Bieding.Overview.Blue .Running > li:nth-child(odd):hover {border: 2px solid #46a9e0;}
+.Dashboard.User .Bieding.Overview.Orange .Running > li.myBid, .Dashboard.User .Bieding.Overview.Orange .Running > li.active, .Dashboard.User .Bieding.Overview.Orange .Running > li:focus, .Dashboard.User .Bieding.Overview.Orange .Running > li:hover {border: 2px solid #efa026;}
+.Dashboard.User .Bieding.Overview.Orange .Running > li:nth-child(odd):hover {border: 2px solid #efa026;}
+.Dashboard.User .Bieding.Overview.Blue .Running > li.myBid, .Dashboard.User .Bieding.Overview.Blue .Running > li.active, .Dashboard.User .Bieding.Overview.Blue .Running > li:focus, .Dashboard.User .Bieding.Overview.Blue .Running > li:hover {border: 2px solid #46a9e0;}
+.Dashboard.User .Bieding.Overview.Blue .Running > li:nth-child(odd):hover {border: 2px solid #46a9e0;}
+.Dashboard.User .Bieding.Overview.Green .Running > li.myBid, .Dashboard.User .Bieding.Overview.Green .Running > li.active, .Dashboard.User .Bieding.Overview.Green .Running > li:focus, .Dashboard.User .Bieding.Overview.Green .Running > li:hover {border: 2px solid #95c11f;}
+.Dashboard.User .Bieding.Overview.Green .Running > li:nth-child(odd):hover {border: 2px solid #95c11f;}
+.Dashboard.User .Bieding.Overview.Red .Running > li.myBid, .Dashboard.User .Bieding.Overview.Red .Running > li.active, .Dashboard.User .Bieding.Overview.Red .Running > li:focus, .Dashboard.User .Bieding.Overview.Red .Running > li:hover {border: 2px solid #f00;}
+.Dashboard.User .Bieding.Overview.Red .Running > li:nth-child(odd):hover {border: 2px solid #f00;}
+.Dashboard.User .Bieding.Overview .Running > li.myBid {position:relative;}
+.Dashboard.User .Bieding.Overview .Running > li.myBid:before {content:'MIJN BOD';position:absolute;top:-20px;text-align:center;left:0;right:0;font-size:12px;color:#fff;font-weight:bold;}
+.Dashboard.User .Bieding.Overview .Running > li.myBid:after {content:'\f0e3';font-family:'FontAwesome';position:absolute;top:-20px;text-align:center;left:0;right:80px;font-size:12px;color:#fff;}
+.Dashboard.User .Bieding.Overview.Blue .Running > li.myBid:nth-child(odd):hover, .Dashboard.User .Bieding.Overview.Blue .Running > li.myBid {border-top:20px solid #46a9e0;}
+.Dashboard.User .Bieding.Overview.Orange .Running > li.myBid:nth-child(odd):hover, .Dashboard.User .Bieding.Overview.Orange .Running > li.myBid {border-top:20px solid #efa026;}
+.Dashboard.User .Bieding.Overview.Green .Running > li.myBid:nth-child(odd):hover, .Dashboard.User .Bieding.Overview.Green .Running > li.active {border-top:20px solid #95c11f;}
+.Dashboard.User .Bieding.Overview.Red .Running > li.myBid:nth-child(odd):hover, .Dashboard.User .Bieding.Overview.Red .Running > li.myBid {border-top:20px solid #f00;}
+
+.Dashboard.User .Bieding.Overview main.concept {height:300px;overflow:hidden;overflow-y:scroll;}
+.Dashboard.User .Bieding.Overview main.concept > h3 {color:#46a9e0;text-transform:uppercase;text-decoration:underline;font-size:13px;text-align:center;}
+.Dashboard.User .Bieding.Overview main.concept > h3 .icon {float:right;padding-right:5px;}
+.Dashboard.User .Bieding.Overview main.concept .Text {font-size:11px;padding-top:5px;}
+.Dashboard.User .Bieding.Overview main.concept .Text .more {display:block;}
+.Dashboard.User .Bieding.Overview main.concept .Images {margin-right:-5px;}
+.Dashboard.User .Bieding.Overview main.concept .Images > li {padding:5px 5px 5px 0;}
+.Dashboard.User .Bieding.Overview main.concept .Counter h5 {text-transform:uppercase;text-align:center;font-size:12px;margin-top:5px;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .bod {font-weight:bold;color: #0969c3;font-size: 16px;text-align:center;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .daily {font-size:10px;text-transform:uppercase;text-align:center;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .daily span {font-weight:bold;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .min {padding-left:0;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .days {font-size:10px;text-transform:uppercase;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .days span {font-weight:bold;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .countdown ul {padding:0;margin:0;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .countdown ul > li {display:inline;width:25px;display:inline-block;margin-right:5px;font-weight:bold;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .countdownDesc {padding:0;margin:0;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .countdownDesc li {display:inline-block;text-transform:uppercase;font-size:8px;width:25px;margin-right:5px;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .period {font-size: 12px;margin: 6px 0;text-transform:uppercase;}
+.Dashboard.User .Bieding.Overview main.concept .Counter .period span {font-weight:bold;text-align: right;}
+.Dashboard.User .Bieding.Overview main.concept .Accept {text-align:center;margin-top:5px;}
+.Dashboard.User .Bieding.Overview main.concept .Accept nav > a {width:100%;margin:5px 0;font-size:12px;border:2px solid;font-weight:bold;}
+
+.Dashboard.User .Transactie.Overview {background-color:#fff;padding:40px 10px 10px;border:1px solid #000;position:relative;}
+.Dashboard.User .Transactie.Overview header > h4 {text-align:center;font-size:14px;margin-bottom:10px;}
+.Dashboard.User .Transactie.Overview header > h3 {font-size:150%;margin-bottom:20px;text-align:center;}
+.Dashboard.User .Transactie.Overview header > h3 > a {color:#0969c3;text-decoration:underline;}
+.Dashboard.User .Transactie.Overview header > h2 {font-size:140%;margin-bottom: 50px;}
+.Dashboard.User .Transactie.Overview h2.accepted {text-align:center;font-weight:bold;text-transform:uppercase;font-size:150%;margin-bottom:25px;margin-top:-20px;color:#95c11f;}
+.Dashboard.User .Transactie.Overview.Blue .status {background-color:#46a9e0;}
+.Dashboard.User .Transactie.Overview.Green .status {background-color:#95c11f;}
+.Dashboard.User .Transactie.Overview.Orange .status {background-color:#efa026;}
+.Dashboard.User .Transactie.Overview .info {text-align:center;}
+.Dashboard.User .Transactie.Overview .date {text-align:right;margin-right:10px;margin-top:-5px;font-size:12px;}
+.Dashboard.User .Transactie.Overview .Text {text-align:center;}
+.Dashboard.User .Transactie.Overview figure {text-align:center;}
+.Dashboard.User .Transactie.Overview nav > a {width:100%;}
+.Dashboard.User .Transactie.Overview nav {text-align:center;margin-top:10px;}
+.Dashboard.User .Transactie.Overview .status {text-transform:uppercase;font-weight:bold;text-align:center;position:absolute;left:0;top:0;width:100%;color:#fff;border-bottom:1px solid #000;padding:0 10px;}
+.Dashboard.User .Transactie.Overview .status:before {content:'status:';position:absolute;left:10px;}
+.Dashboard.User .Transactie.Overview .payment {position:absolute;right: 5px;top: 6px;font-weight:bold;font-style:italic;text-transform:uppercase;font-size:12px;line-height:1.2;}
+.Dashboard.User .Transactie.Overview .payment span {width: 12px;height: 12px;background-color:#f00;display:inline-block;border-radius:50%;border:2px solid #000;margin-left:5px;}
+.Dashboard.User .Transactie.Overview .payment span.orange {background-color: #efa026;}
+.Dashboard.User .Transactie.Overview .payment span.green {background-color:#95c11f;}
+.Dashboard.User .Transactie.Overview.Blue .Running > li.active, .Dashboard.User .Transactie.Overview.Blue .Running > li:focus, .Dashboard.User .Transactie.Overview.Blue .Running > li:hover {border: 2px solid #46a9e0;}
+.Dashboard.User .Transactie.Overview.Blue .Running > li:nth-child(odd):hover {border: 2px solid #46a9e0;}
+.Dashboard.User .Transactie.Overview.Orange .Running > li.active, .Dashboard.User .Transactie.Overview.Orange .Running > li:focus, .Dashboard.User .Transactie.Overview.Orange .Running > li:hover {border: 2px solid #efa026;}
+.Dashboard.User .Transactie.Overview.Orange .Running > li:nth-child(odd):hover {border: 2px solid #efa026;}
+.Dashboard.User .Transactie.Overview.Blue .Running > li.active, .Dashboard.User .Transactie.Overview.Blue .Running > li:focus, .Dashboard.User .Transactie.Overview.Blue .Running > li:hover {border: 2px solid #46a9e0;}
+.Dashboard.User .Transactie.Overview.Blue .Running > li:nth-child(odd):hover {border: 2px solid #46a9e0;}
+.Dashboard.User .Transactie.Overview.Green .Running > li.active, .Dashboard.User .Transactie.Overview.Green .Running > li:focus, .Dashboard.User .Transactie.Overview.Green .Running > li:hover {border: 2px solid #95c11f;}
+.Dashboard.User .Transactie.Overview.Green .Running > li:nth-child(odd):hover {border: 2px solid #95c11f;}
+
+.Dashboard.User .Transactie.Overview .bod {text-align:center;font-size:160%;font-weight:bold;color:#95c11f;}
+.Dashboard.User .Transactie.Overview .daily {text-align:center;font-size:12px;}
+.Dashboard.User .Transactie.Overview .daily span {font-weight:bold;}
+.Dashboard.User .Transactie.Overview h5 {text-align:center;margin-top:20px;text-transform:uppercase;}
+.Dashboard.User .Transactie.Overview .period {text-align:center;font-size:14px;margin:5px 0;}
+.Dashboard.User .Transactie.Overview .days {text-align:center;font-size:12px;}
+.Dashboard.User .Transactie.Overview .Title {text-align:center;display:block;font-size:120%;text-decoration:underline;color:#46a9e0;}
+
+.Dashboard.User ul.Status > li {padding-bottom:50px;}
+.Dashboard.User .Bieding.Overview .none {text-transform:uppercase;text-align:center;font-weight: bold;color: #d2d2d2;font-style: italic;margin-top: 140px;}
+
+
+.modal-content {text-align:center;border-radius: 0;border: 0;-webkit-box-shadow: none;box-shadow: none;}
+.modal-content .modal-header, .modal-content .modal-footer {border:0;text-align: center;}
+.modal-content h4 {font-family: 'hasteristicobold';text-transform:uppercase;font-size:160%;}
+.modal-content .radio {text-align: left;max-width: 325px;margin:0 auto;}
+.modal-content input[type=radio] {display: none;}
+.modal-content input[type=radio]:checked+label span {background: #000;}
+.modal-content input[type=radio]+label span {display: inline-block;width: 15px;height: 15px;margin: -1px 8px 0 0;vertical-align: middle;background: #fff;cursor: pointer;border-radius: 150%;border: 1px solid #000;padding: 2px;}
+.modal-content main.concept {max-width:350px;margin:0 auto;}
+.modal-content main.concept .Text {font-size:11px;margin:10px 0 20px;text-align:left;}
+.modal-content main.concept .period span {font-weight:bold;}
+.modal-content main.concept h3 {color: #46a9e0;text-transform: uppercase;text-decoration: underline;font-size:100%;}
+.modal-content .checkbox {font-size:12px;}
+.modal-content .checkbox a {color:#46a9e0;font-style:italic;text-decoration:underline;}
+.modal-content .summary span {font-size:11px;}
+.modal-content .summary {text-align:left;padding:10px 40px 10px 10px;background-color:#eee;max-width:430px;font-size: 14px;margin:20px auto;}
+.modal-content .summary hr {border-color:#fff;}
+.modal-content .summary .nr:before {content:'\20AC';position:absolute;left:0;display:inline-block;}
+.modal-content .summary .nr {text-align:right;font-weight:bold;}
+.modal-content .summary i.fa {position:absolute;right:-5px;display:inline-block;top:9px;font-size:10px;}
+.modal-content .summary .nr.admin:after {content:'-';position:absolute;left:-12px;display:inline-block;}
+.modal-content .summary .nr.bid {color:#46a9e0;}
+.modal-content .summary .nr.total {color:#95c11f;}
+.modal-content .note {font-size:12px;font-style:italic;margin-top: -15px;display: block;}
+.modal-content .duration {font-size:12px;margin-top: -15px;margin-bottom:15px;display: block;}
+.modal-content .input-space {padding-bottom:15px;max-width: 350px;margin: 5px auto;}
+.modal-content .input-group-addon {background: #000; text-shadow: none; color: #fff;}
+
+footer#main .FooterTop {background-color:#000;color:#fff;padding: 50px 0;line-height: 2;}
+footer#main address {line-height:inherit;}
+footer#main h5 {text-tra;margin-bottom: 10px;margin-top: 4px;text-transform: uppercase;font-family: 'Raleway', sans-serif;color: #efa026;font-weight: bold;}
+footer#main .FooterTop a {color:#fff;}
+footer#main .FooterTop a:hover,footer#main .FooterTop a:focus {color:#efa026;text-decoration:none;}
+footer#main .FooterTop .logo {margin-top: 5px;}
+footer#main .FooterTop p {margin:0;}
+footer#main .FooterTop .contact {margin-top:20px;}
+footer#main .FooterTop .socialmedia {margin-top: 2px;}
+footer#main .FooterBottom a {color:#000;}
+footer#main .FooterBottom {font-size:80%;color:#000;padding:8px 0;text-align:center;}
+footer#main .FooterBottom p {margin:0;}
+footer#main .FooterBottom .footernav {margin:0;padding:0;}
+footer#main .FooterBottom .footernav a {color:#fff;border-bottom:1px solid transparent;}
+footer#main .FooterBottom .footernav > li {padding-right:0;padding-left:10px;}
+footer#main .FooterBottom .footernav a:hover, footer#main .FooterBottom .footernav a:focus, footer#main .FooterBottom .footernav .active a {color:#fff;border-bottom:1px solid #fff;}
+footer#main ul {list-style: none;padding:0;}
+footer#main ul.footerlinks {font-weight: bold;}
+footer#main ul.social li a {margin-bottom:10px;display:block; overflow:hidden; position: relative; background:#fff; color:#000; width:25px; height:25px; line-height:25px; font-size:16px; padding:0; text-decoration: none; text-align: center; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; }
+footer#main ul.social li a:focus,footer#main ul.social li a:hover { text-decoration: none; color:#fff; background:#efa026; }
+
+.slide-out-div {padding: 20px;width: 250px;background: #ccc;border: 1px solid #29216d;}
+
+section.newsletter .form-control:focus {border-color: #adadad;outline: 0;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,0,0,.2);box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,0,0,.2);}
+section.newsletter header > h3 {text-align:center;margin-bottom:10px;}
+section.newsletter .input-group {max-width:550px;margin:0 auto;}
+section.newsletter button, section.newsletter input {border:1px solid #fff;box-shadow:none;border-radius:0;}
+section.newsletter button {background-color:#000;color:#fff;text-transform:uppercase;padding: 5px 50px;}
+
+section.maps {padding: 0;}
+section.maps #map_canvas {width:100%;height:400px;}
+section.maps .mapsWrap {position: relative;}
+section.maps .ontop {position: absolute;top: 0;bottom: 0;left: 0;z-index: 1;background-color: #000;background-color: rgba(0, 0, 0, 0.6);padding: 5px 15px 15px;width: 100%;height: 401px;color: #fff;}
+section.maps .ontop a {color:#fff;text-decoration:underline;}
+section.maps .ontop a:hover, section.maps .ontop a:focus {color:#efa026;}
+section.maps .ontop h3 {font-size: 270%;margin-top: 20px;margin-bottom:0;}
+section.maps .ontop address, section.maps .ontop .subtitle {margin-bottom:40px;}
+section.maps .ontop h3, section.maps .ontop .subtitle {text-align:center;display:block;font-family: 'hasteristicobold';}
+
+.FAQ.Overview {padding-top:0;}
+.FAQ.Overview .FAQ.Item header > h3 {position:relative;font-size: 180%;text-align:center;text-transform: none;padding-bottom: 20px;margin-bottom: 20px;font-family: 'hasteristicobold';}
+.FAQ.Overview .FAQ.Item header > h3:after {content:'';position:absolute;width:65px;height:2px;background-color:#000;left:50%;margin-left:15px;bottom:0;}
+.FAQ.Overview .FAQ.Item header > h3:before {content:'';position:absolute;width:65px;height:2px;background-color:#000;right:50%;margin-right:15px;bottom:0;}
+.FAQ.Overview .panel-group .panel-default {border-radius: 0;margin-top: 0!important;border-bottom:0;}
+.FAQ.Overview .panel-group .panel-default:last-child {border-radius: 0;margin-top: 0!important;border-bottom: 1px solid #ddd;}
+.FAQ.Overview .panel-default>.panel-heading a:after {position:absolute;content:'\f107';font-family:'FontAwesome';right:20px;top: 5px;font-size:25px;color:#777;}
+.FAQ.Overview .panel-default>.panel-heading a.collapsed:after {position:absolute;content:'\f106';font-family:'FontAwesome';right:20px;top: 5px;font-size:25px;color:#777;}
+.FAQ.Overview .panel-default>.panel-heading {position:relative;text-align:center;font-family: 'hasteristicobold';background-color:transparent;}
+.FAQ.Overview .panel-default>.panel-heading > h4 {font-size: 130%;font-weight:bold;}
+
+/* Content */
+section {padding: 50px 0;}
+
+.onlyMobile {display:none;}
+
+section.bg-grey {background-color:#eee;}
+section.bg-pattern {background-image:url(../images/pattern.jpg);}
+
+/* Animation */
+#homebanner.flexslider .captioncontainer .Slogan nav, #homebanner.flexslider .captioncontainer .Slogan h3, #homebanner.flexslider .captioncontainer .Slogan .input-group {opacity:0;-webkit-animation: animate_fade 1.2s ease-out; -moz-animation: animate_fade 1.2s ease-out; -o-animation: animate_fade 1.2s ease-out; animation: animate_fade 1.2s ease-out; -webkit-animation-delay: 1.2s; animation-delay: 1.2s; animation-fill-mode: forwards; -webkit-animation-fill-mode: forwards;-webkit-animation-delay: 2s;animation-delay: 2s;}
+#aanbodBanner.flexslider .captioncontainer .Slogan h1, #homebanner.flexslider .captioncontainer .Slogan h1 {opacity:0;position: relative;left:0;-webkit-animation: animate_right 1.2s ease-out;-moz-animation: animate_right 1.2s ease-out;-o-animation: animate_right 1.2s ease-out;animation: animate_right 1.2s ease-out;-webkit-animation-delay: 1.2s;animation-delay: 1.2s;animation-fill-mode: forwards;-webkit-animation-fill-mode: forwards;text-shadow: 2px 2px 25px #000;}
+#homebanner.flexslider .captioncontainer .Slogan h2 {opacity:0; position: relative; left:0; -webkit-animation: animate_left 1.2s ease-out; -moz-animation: animate_left 1.2s ease-out; -o-animation: animate_left 1.2s ease-out; animation: animate_left 1.2s ease-out; -webkit-animation-delay: 1.2s; animation-delay: 1.2s; animation-fill-mode: forwards; -webkit-animation-fill-mode: forwards; text-shadow: 2px 2px 25px #000;}
+@-webkit-keyframes animate_right { 0% { opacity: 0.3; left:-70px; } 100% { opacity: 1; left:0; } }
+@-moz-keyframes animate_right { 0% { opacity: 0.3; left:-70px; } 100% { opacity: 1; left:0; } }
+@-ms-keyframes animate_right { 0% { opacity: 0.3; left:-70px; } 100% { opacity: 1; left:0; } }
+@-o-keyframes animate_right { 0% { opacity: 0.3; left:-70px; } 100% { opacity: 1; left:0; } }
+@keyframes animate_right { 0% { opacity: 0.3; left:-70px; } 100% { opacity: 1; left:0; } }
+
+@-webkit-keyframes animate_left { 0% { opacity: 0.3; left:70px; } 100% { opacity: 1; left:0; } }
+@-moz-keyframes animate_left { 0% { opacity: 0.3; left:70px; } 100% { opacity: 1; left:0; } }
+@-ms-keyframes animate_left { 0% { opacity: 0.3; left:70px; } 100% { opacity: 1; left:0; } }
+@-o-keyframes animate_left { 0% { opacity: 0.3; left:70px; } 100% { opacity: 1; left:0; } }
+@keyframes animate_left { 0% { opacity: 0.3; left:70px; } 100% { opacity: 1; left:0; } }
+
+@-webkit-keyframes animate_fade { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+@-moz-keyframes animate_fade { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+@-ms-keyframes animate_fade { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+@-o-keyframes animate_fade { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+@keyframes animate_fade { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+
+
+@media (max-width:992px) {
+
+  footer#main .FooterTop {text-align:center;}
+  footer#main .FooterTop address {margin-top:30px;}
+  footer#main .FooterTop .socialmedia {margin-top:30px;}
+  #Header .navbar-nav > li > a {margin: 5px;}
+
+  #Header.Dashboard .navbar-right.Account {left:0;text-align:center;bottom: 0;padding: 0;background: #eee;}
+  #Header.Dashboard .navbar-right.Account > li {float:none;display:inline-block;font-size:12px;}
+  #Header.Dashboard .navbar-nav {margin-top: 0;margin-bottom: 0;padding-top: 5px;padding-bottom: 25px;}
+  #Header.Dashboard .navbar-nav > li {display: inline-block;}
+  #Header.Dashboard #mobile-header {position:relative;}
+
+  .block-grid.two-up > li, .block-grid.up2 > li { width: 50%; }
+  .block-grid.two-up > li:nth-child(2n+1), .block-grid.up2 > li:nth-child(2n+1) { clear: left; }
+
+  .block-grid.three-up > li, .block-grid.up3 > li {width: 50%;}
+  .block-grid.three-up > li:nth-child(3n+1), .block-grid.up3 > li:nth-child(3n+1) {clear: none;}
+  .block-grid.three-up > li:nth-child(2n+1), .block-grid.up3 > li:nth-child(2n+1) { clear: left; }
+
+  .block-grid.four-up > li, .block-grid.up4 > li { width: 50%; }
+  .block-grid.four-up > li:nth-child(4n+1), .block-grid.up4 > li:nth-child(4n+1) { clear: none; }
+  .block-grid.four-up > li:nth-child(2n+1), .block-grid.up4 > li:nth-child(2n+1) { clear: left; }
+
+  #homebanner.flexslider .captioncontainer .Slogan h2 {margin-bottom:20px;}
+  #homebanner.flexslider .captioncontainer .Slogan h3 {display:none;}
+  #homebanner.flexslider .captioncontainer .Slogan h1 {font-size:600%;}
+  #homebanner.flexslider .captioncontainer .Slogan nav {margin-top:20px;}
+
+  footer#main ul.social {display:none;}
+  section.newsletter button {padding:5px 20px;}
+}
+
+@media (max-width: 767px) {
+
+  #mobile-header .navbar-collapse .navbar-nav {margin-top:20px;}
+
+  .home header#Header .navbar-nav {margin-top:10px;display: inline-block;float: none!important;vertical-align: top;}
+  .home header#Header .navbar-collapse {text-align: center;}
+  .home header#Header #mobile-header .navbar-brand {display:inline-block;}
+  .home header#Header #mobile-header .navbar-collapse .navbar-nav {margin-top:10px;}
+  .home header#Header #mobile-header:after {display:block;}
+  .dropdown:hover .dropdown-menu { display: block; margin-top: 0; position: relative; float: none; -webkit-box-shadow: none; box-shadow: none; left: 0; right: 0; }
+
+  #Header.Dashboard .navbar-nav {padding-bottom: 33px;}
+
+  #homebanner.flexslider .captioncontainer .Slogan h2 {margin-bottom:20px;}
+  #homebanner.flexslider .captioncontainer .Slogan h3 {display:none;}
+  #homebanner.flexslider .captioncontainer .Slogan h1 {font-size:600%;}
+  #homebanner.flexslider .captioncontainer .Slogan nav {display:none;}
+
+  .left > nav {float:none;}
+  .EstateSummary nav.right, nav {text-align:center;margin-top:20px;}
+  figure {text-align:center;}
+
+  .Refine .col-sm-6.left {padding-right:15px;}
+  .Refine .col-sm-6.right {padding-left:15px;}
+
+  .Bieding.Overview > li.Register {padding:10px;}
+
+  .Concept ul.Concept > li.deal:after, .Concept ul.Concept > li.deal > article:before, .Concept ul.Concept > li.deal > article:after {display:none;}
+
+  .main.Media.Detail {padding-bottom:20px;}
+  .main.Media.Detail .social {position: relative;bottom: 20px;}
+
+  .Dashboard.User .Transactie.Overview, .Dashboard.Owner .Transactie.Overview, .Dashboard.User .Bieding.Overview, .Dashboard.Owner .Bieding.Overview {padding:0;}
+  .Dashboard.User .Transactie.Overview .status:before, .Dashboard.Owner .Transactie.Overview .status:before, .Dashboard.User .Bieding.Overview .status:before, .Dashboard.Owner .Bieding.Overview .status:before {display:none;}
+  .Dashboard.User .Transactie.Overview .status, .Dashboard.Owner .Transactie.Overview .status, .Dashboard.User .Bieding.Overview .status, .Dashboard.Owner .Bieding.Overview .status {position:relative;margin-bottom:10px;}
+  .Dashboard.User .Bieding.Overview header > h2, .Dashboard.Owner .Bieding.Overview header > h2 {margin-bottom: 20px;margin-top:20px;}
+
+  .Dashboard.User .Transactie.Overview .date {margin-top: 0;margin-bottom:20px;margin-right: 20px;}
+  .Dashboard.Owner .Transactie.Overview .date {margin-top: 15px;margin-right: 20px;}
+  .Dashboard.User .Transactie.Overview .payment, .Dashboard.Owner .Transactie.Overview .payment {right: 5px; top: 35px;}
+}
+
+@media (max-width: 600px) {
+  .block-grid {text-align: center;}
+  .block-grid > li { width: 100%!important;clear:none; }
+  .flex-control-nav {display: none;}
+
+  #homebanner.flexslider .captioncontainer .Slogan h1 {font-size:500%;}
+  #homebanner.flexslider .captioncontainer .Slogan h2 {font-size:150%;}
+  #homebanner.flexslider .captioncontainer .Slogan .input-group {display:none;}
+}
+
+@media (max-width: 480px) {
+  #homebanner.flexslider .captioncontainer .Slogan h1 {font-size:300%;}
+  #homebanner.flexslider .captioncontainer .Slogan h2 {font-size:100%;}
+  #homebanner.flexslider .captioncontainer .Slogan .input-group {display:none;}
+
+}
+
+@media print {
+  header#Header, section.maps,.flexslider,.socialmedia,footer#main {display:none;}
+}
+
+
+a, input[type="submit"], button { -moz-transition: all .15s ease-in; -o-transition: all .15s ease-in; -webkit-transition: all .15s ease-in; transition: all .15s ease-in; }
