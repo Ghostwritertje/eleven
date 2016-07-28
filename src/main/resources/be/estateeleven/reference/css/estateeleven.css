@@ -1,6 +1,6 @@
 /* fonts */
-@font-face {font-family: 'hasteristicobold';src: url('../fonts/hasteristicobold-webfont.woff2') format('woff2'),url('../fonts/hasteristicobold-webfont.woff') format('woff');font-weight: normal;font-style: normal;}
-@font-face {font-family: 'hasteristicolight';src: url('../fonts/hasteristico-webfont.woff2') format('woff2'),url('../fonts/hasteristico-webfont.woff') format('woff');font-weight: normal;font-style: normal;}
+/*@font-face {font-family: 'hasteristicobold';src: url('../fonts/hasteristicobold-webfont.woff2') format('woff2'),url('../fonts/hasteristicobold-webfont.woff') format('woff');font-weight: normal;font-style: normal;}*/
+/*@font-face {font-family: 'hasteristicolight';src: url('../fonts/hasteristico-webfont.woff2') format('woff2'),url('../fonts/hasteristico-webfont.woff') format('woff');font-weight: normal;font-style: normal;}*/
 
 html {
       overflow-x: hidden;
@@ -130,46 +130,46 @@ nav .more {color:#0969c3;}
 .Refine .col-sm-6.left {padding-right:5px;}
 .Refine .col-sm-6.right {padding-left:5px;}
 
-.small.icon {padding-right:5px;}
-.small.icon:before {content:'';width: 15px;height: 15px;display: inline-block;background: no-repeat center center;position: absolute;bottom: 5px;left: 5px;}
-*:hover > .small.icon.Horeca:before {background-image:url('../images/icons/icon-drink2.png');}
-.small.icon.Horeca:before {background-image:url('../images/icons/icon-drink.png');}
-*:hover > .small.icon.Horeca:before {background-image:url('../images/icons/icon-drink2.png');}
-.small.icon.Share:before {background-image:url('../images/icons/icon-symbol.png');}
-*:hover > .small.icon.Share:before {background-image:url('../images/icons/icon-symbol2.png');}
-.small.icon.Expositie:before {background-image:url('../images/icons/icon-picture.png');}
-*:hover > .small.icon.Expositie:before {background-image:url('../images/icons/icon-picture2.png');}
-.small.icon.Retail:before {background-image:url('../images/icons/icon-sales.png');}
-*:hover > .small.icon.Retail:before {background-image:url('../images/icons/icon-sales2.png');}
-.small.icon.Wifi:before {background-image:url('../images/icons/icon-connection.png');}
-*:hover > .small.icon.Wifi:before {background-image:url('../images/icons/icon-connection2.png');}
-.small.icon.Verlichting:before {background-image:url('../images/icons/icon-bulb.png');}
-*:hover > .small.icon.Verlichting:before {background-image:url('../images/icons/icon-bulb2.png');}
-.small.icon.Electriciteit:before {background-image:url('../images/icons/icon-stroom.png');}
-*:hover > .small.icon.Electriciteit:before {background-image:url('../images/icons/icon-stroom2.png');}
-.small.icon.Parking:before {background-image:url('../images/icons/icon-parking.png');}
-*:hover > .small.icon.Parking:before {background-image:url('../images/icons/icon-parking2.png');}
-.small.icon.Winkelinrichting:before {background-image: url('../images/icons/icon-clothes.png');}
-*:hover > .small.icon.Winkelinrichting:before {background-image: url('../images/icons/icon-clothes2.png');}
-.small.icon.Beveiliging:before {background-image:url('../images/icons/icon-shield.png');}
-*:hover > .small.icon.Beveiliging:before {background-image:url('../images/icons/icon-shield2.png');}
-.small.icon.Etalage:before {background-image:url('../images/icons/icon-window.png');}
-*:hover > .small.icon.Etalage:before {background-image:url('../images/icons/icon-window2.png');}
-.small.icon.Water:before {background-image:url('../images/icons/icon-food.png');}
-*:hover > .small.icon.Water:before {background-image:url('../images/icons/icon-food2.png');}
-.small.icon.Verwarming:before {background-image:url('../images/icons/icon-tool.png');}
-*:hover > .small.icon.Verwarming:before {background-image:url('../images/icons/icon-tool2.png');}
-.small.icon.Terras:before {background-image:url('../images/icons/icon-board.png');}
-*:hover > .small.icon.Terras:before {background-image:url('../images/icons/icon-board2.png');}
-.small.icon.Sanitair:before {background-image:url('../images/icons/icon-sanitair.png');}
-*:hover > .small.icon.Sanitair:before {background-image:url('../images/icons/icon-sanitair2.png');}
-.small.icon.Keuken:before {background-image:url('../images/icons/icon-keuken.png');}
-*:hover > .small.icon.Keuken:before {background-image:url('../images/icons/icon-keuken2.png');}
+/*.small.icon {padding-right:5px;}*/
+/*.small.icon:before {content:'';width: 15px;height: 15px;display: inline-block;background: no-repeat center center;position: absolute;bottom: 5px;left: 5px;}*/
+/**:hover > .small.icon.Horeca:before {background-image:url('../images/icons/icon-drink2.png');}*/
+/*.small.icon.Horeca:before {background-image:url('../images/icons/icon-drink.png');}*/
+/**:hover > .small.icon.Horeca:before {background-image:url('../images/icons/icon-drink2.png');}*/
+/*.small.icon.Share:before {background-image:url('../images/icons/icon-symbol.png');}*/
+/**:hover > .small.icon.Share:before {background-image:url('../images/icons/icon-symbol2.png');}*/
+/*.small.icon.Expositie:before {background-image:url('../images/icons/icon-picture.png');}*/
+/**:hover > .small.icon.Expositie:before {background-image:url('../images/icons/icon-picture2.png');}*/
+/*.small.icon.Retail:before {background-image:url('../images/icons/icon-sales.png');}*/
+/**:hover > .small.icon.Retail:before {background-image:url('../images/icons/icon-sales2.png');}*/
+/*.small.icon.Wifi:before {background-image:url('../images/icons/icon-connection.png');}*/
+/**:hover > .small.icon.Wifi:before {background-image:url('../images/icons/icon-connection2.png');}*/
+/*.small.icon.Verlichting:before {background-image:url('../images/icons/icon-bulb.png');}*/
+/**:hover > .small.icon.Verlichting:before {background-image:url('../images/icons/icon-bulb2.png');}*/
+/*.small.icon.Electriciteit:before {background-image:url('../images/icons/icon-stroom.png');}*/
+/**:hover > .small.icon.Electriciteit:before {background-image:url('../images/icons/icon-stroom2.png');}*/
+/*.small.icon.Parking:before {background-image:url('../images/icons/icon-parking.png');}*/
+/**:hover > .small.icon.Parking:before {background-image:url('../images/icons/icon-parking2.png');}*/
+/*.small.icon.Winkelinrichting:before {background-image: url('../images/icons/icon-clothes.png');}*/
+/**:hover > .small.icon.Winkelinrichting:before {background-image: url('../images/icons/icon-clothes2.png');}*/
+/*.small.icon.Beveiliging:before {background-image:url('../images/icons/icon-shield.png');}*/
+/**:hover > .small.icon.Beveiliging:before {background-image:url('../images/icons/icon-shield2.png');}*/
+/*.small.icon.Etalage:before {background-image:url('../images/icons/icon-window.png');}*/
+/**:hover > .small.icon.Etalage:before {background-image:url('../images/icons/icon-window2.png');}*/
+/*.small.icon.Water:before {background-image:url('../images/icons/icon-food.png');}*/
+/**:hover > .small.icon.Water:before {background-image:url('../images/icons/icon-food2.png');}*/
+/*.small.icon.Verwarming:before {background-image:url('../images/icons/icon-tool.png');}*/
+/**:hover > .small.icon.Verwarming:before {background-image:url('../images/icons/icon-tool2.png');}*/
+/*.small.icon.Terras:before {background-image:url('../images/icons/icon-board.png');}*/
+/**:hover > .small.icon.Terras:before {background-image:url('../images/icons/icon-board2.png');}*/
+/*.small.icon.Sanitair:before {background-image:url('../images/icons/icon-sanitair.png');}*/
+/**:hover > .small.icon.Sanitair:before {background-image:url('../images/icons/icon-sanitair2.png');}*/
+/*.small.icon.Keuken:before {background-image:url('../images/icons/icon-keuken.png');}*/
+/**:hover > .small.icon.Keuken:before {background-image:url('../images/icons/icon-keuken2.png');}*/
 
-.big.icon {padding-right:5px;}
-.big.icon:before {content:'';width: 24px;height: 20px;display: inline-block;background: no-repeat center center;position: absolute;bottom: 9px;left: 10px;}
-.big.icon.Gids:before {background-image:url('../images/icons/icon-stadgids.png');}
-*:hover > .big.icon.Gids:before {background-image:url('../images/icons/icon-stadgids2.png');}
+/*.big.icon {padding-right:5px;}*/
+/*.big.icon:before {content:'';width: 24px;height: 20px;display: inline-block;background: no-repeat center center;position: absolute;bottom: 9px;left: 10px;}*/
+/*.big.icon.Gids:before {background-image:url('../images/icons/icon-stadgids.png');}*/
+/**:hover > .big.icon.Gids:before {background-image:url('../images/icons/icon-stadgids2.png');}*/
 
 .left > nav {float: right;}
 

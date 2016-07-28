@@ -1,6 +1,7 @@
 package be.estateeleven.pages;
 
 import be.estateeleven.reference.css.EstateElevenCssReference;
+import be.estateeleven.reference.img.LogoImgReference;
 import be.estateeleven.resources.css.FontAwesomeCssReference;
 import be.estateeleven.resources.css.RangeSliderCssReference;
 import be.estateeleven.reference.img.HomeBannerImgReference;
@@ -30,7 +31,7 @@ public class WicketPage extends WebPage {
     protected void onInitialize() {
         super.onInitialize();
         this.add(new Image("homeBanner", HomeBannerImgReference.get()));
-        this.add(new Image("logo", HomeBannerImgReference.get()));
+        this.add(new Image("logo", LogoImgReference.get()));
 
     }
 
