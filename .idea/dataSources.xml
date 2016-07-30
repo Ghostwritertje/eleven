@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="65759307">
+  <component name="DataSourceManagerImpl" format="xml" hash="2081197514">
     <data-source source="LOCAL" name="MySQL - wicket@localhost" uuid="c6cd7905-a01a-4a5e-84f3-09b97b9d7397">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

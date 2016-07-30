@@ -36,6 +36,7 @@
         <mapping class="be.estateeleven.domain.Concept"/>
         <mapping class="be.estateeleven.domain.Faciliteit"/>
         <mapping class="be.estateeleven.domain.Pand"/>
+        <mapping class="be.estateeleven.domain.Doeleinde"/>
 
 
     </session-factory>

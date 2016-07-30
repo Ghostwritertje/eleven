@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -13,19 +11,15 @@ import javax.persistence.Table;
  * Date: 30-Jul-16.
  */
 @Entity
-@Table(name = "FACILITEIT")
-public class Faciliteit {
+@Table(name = "DOELEINDE")
+public class Doeleinde {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    @ManyToOne
-    @JoinColumn(name = "PAND_ID", nullable = false)
-    private Pand pand;
+    private DoeleindeType doeleindeType;
 
-    private FaciliteitsType faciliteitsType;
-
-    public enum FaciliteitsType{
-        WIFI, TERRAS
+    public enum DoeleindeType{
+        HORECA, EXPOSITIE, RETAIL
     }
 }

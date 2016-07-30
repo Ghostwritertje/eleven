@@ -5,8 +5,10 @@ import org.hibernate.annotations.Table;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
+import java.util.List;
 
 
 @Entity
@@ -18,4 +20,6 @@ import javax.persistence.SecondaryTable;
 @Table(appliesTo = "VERHUURDER", fetch = FetchMode.SELECT, optional = false)
 public class Verhuurder extends User {
 
+    @OneToMany(mappedBy = "verhuurder")
+    private List<Pand> panden;
 }
