@@ -1,6 +1,6 @@
 package be.estateeleven;
 
-import be.estateeleven.pages.OverzichtPage;
+import be.estateeleven.pages.LoginPage;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
@@ -22,7 +22,7 @@ public class WicketApplication extends WebApplication {
     @Override
     public Class<? extends Page> getHomePage() {
         logger.info("Homepage wordt opgevraagd!");
-        return OverzichtPage.class;
+        return LoginPage.class;
     }
 
     @Override
