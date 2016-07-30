@@ -15,7 +15,7 @@ import java.io.Serializable;
  * on 16/03/16.
  */
 @Entity
-@Table(name = "t_user")
+@Table(name = "USER")
 @DiscriminatorColumn(name = "FUNCTIE")
 public class User implements Serializable {
     @Id

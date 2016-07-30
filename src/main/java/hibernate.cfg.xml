@@ -6,8 +6,8 @@
         <!-- Database connection settings -->
 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <!--<property name="connection.url">jdbc:mysql://127.3.167.130:3306/wicket</property>-->
-        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/wicket</property>
+        <property name="connection.url">jdbc:mysql://127.3.167.130:3306/wicket</property>
+        <!--<property name="connection.url">jdbc:mysql://127.0.0.1:3306/wicket</property>-->
 
         <property name="connection.username">wicket</property>
         <property name="connection.password">wicket</property>
@@ -30,8 +30,12 @@
 
 
         <mapping class="be.estateeleven.domain.User"/>
-        <mapping class="be.estateeleven.domain.Eigenaar"/>
-        <mapping class="be.estateeleven.domain.Ondernemer"/>
+        <mapping class="be.estateeleven.domain.Verhuurder"/>
+        <mapping class="be.estateeleven.domain.Huurder"/>
+        <mapping class="be.estateeleven.domain.Bieding"/>
+        <mapping class="be.estateeleven.domain.Concept"/>
+        <mapping class="be.estateeleven.domain.Faciliteit"/>
+        <mapping class="be.estateeleven.domain.Pand"/>
 
 
     </session-factory>
