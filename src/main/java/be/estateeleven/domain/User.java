@@ -3,6 +3,7 @@ package be.estateeleven.domain;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ import java.io.Serializable;
  * on 16/03/16.
  */
 @Entity
-@Table(name = "t_user")
+@Table(name = "USER")
 @DiscriminatorColumn(name = "FUNCTIE")
 public class User implements Serializable {
     @Id
@@ -24,6 +25,13 @@ public class User implements Serializable {
 
     @Column
     private String username;
+
+    @Embedded
+    private Adres adres;
+    private String naam;
+    private String email;
+    private String wachtwoord;
+    private String rekeningNummer;
 
     public User() {
     }

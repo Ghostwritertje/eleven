@@ -1,6 +1,6 @@
 package be.estateeleven.pages;
 
-import be.estateeleven.domain.Eigenaar;
+import be.estateeleven.domain.Verhuurder;
 import be.estateeleven.domain.User;
 import be.estateeleven.services.api.UserService;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -18,7 +18,7 @@ public class OverzichtPage extends WicketPage {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        User user = new Eigenaar();
+        User user = new Verhuurder();
         user.setUsername("Joran");
         this.userService.create(user);
 
