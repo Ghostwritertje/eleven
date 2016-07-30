@@ -1,12 +1,13 @@
 package be.estateeleven.pages;
 
+import be.estateeleven.panels.FooterPanel;
 import be.estateeleven.reference.css.EstateElevenCssReference;
-import be.estateeleven.reference.img.LogoImgReference;
-import be.estateeleven.resources.css.FontAwesomeCssReference;
-import be.estateeleven.resources.css.RangeSliderCssReference;
 import be.estateeleven.reference.img.HomeBannerImgReference;
+import be.estateeleven.reference.img.LogoImgReference;
 import be.estateeleven.resources.css.DatePickerCssReference;
 import be.estateeleven.resources.css.FlexSliderCssReference;
+import be.estateeleven.resources.css.FontAwesomeCssReference;
+import be.estateeleven.resources.css.RangeSliderCssReference;
 import be.estateeleven.resources.css.StepsCssReference;
 import be.estateeleven.resources.js.BannerJsReference;
 import de.agilecoders.wicket.core.Bootstrap;
@@ -32,7 +33,7 @@ public class WicketPage extends WebPage {
         super.onInitialize();
         this.add(new Image("homeBanner", HomeBannerImgReference.get()));
         this.add(new Image("logo", LogoImgReference.get()));
-
+        this.add(new FooterPanel("footer"));
     }
 
     @Override
